@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+<item node_model="HPE Cray EX425 Rome" node_vendor="HPE" node_form_factor="HPE Cray EX4000" node_cost="+5200" node_power="100" node_weight="18" node_equipment_size="0.656" enclosure_size="42" node_free_dimm_count="16">HPE Cray EX425 Rome</item>
+
+<edge from="Start" to="HPE Cray EX425 Rome"></edge>
+
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7252" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7262" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7272" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7282" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7302" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7352" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7402" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7452" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7502" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7542" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7552" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7642" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7702" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7742" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7F32" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7F52" to-partition="CPU1_7002_SERIES"></edge>
+	<edge from="HPE Cray EX425 Rome" to="AMD Rome 7F72" to-partition="CPU1_7002_SERIES"></edge>
+/n/n<edge from="AMD Rome 7252" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7262" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7272" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7282" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7302" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7352" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7402" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7452" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7502" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7542" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7552" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7642" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7702" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7742" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7F32" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7F52" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+<edge from="AMD Rome 7F72" from-partition="CPU1_7002_SERIES" to-partition="CPU2_7002_SERIES"></edge>
+
+<item>END_OF_CPU2_7002_SERIES</item>
+<connect from-partition="CPU2_7002_SERIES" to="END_OF_CPU2_7002_SERIES"></connect>
+
+<edge from="END_OF_CPU2_7002_SERIES" to="64 GB PC4-25600 1x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_7002_SERIES"></edge>
+<edge from="END_OF_CPU2_7002_SERIES" to="256 GB PC4-25600 4x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_7002_SERIES"></edge>
+<edge from="END_OF_CPU2_7002_SERIES" to="512 GB PC4-25600 8x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_7002_SERIES"></edge>
+<edge from="END_OF_CPU2_7002_SERIES" to="64 GB PC4-23464 1x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_7002_SERIES"></edge>
+<edge from="END_OF_CPU2_7002_SERIES" to="256 GB PC4-23464 4x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_7002_SERIES"></edge>
+<edge from="END_OF_CPU2_7002_SERIES" to="512 GB PC4-23464 8x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_7002_SERIES"></edge>
+
+
+<edge from="64 GB PC4-25600 1x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_7002_SERIES" to-partition="RAM_FOR_CPU1_7002_SERIES"></edge>
+<edge from="256 GB PC4-25600 4x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_7002_SERIES" to-partition="RAM_FOR_CPU1_7002_SERIES"></edge>
+<edge from="512 GB PC4-25600 8x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_7002_SERIES" to-partition="RAM_FOR_CPU1_7002_SERIES"></edge>
+<edge from="64 GB PC4-23464 1x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_7002_SERIES" to-partition="RAM_FOR_CPU1_7002_SERIES"></edge>
+<edge from="256 GB PC4-23464 4x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_7002_SERIES" to-partition="RAM_FOR_CPU1_7002_SERIES"></edge>
+<edge from="512 GB PC4-23464 8x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_7002_SERIES" to-partition="RAM_FOR_CPU1_7002_SERIES"></edge>
+
+
+<connect from-partition="CPU1_7002_SERIES" to-partition="RAM_FOR_CPU1_7002_SERIES"></connect>
+<connect from-partition="RAM_FOR_CPU1_7002_SERIES" to="Built-In 10GbE NC551i FlexFabric 2 Ports"></connect>
+<edge from="Built-In 10GbE NC551i FlexFabric 2 Ports" to="Pre-end"></edge>
+<edge from="Built-In 10GbE NC551i FlexFabric 2 Ports" to="HP 4X QDR IB CX2 Dual Port Mezz HCA"></edge>
+<edge from="HP 4X QDR IB CX2 Dual Port Mezz HCA" to="Pre-end"></edge>
+</itemslist>

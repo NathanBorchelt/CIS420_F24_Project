@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <!--
+       Copyright (C) 2014 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved.  This file is offered as-is,
+       without any warranty.
+  -->
+
+  <!-- Generic server, with a dual-socket motherboard, up to three GPU/Coprocessor cards and up to four 3.5" HDDs or SDDs.
+ 
+       Loosely based on Colfax CX1350s-XP5 1U Rackmount Server, see http://www.colfax-intl.com/nd/Servers/CX1350s-XP5.aspx
+     
+  -->
+
+  <!-- Compute node definition -->
+  <item node_model="Generic server" node_vendor="Colfax" node_form_factor="Rack-mount" node_cost="4014" node_power="150" node_weight="8" node_equipment_size="1" node_free_dimm_count="8" accelerator_count="0" hdd_count="0" ssd_count="0">Generic server</item>
+
+  <edge from="Start" to="Generic server"></edge>
+  
+  <!-- Server description starts with CPUs -->
+  <edge from="Generic server" to="Intel Xeon E5-2650L v2" to-partition="CPU1"></edge>
+  <edge from="Generic server" to="Intel Xeon E5-2660 v2" to-partition="CPU1"></edge>
+  <edge from="Generic server" to="Intel Xeon E5-2670 v2" to-partition="CPU1"></edge>
+  <edge from="Generic server" to="Intel Xeon E5-2680 v2" to-partition="CPU1"></edge>
+  <edge from="Generic server" to="Intel Xeon E5-2690 v2" to-partition="CPU1"></edge>
+  <edge from="Generic server" to="Intel Xeon E5-2695 v2" to-partition="CPU1"></edge>
+  <edge from="Generic server" to="Intel Xeon E5-2697 v2" to-partition="CPU1"></edge>
+  
+  <!-- Edges from the 1st partition to the 2nd partition -->
+  <!-- Second CPUs. They must match the first CPU -->
+  <edge from="Intel Xeon E5-2650L v2" from-partition="CPU1" to-partition="CPU2"></edge>
+  <edge from="Intel Xeon E5-2660 v2" from-partition="CPU1" to-partition="CPU2"></edge>
+  <edge from="Intel Xeon E5-2670 v2" from-partition="CPU1" to-partition="CPU2"></edge>
+  <edge from="Intel Xeon E5-2680 v2" from-partition="CPU1" to-partition="CPU2"></edge>
+  <edge from="Intel Xeon E5-2690 v2" from-partition="CPU1" to-partition="CPU2"></edge>
+  <edge from="Intel Xeon E5-2695 v2" from-partition="CPU1" to-partition="CPU2"></edge>
+  <edge from="Intel Xeon E5-2697 v2" from-partition="CPU1" to-partition="CPU2"></edge>
+  
+  <!-- Vertices in partition CPU2 all connect to a single vertex -->
+  <item>END_OF_CPU2</item>
+  <connect from-partition="CPU2" to="END_OF_CPU2"></connect>
+  
+  <!-- Memory -->
+
+    <!-- Memory options for CPU2. -->
+      <edge from="END_OF_CPU2" to="32 GB" to-partition="RAM_FOR_CPU2"></edge>
+      <edge from="END_OF_CPU2" to="64 GB" to-partition="RAM_FOR_CPU2"></edge>
+  
+    <!-- Memory options for CPU1. We make sure that CPU1 and CPU2 have the same amount of memory (for symmetry), although in general this is not strictly necessary. "to" is not used, hence defaults to "from". Copies of vertices are created automatically. -->
+      <edge from="32 GB" from-partition="RAM_FOR_CPU2" to-partition="RAM_FOR_CPU1"></edge>
+      <edge from="64 GB" from-partition="RAM_FOR_CPU2" to-partition="RAM_FOR_CPU1"></edge>
+      
+      <!-- If only CPU1 is present, it can be connected to RAM_FOR_CPU1. -->
+      <connect from-partition="CPU1" to-partition="RAM_FOR_CPU1"></connect>
+
+  <!-- Connect all CPU combinations to the built-in interconnect which is (supposedly) always present -->
+  <connect from-partition="RAM_FOR_CPU1" to="Built-In Gigabit HCA"></connect>
+  
+  <!-- From the built-in interconnect, we can go directly to the "Post-net" vertex... -->
+  <item>Post-net</item>
+  <edge from="Built-In Gigabit HCA" to="Post-net"></edge>
+  <!-- ... or we can add another interconnection option -->
+  <edge from="Built-In Gigabit HCA" to="Mellanox ConnectX-3 VPI MCX354A-FCBT InfiniBand 4X FDR Dual Port Adapter"></edge>
+  <edge from="Mellanox ConnectX-3 VPI MCX354A-FCBT InfiniBand 4X FDR Dual Port Adapter" to="Post-net"></edge>
+  
+<!-- There are 7 possible choices of a CPU, times 2 choices of the number of CPUs (1 or 2),
+     times 2 choices of RAM (32 GB or 64 GB per CPU). This gives 7*2*2=28 combinations.
+     Any of the 28 combinations above can have one of the 2 available networking options.
+     So far, this gives a total of 28*2=56 combinations for this server.
+     
+     Now, add from 0 to 3 accelerator boards in PCIe slots (partition names are PCIE1..PCIE3).
+     This makes 4 times more combinations, i.e., 56*4=224. -->
+     
+  <place to-partition="PCIE1">Intel Xeon Phi Coprocessor 7120P</place>
+  <connect from="Post-net" to-partition="PCIE1"></connect>
+  <!-- "edge", in this case, first creates vertices and then adds edges -->
+  <edge from="Intel Xeon Phi Coprocessor 7120P" from-partition="PCIE1" to-partition="PCIE2"></edge>
+  <edge from="Intel Xeon Phi Coprocessor 7120P" from-partition="PCIE2" to-partition="PCIE3"></edge>
+  <!-- Create a new vertex called "Post-PCIE" -->
+  <item>Post-PCIE</item>
+  <!-- There can be zero accelerator boards: connect "Post-net" to "Post-PCIE" directly -->
+  <edge from="Post-net" to="Post-PCIE"></edge>
+  <!-- Alternatively, there can be 1 to 3 accelerator boards. Connect corresponding partitions to "Post-PCIE" -->
+  <connect from-partition="PCIE1" to="Post-PCIE"></connect>
+  <connect from-partition="PCIE2" to="Post-PCIE"></connect>
+  <connect from-partition="PCIE3" to="Post-PCIE"></connect>
+	 
+<!-- Add also some storage.
+     Two possible choices: either:
+     (a) 4 HDDs, or
+     (b) 1 HDD + 3 SSDs
+     
+     This multiplies the number of combinations by 2: 224*2=448.
+-->
+<!-- Fill the 1st drive slot: always the HDD -->
+  <edge from="Post-PCIE" to="Western Digital WD1000CHTZ 1TB" to-partition="DRIVE1"></edge>
+
+<!-- Fill the 2nd drive slot: either HDD or SSD -->
+  <place to-partition="DRIVE2">Western Digital WD1000CHTZ 1TB</place>
+  <place to-partition="DRIVE2">Intel DC S3700 Series 800GB</place>
+  <connect from-partition="DRIVE1" to-partition="DRIVE2"></connect>
+  
+<!-- Fill the 3rd and the 4th drive slots: use the same drive type as in the previous slot -->
+  <edge from="Western Digital WD1000CHTZ 1TB" from-partition="DRIVE2" to-partition="DRIVE3"></edge>
+  <edge from="Intel DC S3700 Series 800GB" from-partition="DRIVE2" to-partition="DRIVE3"></edge>
+
+  <edge from="Western Digital WD1000CHTZ 1TB" from-partition="DRIVE3" to-partition="DRIVE4"></edge>
+  <edge from="Intel DC S3700 Series 800GB" from-partition="DRIVE3" to-partition="DRIVE4"></edge>
+  
+<!-- Now, the vertices in partition "DRIVE4" have been created. Connect this partition
+     to the Pre-end (i.e., "almost last") vertex -->
+  <connect from-partition="DRIVE4" to="Pre-end"></connect>
+
+</itemslist>

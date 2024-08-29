@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <!--
+       Copyright (C) 2012 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved.  This file is offered as-is,
+       without any warranty.  
+  -->
+
+<!--
+
+    Syntax:
+    
+    <include>filename.xml</include> 
+    Includes a file
+    
+    <item par1="val1" par2="val2" ...>ItemName</item>
+    Inserts a vertex with specified parameters
+    
+    <place to-partition="PartName">ItemName</place>
+    Places a copy of the specified item to the specified partition
+    
+    <edge from=<from-vertex> [from-partition=<part>] [to=<to-vertex>] [to-partition=<part>] />
+    It connects <from-vertex> to <to-vertex>. If "to-partition" is specified as an optional argument,
+    then a copy of a vertex specified in "to" is created first in "to-partition", and it is this copy that is connected.
+    If "from-partition" is specified, a copy of "from" is connected, too, but it must exist beforehand.
+    If "to" is not specified, it is considered to be equal to "from".
+
+    <connect ( from="F" | from-partition="FP" ) ( to="T" | to-partition="TP" ) />
+    Connects two partitions, in all-to-all manner, or a vertex to a partition, or a partition to a vertex.
+    For connecting two vertices, use <edge>.
+    
+-->    
+
+  <!-- Include AMD CPUs, memory and HP networking equipment -->
+  <include>amd.xml</include>
+  <include>hp-blade-memory.xml</include>
+  <include>hp-network.xml</include>
+  
+  <!-- "Start" and "End" vertices (defined before any included file starts to use them) -->
+  <item>Start</item>
+  <item>End</item>
+
+  <!-- A fictitious item that updates technical characteristics -->
+  <item node_peak_performance="cpu_cores * node_cpu_count * cpu_frequency * cpu_flops_per_cycle" node_main_memory_per_core="node_main_memory_size / cpu_cores / node_cpu_count">Update characteristics</item>
+  <item>Pre-end</item>
+  <edge from="Pre-end" to="Update characteristics"></edge>
+  <edge from="Update characteristics" to="End"></edge>
+
+  <!-- Include HP BL465c G7 server -->
+  <include>hp-bl465c_g7.xml</include>
+  
+</itemslist>

@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>Floor Planning Tool</title>
+
+  
+</head><body>
+<div style="text-align: center;"><span style="font-style: italic;">DISCLAIMER:
+USE THIS TOOL AT YOUR OWN RISK!</span><br>
+</div>
+
+<br>
+
+<form name="design" action="" method="get">
+  <fieldset><legend>Calculate the floorspace size required to house
+your racks</legend> <input name="task" value="design" type="hidden"><br>
+  <table style="text-align: left; width: 940px; height: 49px;" border="0" cellpadding="2" cellspacing="2">
+    <tbody>
+      <tr>
+        <td style="vertical-align: top;"><span style="font-weight: bold;">How many racks do you need to place on the
+floor?</span><br>
+The algorithm will try to find floorspace dimensions as close to a
+square shape as possible.<br>
+        </td>
+        <td style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br>
+        </td>
+        <td style="vertical-align: middle;"><input name="racks" value="12" size="7"> </td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"><span style="font-weight: bold;">What is the rack width, in metres?</span><br>
+Use the default value or enter your own.<br>
+        </td>
+        <td style="vertical-align: top;"><br>
+        </td>
+        <td style="vertical-align: middle;"><input name="w" value="0.6" size="7"></td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"><span style="font-weight: bold;">What is the rack depth, in metres?</span><br>
+Use the default value or enter your own.<br>
+        </td>
+        <td style="vertical-align: top;"><br>
+        </td>
+        <td style="vertical-align: middle;"><input name="d" value="1.2" size="7"></td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"><span style="font-weight: bold;">Clearances on the sides of rack rows, in
+metres:</span><br>
+Makes sure that sides of rack rows are not too close to the walls. Use
+the default value or enter your own.<br>
+        </td>
+        <td style="vertical-align: top;"><br>
+        </td>
+        <td style="vertical-align: middle;"><input name="c_s" value="1" size="7"></td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"><span style="font-weight: bold;">Clearances in front of the first row and
+behind the last row, in metres:</span><br>
+Allows to move freely between rack rows and walls. Use the default
+value or enter your own.
+        </td>
+        <td style="vertical-align: top;"><br>
+        </td>
+        <td style="vertical-align: middle;"><input name="c_f" value="1" size="7"></td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"><span style="font-weight: bold;">Aisle width, in metres:</span><br>
+Allows to open rack doors and extract equipment. Use the default value
+or enter your own.<br>
+        </td>
+        <td style="vertical-align: top;"><br>
+        </td>
+        <td style="vertical-align: middle;"><input name="c_a" value="1" size="7"></td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"><span style="font-weight: bold;">Maximal length of a contiguous block of
+racks, in metres:</span><br>
+Prevents too long rack rows that make it hard to perambulate your
+possessions. Use the default value or enter your own.<br>
+        </td>
+        <td style="vertical-align: top;"><br>
+        </td>
+        <td style="vertical-align: middle;"><input name="l_xc" value="6" size="7"></td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <input value="Calculate" type="submit"></fieldset>
+</form>
+
+<br>
+
+See also: <a href="http://clusterdesign.org/floorplanning" target="_blank">detailed
+description</a>, <a href="?task=help" target="_blank">help</a> for
+automated
+queries.
+</body></html>

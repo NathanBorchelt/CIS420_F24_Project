@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <!--
+       Copyright (C) 2013-2014 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved.  This file is offered as-is,
+       without any warranty.  
+  -->
+
+  <!-- https://en.wikipedia.org/wiki/List_of_Intel_Xeon_microprocessors  -->
+  
+  <!-- ************************************************************
+       Only Intel Xeon E5-26xx v2 CPUs (and only certain
+       10-core and 12-core models) are included in this file.
+       ************************************************************ -->
+
+  <!-- The peak floating-point performance is set to 8 FLOPS per cycle.
+       This is because AVX registers are 256 bit wide, and therefore
+       contain four 64-bit double-precision floating-point numbers.
+       Each cycle a fused multiply-add (FMA) instruction can be performed,
+       which includes one multiplication and one addition, for a total of
+       2 floating-point operations. So, there are four 64-bit numbers
+       times 2 operations per cycle, for a total of 8 FLOPS per cycle -->
+   
+   <!-- Prices are from Wikipedia, see column "Release price (USD)". Last update: June 2014.
+        https://en.wikipedia.org/wiki/List_of_Intel_Xeon_microprocessors#.22Ivy_Bridge-EP.22_.2822_nm.29_Efficient_Performance_2
+    -->
+       
+  <!-- 10-core -->
+  
+  <item cpu_vendor="Intel" cpu_codename="Ivy Bridge-EP" cpu_model="Intel Xeon E5-2650L v2" cpu_cores="10" cpu_feature_size="22e-9" cpu_frequency="1.7" cpu_flops_per_cycle="8" cpu_l3_cache="25" cpu_tdp="70" node_power="+70" node_cpu_count="+1" node_cost="+1219">Intel Xeon E5-2650L v2</item>
+
+  <item cpu_vendor="Intel" cpu_codename="Ivy Bridge-EP" cpu_model="Intel Xeon E5-2660 v2" cpu_cores="10" cpu_feature_size="22e-9" cpu_frequency="2.2" cpu_flops_per_cycle="8" cpu_l3_cache="25" cpu_tdp="95" node_power="+95" node_cpu_count="+1" node_cost="+1389">Intel Xeon E5-2660 v2</item>
+
+  <item cpu_vendor="Intel" cpu_codename="Ivy Bridge-EP" cpu_model="Intel Xeon E5-2670 v2" cpu_cores="10" cpu_feature_size="22e-9" cpu_frequency="2.5" cpu_flops_per_cycle="8" cpu_l3_cache="25" cpu_tdp="115" node_power="+115" node_cpu_count="+1" node_cost="+1552">Intel Xeon E5-2670 v2</item>
+
+  <item cpu_vendor="Intel" cpu_codename="Ivy Bridge-EP" cpu_model="Intel Xeon E5-2680 v2" cpu_cores="10" cpu_feature_size="22e-9" cpu_frequency="2.8" cpu_flops_per_cycle="8" cpu_l3_cache="25" cpu_tdp="115" node_power="+115" node_cpu_count="+1" node_cost="+1723">Intel Xeon E5-2680 v2</item>
+
+  <item cpu_vendor="Intel" cpu_codename="Ivy Bridge-EP" cpu_model="Intel Xeon E5-2690 v2" cpu_cores="10" cpu_feature_size="22e-9" cpu_frequency="3.0" cpu_flops_per_cycle="8" cpu_l3_cache="25" cpu_tdp="130" node_power="+130" node_cpu_count="+1" node_cost="+2057">Intel Xeon E5-2690 v2</item>
+
+  <!-- 12-core -->
+
+  <item cpu_vendor="Intel" cpu_codename="Ivy Bridge-EP" cpu_model="Intel Xeon E5-2695 v2" cpu_cores="12" cpu_feature_size="22e-9" cpu_frequency="2.4" cpu_flops_per_cycle="8" cpu_l3_cache="30" cpu_tdp="115" node_power="+115" node_cpu_count="+1" node_cost="+2336">Intel Xeon E5-2695 v2</item>
+
+  <item cpu_vendor="Intel" cpu_codename="Ivy Bridge-EP" cpu_model="Intel Xeon E5-2697 v2" cpu_cores="12" cpu_feature_size="22e-9" cpu_frequency="2.7" cpu_flops_per_cycle="8" cpu_l3_cache="30" cpu_tdp="130" node_power="+130" node_cpu_count="+1" node_cost="+2614">Intel Xeon E5-2697 v2</item>
+
+</itemslist>

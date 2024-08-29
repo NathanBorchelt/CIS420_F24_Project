@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html><head>
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>Network Design Tool (Fat-tree and Torus, Demo)</title>
+
+<!-- Content of the main page that will be assigned the "unavailable" class will have a grey colour -->  
+  <style type="text/css">
+.usual {}  
+.unavailable {color:#A4A4A4;}
+.red {color:red;}
+  </style>
+  
+  <script type="text/javascript"> 
+var allowed_topologies=['fat-tree','torus'];
+var allowed_vendors=['mellanox','hp-blade'];
+var topology;
+var vendor;
+var elements;
+
+function DetermineTopologyFromURL() {
+  // The user may have invoked this web form by a URL that already includes
+  // a network topology. Check if a specific topology was requested through
+  // the URL -- if yes, use it. Regular expression matches letters ('a' to 'z'),
+  // digits ('0' to '9'), and a dash (that is, '-')
+  var topology_array=window.location.search.match(/network_topology=[a-z0-9-]*/);
+  if (topology_array) {
+    // Take what is after the '=' sign
+    topology=topology_array[0].split("=")[1];
+    // Check if this is one of allowed topologies.
+    if (allowed_topologies.indexOf(topology) == -1) {
+      alert("Incorrect topology \"" + topology + "\" specified in the URL. Possible choices are: " + allowed_topologies.toString());
+      return;
+    }
+  } else {
+    // No topology was specified, so use the default one: the first in the array
+    topology=allowed_topologies[0];
+  }
+  // In any case, set the determined topology, updating form fields
+  SetTopology(topology);
+}
+
+function DisplayTopology() {
+  // Aren't we using IE8 or other outdated stuff?
+  if (typeof document.getElementsByClassName !== 'function') {
+    alert("Your browser is too old, topology change button will not work. Sorry about this.");
+	return;
+  }
+  
+  // Display on the web page which topology we are currently using
+  document.getElementById('topology-info').innerHTML="<big><big>Now using <b><i>&nbsp;" + topology + "&nbsp;</i></b> topology.&nbsp;</big></big>";
+  // Change buttons' labels
+  document.getElementById('submit-button').value="Design your " + topology + " network";
+  document.getElementById('show-database-button').value="Show " + topology + " database";
+
+  // Pass topology info when submitting the form: fill in the hidden fields
+  elements = document.getElementsByClassName('hidden-field-network-topology');
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].value=topology;
+  }
+}
+
+function SetTopology(new_topology) {
+    if (new_topology == "fat-tree") {
+        topology=new_topology;
+        DisplayTopology();
+        // Select fat-tree specific controls and re-enable them
+        elements = document.getElementsByClassName('fat-tree-content');
+        for (var i = 0; i < elements.length; i++) {
+          // Replace class "unavailable" with "usual"
+          elements[i].className="fat-tree-content usual";
+          // Enable input fields
+          elements[i].disabled="";
+        }  
+    } else {
+        if (new_topology == "torus") {
+            topology=new_topology;
+            DisplayTopology();
+            // Grey out fat-tree specific controls; they must be made unavailable for torus networks
+            // ("getElementByClassName" doesn't work in MSIE 8.0 -- thank Microsoft for this)
+            elements = document.getElementsByClassName('fat-tree-content');
+            for (var i = 0; i < elements.length; i++) {
+              // Add class name "unavailable"
+              elements[i].className="fat-tree-content unavailable";
+              // Disable input fields
+              elements[i].disabled="disabled";
+            }
+        } else {
+            alert("Incorrect topology requested: " + new_topology);
+        }
+    }
+}
+
+function ChangeTopology() {
+  // Toggles topology choice
+  if (topology == "fat-tree") {
+    SetTopology("torus");
+  } else {
+    SetTopology("fat-tree");
+  }
+}
+
+function DetermineVendorFromURL() {
+  // The user may have invoked this web form by a URL that already includes
+  // a network vendor. Check if a specific vendor was requested through
+  // the URL. Regular expression matches letters ('a' to 'z'), digits ('0' to '9'),
+  // and a dash (that is, '-'). This function is almost a copy of DetermineTopologyFromURL()
+  var vendor_array=window.location.search.match(/network_vendor=[a-z0-9-]*/);
+  if (vendor_array) {
+    // Take what is after the '=' sign
+    vendor=vendor_array[0].split("=")[1];
+    // Check if this is one of allowed vendors.
+    if (allowed_vendors.indexOf(vendor) == -1) {
+      alert("Incorrect vendor \"" + vendor + "\" specified in the URL. Possible choices are: " + allowed_vendors.toString());
+      return;
+    }
+  } else {
+    // No vendor was specified, so use the default one: the first in the array
+    vendor=allowed_vendors[0];
+  }
+}
+
+function FillInVendors() {
+  // Get the "Select vendor" drop-down list
+  selector = document.getElementById('select-vendor');
+  // Iterate through allowed vendors, creating an entry for each of them
+  for (var i = 0; i < allowed_vendors.length; i++) {
+    // Fetch the vendor name
+    new_vendor = allowed_vendors[i]
+    // Create a new option and fill its values
+    option = document.createElement("option");
+    option.value = new_vendor;
+    option.innerHTML = new_vendor;
+    // If we encounter a vendor specified by the user in the URL when calling
+    // this web form, mark it as pre-selected
+    if (new_vendor == vendor) {
+      option.selected = true
+    }
+    // Add to the selector
+    selector.appendChild(option);
+  }
+}
+
+function ChangeVendor() {
+  // Determine which vendor was selected by the user on the web form
+  // Get the "Select vendor" drop-down list
+  selector = document.getElementById('select-vendor');
+  // Index of vendor that was selected
+  selected_item_index = selector.selectedIndex;
+  // Vendor name corresponding to that index
+  vendor = selector[selected_item_index].text
+  // Pass equipment vendor info when submitting the form: fill in the hidden fields
+  elements = document.getElementsByClassName('hidden-field-network-vendor');
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].value=vendor;
+  }
+}
+
+function Start() {
+  // Topology and vendor determination only runs once -- when the page is loaded
+  DetermineTopologyFromURL();
+  DisplayTopology();
+  DetermineVendorFromURL();
+  FillInVendors();
+  // Set initial vendor
+  ChangeVendor();
+}
+  </script>
+  
+</head>
+<!-- Body of the page follows. When it loads, call function Start() -->
+<body onload="Start()">
+<div style="text-align: center;"><span style="font-style: italic;">DISCLAIMER:
+USE THIS TOOL AT YOUR OWN RISK!</span><br>
+<br>
+</div>
+
+<br>
+
+<!-- A place to display current topology. Filled out by the function DisplayTopology() -->
+<span id="topology-info" style="padding-left: 20px;">
+</span>
+
+<!-- The button that changes topology -->
+<button type="button" onclick="ChangeTopology()">Change topology</button>
+
+<br><br>
+
+<!-- A drop-down list to select network equipment vendors. Filled out by the function FillInVendors() -->
+<span style="padding-left: 20px;">
+Network equipment vendor ID:
+<select onchange="ChangeVendor()" id="select-vendor" name="network_vendor">
+</select>
+</span><br>
+
+<!-- The button that shows the current database -->
+<form name="showdatabase" method="get" action="">
+  <input name="network_topology" class="hidden-field-network-topology" value="fat-tree" type="hidden">
+  <input name="network_vendor" class="hidden-field-network-vendor" value="default" type="hidden">
+  <input name="task" value="showdatabase" type="hidden">
+  <span style="padding-left: 20px;">
+    <input id="show-database-button" value="Show database" type="submit">
+  </span>
+</form>
+
+<br>
+<br>
+
+<!-- The main form -->
+<form name="design" method="get" action="">
+  <fieldset>
+  <legend>Design your network</legend>
+  <input name="task" value="design" type="hidden">
+  <input name="network_topology" class="hidden-field-network-topology" value="fat-tree" type="hidden">
+  <input name="network_vendor" class="hidden-field-network-vendor" value="default" type="hidden">
+  <br>
+  <table style="text-align: left; width: 940px; height: 247px;" border="0" cellpadding="2" cellspacing="2">
+    <tbody>
+      <tr>
+        <td style="vertical-align: top;"><span style="font-weight: bold;">How many nodes will you
+initially have in your network?</span><br>
+Specify the number of compute nodes in your cluster. The more nodes you
+have, the more edge and core switches will be required.<br>
+        </td>
+        <td style="vertical-align: middle;"><input name="nodes" value="600" size="7"> </td>
+      </tr>
+      <tr class="fat-tree-content">
+        <td style="vertical-align: top;"><span style="font-weight: bold;"> Up to how many nodes will
+your network expand in the future?</span><br>
+If
+you plan to expand your cluster in the future (perhaps, in several
+stages), you can specify how many nodes it will have in its biggest
+configuration. The core level will be designed based on this number. If
+you plan for no expansion, simply leave this field equal to zero. Try
+different values for this expansion margin and observe how the required
+number of switches changes accordingly.<br>
+        </td>
+        <td style="vertical-align: middle;"><input name="nodes_future_max" value="0" size="7" class="fat-tree-content"></td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"><span style="font-weight: bold;">What is the maximum allowed blocking factor
+for your network?</span><br>
+Use "1" to design non-blocking networks. Fractional values are accepted
+(such as 1,0). Remember that for some
+parallel applications performance degradation may be higher than
+decrease in the total cost of
+your cluster computer, so creating a blocking network may not be worth it.<br>
+        </td>
+        <td style="vertical-align: middle;"><input name="max_network_blocking_factor" value="1" size="2"> : 1 </td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <span class="fat-tree-content" style="font-weight: bold;">Prefer
+easily expandable networks
+(more intuitive) <input class="fat-tree-content" checked="checked" name="network_prefer_expandable" value="true" type="checkbox"></span><br>
+  <br>
+  <span style="font-weight: bold;">Output type:</span><br>
+  <input name="output_type" value="text" checked="checked" type="radio">Human-readable
+output<br>
+  <input name="output_type" value="csv" type="radio">Comma-separated
+values<br>
+  <input name="output_type" value="nvp" type="radio">Name-value pairs<br>
+  <br>
+  <input id="submit-button" value="Design your network" type="submit"></fieldset>
+</form>
+
+<br>
+
+<span style="color: red;"></span>See also: detailed
+description: <a href="http://clusterdesign.org/fat-trees/" target="_blank">fat-trees</a>, <a href="http://clusterdesign.org/torus/" target="_blank">torus</a>
+networks, <a href="?task=help" target="_blank"><span style="color: red;">price disclaimer</span> and help</a> for
+automated queries.
+<div><small><small>Runs remaining before renewal
+(anti-abuse measure): %d <span style="color: red;">%s</span></small></small>
+</div>
+
+</body></html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+
+  <!-- HPE Networking Equipment -->
+  
+  <item node_cost="+3500" network_tech="+ 24 QSFP-DD x 2 200Gb" node_infiniband_port_count="+48">HPE Slingshot Switch Blade</item>
+  
+  <item node_cost="+0" network_tech="+ 200GbE" node_two_hundred_gigabit_port_count="+2">Built-In HPE Slingshot 200Gb 2 Ports</item>
+  
+  <item node_cost="+0" network_tech="+ Gigabit Ethernet" node_gigabit_port_count="+1">Built-In Gigabit HCA</item>
+  
+</itemslist>

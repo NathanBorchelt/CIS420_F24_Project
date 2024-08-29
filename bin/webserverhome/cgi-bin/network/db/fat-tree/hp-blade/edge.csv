@@ -1,0 +1,2 @@
+"Configuration ID","enabled","network_leaf_modules","network_spine_modules","network_switch_connector","network_switch_cost","network_switch_model","network_switch_port_count","network_switch_power","network_switch_size","network_switch_weight","network_technology","network_vendor"
+"1","True","0","0","QSFP","12995","HP 4X FDR InfiniBand Switch Module for c-Class BladeSystem (648312-B21) (34 ports)","32","150","0","3.45","IB 4X FDR","Mellanox"

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <!--
+       Copyright (C) 2013 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved. This file is offered as-is,
+       without any warranty.  
+  -->
+
+    <!-- Prices are courtesy of Colfax International, see: http://www.colfaxdirect.com -->
+    <!-- Prices last updated: 29 December 2013 -->
+    
+    <!-- Leaf module. SKU: MSX6001FR
+         Provides 18 ports. -->
+    <item network_switch_port_count="+18" network_switch_weight="+2.8" network_switch_power="+125" network_switch_cost="+9480" network_leaf_modules="+1">MSX6001FR Leaf module</item>
+
+</itemslist>

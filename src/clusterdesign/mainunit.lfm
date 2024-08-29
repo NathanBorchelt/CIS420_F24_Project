@@ -1,0 +1,1535 @@
+object MainForm: TMainForm
+  Left = 143
+  Height = 622
+  Top = 89
+  Width = 994
+  Caption = 'Computer Cluster Design Tool'
+  ClientHeight = 622
+  ClientWidth = 994
+  OnClose = FormClose
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  ShowHint = True
+  LCLVersion = '1.2.4.0'
+  Visible = True
+  object APageControl: TPageControl
+    AnchorSideLeft.Control = Owner
+    AnchorSideRight.Control = Owner
+    Left = 0
+    Height = 549
+    Hint = 'Move from the leftmost tab to the right, making sure that'#13#10'parameters on each tab are set correctly, until you reach'#13#10'the "Design" tab.'
+    Top = 50
+    Width = 994
+    ActivePage = NodeTabSheet
+    Align = alClient
+    Anchors = [akLeft, akRight]
+    TabIndex = 0
+    TabOrder = 0
+    object NodeTabSheet: TTabSheet
+      Hint = 'Set constraints on characteristics of compute nodes,'#13#10'either manually (by providing a list of constraints) or'#13#10'automatically (by using a heuristic).'
+      Caption = 'Nodes'
+      ClientHeight = 523
+      ClientWidth = 986
+      object NodeLevelDesignConstraintsMemo: TMemo
+        AnchorSideLeft.Control = NodeImposeDesignConstraintsButton
+        AnchorSideTop.Control = NodeLevelDesignConstraintsLabel
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = NodeTabSheet
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = NodeOutputMemo
+        Left = 30
+        Height = 149
+        Hint = 'You can set constraints on any numeric characteristics'#13#10'defined in the database, such as the number of'#13#10'cores in a CPU, the amount of memory on the compute'#13#10'node, the cost of a compute node, etc.'#13#10#13#10'Prepend names of characteristics with "min_" and "max_".'#13#10'For example, "min_cpu_cores=12" only selects compute'#13#10'node configurations where the number of cores in a single'#13#10'CPU is 12 or more.'#13#10#13#10'Use "max_" and "min_" on the same characteristic to select'#13#10'a specific value for it. For example, "min_cpu_cores=12"'#13#10'and "max_cpu_cores=12" ensures that only configurations'#13#10'with exactly 12 cores are used -- not 8 or 16.'#13#10#13#10'To comment out a specific constraint temporarily, put'#13#10'the "#" sign before it.'#13#10#13#10'Constraints are supposed to limit the number of configurations'#13#10'that will be handled -- if you know what you are doing.'#13#10'If unsure, don''t impose constraints -- the tool will analyze'#13#10'all configurations, and choose the best for you.'#13#10#13#10'To revert the imposition of constraints, use the "Undo" button'#13#10'on the toolbar.'
+        Top = 78
+        Width = 342
+        Anchors = [akTop, akLeft, akBottom]
+        BorderSpacing.Top = 3
+        BorderSpacing.Right = 30
+        BorderSpacing.Bottom = 20
+        Enabled = False
+        Lines.Strings = (
+          '#min_cpu_cores=12'
+          '#min_node_cpu_count=2'
+          '#min_node_main_memory_per_core=2'
+          '#max_node_main_memory_per_core=2'
+        )
+        ScrollBars = ssAutoBoth
+        TabOrder = 0
+      end
+      object NodeLevelDesignConstraintsLabel: TLabel
+        AnchorSideLeft.Control = NodeImposeDesignConstraintsButton
+        AnchorSideTop.Control = NodeImposeDesignConstraintsButton
+        AnchorSideTop.Side = asrBottom
+        Left = 30
+        Height = 13
+        Top = 62
+        Width = 107
+        BorderSpacing.Top = 15
+        Caption = 'Node-level constraints'
+        Enabled = False
+        ParentColor = False
+      end
+      object NodeImposeDesignConstraintsButton: TButton
+        AnchorSideLeft.Control = NodeTabSheet
+        AnchorSideTop.Control = NodeTabSheet
+        Left = 30
+        Height = 27
+        Hint = 'Imposes design constraints on compute nodes,'#13#10'which are the building blocks of your cluster.'
+        Top = 20
+        Width = 174
+        AutoSize = True
+        BorderSpacing.Left = 30
+        BorderSpacing.Top = 20
+        BorderSpacing.Bottom = 10
+        BorderSpacing.InnerBorder = 2
+        Caption = 'Impose node-level constraints'
+        Enabled = False
+        OnClick = NodeImposeDesignConstraintsButtonClick
+        TabOrder = 1
+      end
+      object NodeOutputMemo: TMemo
+        AnchorSideLeft.Control = NodeTabSheet
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = NodeTabSheet
+        Left = 0
+        Height = 276
+        Hint = 'Output pane -- here you can observe the textual'#13#10'representation of configurations after the database'#13#10'has been loaded.'
+        Top = 247
+        Width = 986
+        Align = alBottom
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Top = 10
+        ScrollBars = ssAutoBoth
+        TabOrder = 2
+        WordWrap = False
+      end
+      object NodeHeuristicsButton: TButton
+        AnchorSideLeft.Control = NodeLevelDesignConstraintsMemo
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = NodeImposeDesignConstraintsButton
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = NodeImposeDesignConstraintsButton
+        AnchorSideRight.Side = asrCenter
+        Left = 402
+        Height = 27
+        Hint = 'If you want to reduce the number of configurations to be'#13#10'handled in a completely automatic way, apply a heuristic.'#13#10#13#10'Choose one from the drop-down list below.'#13#10'The best 20% of configurations will remain, and the rest'#13#10'will be disabled.'#13#10#13#10'Heuristics are an inferior alternative to the exhaustive'#13#10'search, and should be used when the number of'#13#10'configurations to be analyzed is prohibitively large.'#13#10#13#10'To revert the application of a heuristic, use the "Undo"'#13#10'button on the toolbar.'
+        Top = 20
+        Width = 174
+        BorderSpacing.Left = 20
+        BorderSpacing.Bottom = 10
+        BorderSpacing.InnerBorder = 2
+        Caption = 'Apply simple heuristics'
+        Enabled = False
+        OnClick = NodeHeuristicsButtonClick
+        TabOrder = 3
+      end
+      object NodeHeuristicTypeComboBox: TComboBox
+        AnchorSideLeft.Control = NodeHeuristicsButton
+        AnchorSideTop.Control = NodeHeuristicsButton
+        AnchorSideTop.Side = asrBottom
+        Left = 402
+        Height = 21
+        Hint = 'Choose the desired heuristic.'
+        Top = 57
+        Width = 215
+        BorderSpacing.Top = 10
+        Enabled = False
+        ItemHeight = 13
+        OnEditingDone = NodeHeuristicTypeComboBoxEditingDone
+        TabOrder = 4
+      end
+      object NodeDeleteDisabledConfigsCheckBox: TCheckBox
+        AnchorSideLeft.Control = NodeHeuristicsButton
+        AnchorSideTop.Control = NodeHeuristicsButton
+        AnchorSideTop.Side = asrBottom
+        AnchorSideBottom.Control = NodeCleanupDisabledConfigsButton
+        Left = 402
+        Height = 17
+        Hint = 'Automatically deletes configurations marked as "disabled"'#13#10'as soon as they are found. This helps to keep the list visually'#13#10'neat.'#13#10#13#10'Compare to the button below that only performs a one-time'#13#10'clean up.'
+        Top = 173
+        Width = 162
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Top = 20
+        BorderSpacing.Bottom = 10
+        Caption = 'Delete disabled configurations'
+        Enabled = False
+        OnClick = NodeDeleteDisabledConfigsCheckBoxClick
+        TabOrder = 5
+      end
+      object NodeCleanupDisabledConfigsButton: TButton
+        AnchorSideLeft.Control = NodeHeuristicTypeComboBox
+        AnchorSideTop.Control = NodeDeleteDisabledConfigsCheckBox
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = NodeLevelDesignConstraintsMemo
+        AnchorSideBottom.Side = asrBottom
+        Left = 402
+        Height = 27
+        Hint = 'A one-time clean up of configurations that are marked'#13#10'as "disabled".'#13#10#13#10'Compare this to the checkbox above that does the same'#13#10'action automatically.'
+        Top = 200
+        Width = 174
+        Anchors = [akLeft, akBottom]
+        Caption = 'Clean up now'
+        Enabled = False
+        OnClick = NodeCleanupDisabledConfigsButtonClick
+        TabOrder = 6
+      end
+    end
+    object PerformanceTabSheet: TTabSheet
+      Hint = 'On this tab, you can specify which performance model'#13#10'will be used to design your cluster.'#13#10#13#10'Your vendor for parallel software could provide you with'#13#10'a specific URL to load performance models for their software.'#13#10'If so, enter the URL in the provided space and press the'#13#10'"Load" button. Then, choose the desired model below'#13#10'by selecting its checkbox.'#13#10#13#10'The peak floating point performance model is built-in,'#13#10'and is added to the list automatically.'
+      Caption = 'Performance'
+      ClientHeight = 523
+      ClientWidth = 986
+      object PerformanceLocatorEdit: TLabeledEdit
+        AnchorSideRight.Control = PerformanceLocatorButton
+        Left = 30
+        Height = 21
+        Hint = 'You can provide here the URL of the "Locator" service'#13#10'that will return the list of models.'
+        Top = 43
+        Width = 809
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Left = 30
+        BorderSpacing.Right = 20
+        EditLabel.AnchorSideLeft.Control = PerformanceLocatorEdit
+        EditLabel.AnchorSideRight.Control = PerformanceLocatorEdit
+        EditLabel.AnchorSideRight.Side = asrBottom
+        EditLabel.AnchorSideBottom.Control = PerformanceLocatorEdit
+        EditLabel.Left = 30
+        EditLabel.Height = 13
+        EditLabel.Top = 27
+        EditLabel.Width = 809
+        EditLabel.Caption = 'Load models automatically using:'
+        EditLabel.ParentColor = False
+        TabOrder = 0
+        Text = 'http://localhost:8000/cgi-bin/performance/locator.py'
+      end
+      object PerformanceLocatorButton: TButton
+        AnchorSideLeft.Control = PerformanceLocatorEdit
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = PerformanceLocatorEdit
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = PerformanceInverseGroupBox
+        AnchorSideRight.Side = asrBottom
+        Left = 859
+        Height = 23
+        Top = 42
+        Width = 97
+        Anchors = [akTop, akRight]
+        BorderSpacing.Left = 20
+        Caption = 'Load'
+        OnClick = PerformanceLocatorButtonClick
+        TabOrder = 1
+      end
+      object PerformanceAlsoSendMemo: TMemo
+        AnchorSideLeft.Control = PerformanceAlsoSendLabel
+        AnchorSideTop.Control = PerformanceAlsoSendLabel
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = PerformanceDirectGroupBox
+        AnchorSideRight.Side = asrBottom
+        Left = 30
+        Height = 56
+        Hint = 'Whatever characteristics of a configuration you specify'#13#10'here will be sent to the performance module, to'#13#10'help it predict the performance more precisely.'
+        Top = 203
+        Width = 368
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 5
+        Lines.Strings = (
+          'cpu_frequency'
+          'network_tech'
+          '#allow_throughput_mode=True'
+        )
+        ScrollBars = ssAutoBoth
+        TabOrder = 2
+      end
+      object PerformanceAlsoReceiveMemo: TMemo
+        AnchorSideLeft.Control = PerformanceInverseGroupBox
+        AnchorSideTop.Control = PerformanceAlsoSendMemo
+        AnchorSideRight.Control = PerformanceInverseGroupBox
+        AnchorSideRight.Side = asrBottom
+        Left = 428
+        Height = 56
+        Hint = 'Whatever characteristics you specify here will be'#13#10'searched for in the reply of the performance module,'#13#10'and inserted into the configuration being analyzed.'
+        Top = 203
+        Width = 528
+        Anchors = [akTop, akLeft, akRight]
+        Lines.Strings = (
+          'performance_throughput_mode'
+          'network_tech'
+        )
+        ScrollBars = ssAutoBoth
+        TabOrder = 3
+      end
+      object PerformanceAlsoSendLabel: TLabel
+        AnchorSideLeft.Control = PerformanceLocatorEdit
+        AnchorSideTop.Control = PerformanceDirectGroupBox
+        AnchorSideTop.Side = asrBottom
+        AnchorSideBottom.Control = PerformanceAlsoSendMemo
+        Left = 30
+        Height = 13
+        Top = 185
+        Width = 172
+        BorderSpacing.Top = 15
+        Caption = 'Also send the following parameters:'
+        ParentColor = False
+      end
+      object PerformanceAlsoReceiveLabel: TLabel
+        AnchorSideLeft.Control = PerformanceInverseGroupBox
+        AnchorSideTop.Control = PerformanceAlsoSendLabel
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = PerformanceInverseGroupBox
+        AnchorSideRight.Side = asrBottom
+        Left = 428
+        Height = 13
+        Top = 185
+        Width = 198
+        Caption = 'Also receive the following characteristics:'
+        ParentColor = False
+      end
+      object PerformanceDirectGroupBox: TGroupBox
+        AnchorSideLeft.Control = PerformanceLocatorEdit
+        AnchorSideTop.Control = PerformanceLocatorEdit
+        AnchorSideTop.Side = asrBottom
+        Left = 30
+        Height = 91
+        Hint = 'Direct performance model: given the number of cores,'#13#10'predict the performance.'#13#10#13#10'If the web service for your performance model uses a'#13#10'different naming scheme, you can tweak it here.'
+        Top = 79
+        Width = 368
+        BorderSpacing.Top = 15
+        BorderSpacing.InnerBorder = 5
+        Caption = 'Direct performance model'
+        ClientHeight = 73
+        ClientWidth = 364
+        TabOrder = 4
+        object PerformanceDirectSendLabel: TLabel
+          AnchorSideLeft.Control = PerformanceDirectGroupBox
+          AnchorSideTop.Control = PerformanceDirectGroupBox
+          Left = 10
+          Height = 13
+          Top = 10
+          Width = 139
+          BorderSpacing.Left = 10
+          BorderSpacing.Top = 10
+          Caption = 'Send the number of cores in:'
+          ParentColor = False
+        end
+        object PerformanceDirectSendEdit: TEdit
+          AnchorSideLeft.Control = PerformanceDirectSendLabel
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = PerformanceDirectSendLabel
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = PerformanceDirectGroupBox
+          AnchorSideRight.Side = asrBottom
+          Left = 159
+          Height = 21
+          Hint = 'Direct performance model: given the number of cores,'#13#10'predict the performance.'#13#10#13#10'If the web service for your performance model uses a'#13#10'different naming scheme, you can tweak it here.'
+          Top = 6
+          Width = 195
+          Alignment = taRightJustify
+          Anchors = [akTop, akLeft, akRight]
+          BorderSpacing.Left = 10
+          BorderSpacing.Right = 10
+          TabOrder = 0
+          Text = 'cores'
+        end
+        object PerformanceDirectReceiveLabel: TLabel
+          AnchorSideLeft.Control = PerformanceDirectGroupBox
+          AnchorSideTop.Control = PerformanceDirectSendLabel
+          AnchorSideTop.Side = asrBottom
+          Left = 10
+          Height = 13
+          Top = 38
+          Width = 117
+          BorderSpacing.Left = 10
+          BorderSpacing.Top = 15
+          Caption = 'Receive performance in:'
+          ParentColor = False
+        end
+        object PerformanceDirectReceiveEdit: TEdit
+          AnchorSideLeft.Control = PerformanceDirectSendEdit
+          AnchorSideTop.Control = PerformanceDirectReceiveLabel
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = PerformanceDirectSendEdit
+          AnchorSideRight.Side = asrBottom
+          Left = 159
+          Height = 21
+          Hint = 'Direct performance model: given the number of cores,'#13#10'predict the performance.'#13#10#13#10'If the web service for your performance model uses a'#13#10'different naming scheme, you can tweak it here.'
+          Top = 34
+          Width = 195
+          Alignment = taRightJustify
+          Anchors = [akTop, akLeft, akRight]
+          BorderSpacing.Top = 10
+          TabOrder = 1
+          Text = 'performance'
+        end
+      end
+      object PerformanceInverseGroupBox: TGroupBox
+        AnchorSideLeft.Control = PerformanceDirectGroupBox
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = PerformanceDirectGroupBox
+        AnchorSideRight.Control = PerformanceTabSheet
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = PerformanceDirectGroupBox
+        AnchorSideBottom.Side = asrBottom
+        Left = 428
+        Height = 91
+        Hint = 'Inverse performance model: given the performance that'#13#10'must be attained, calculate the required number of cores.'#13#10#13#10'If the web service for your performance model uses a'#13#10'different naming scheme, you can tweak it here.'
+        Top = 79
+        Width = 528
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        AutoSize = True
+        BorderSpacing.Left = 30
+        BorderSpacing.Right = 30
+        BorderSpacing.InnerBorder = 5
+        Caption = 'Inverse performance model'
+        ClientHeight = 73
+        ClientWidth = 524
+        TabOrder = 5
+        object PerformanceInverseSendLabel: TLabel
+          AnchorSideLeft.Control = PerformanceInverseGroupBox
+          AnchorSideTop.Control = PerformanceInverseGroupBox
+          Left = 10
+          Height = 13
+          Top = 10
+          Width = 152
+          BorderSpacing.Left = 10
+          BorderSpacing.Top = 10
+          Caption = 'Send projected performance in:'
+          ParentColor = False
+        end
+        object PerformanceInverseSendEdit: TEdit
+          AnchorSideLeft.Control = PerformanceInverseSendLabel
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = PerformanceInverseSendLabel
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = PerformanceInverseGroupBox
+          AnchorSideRight.Side = asrBottom
+          Left = 172
+          Height = 21
+          Hint = 'Inverse performance model: given the performance that'#13#10'must be attained, calculate the required number of cores.'#13#10#13#10'If the web service for your performance model uses a'#13#10'different naming scheme, you can tweak it here.'
+          Top = 6
+          Width = 342
+          Alignment = taRightJustify
+          Anchors = [akTop, akLeft, akRight]
+          BorderSpacing.Left = 10
+          BorderSpacing.Right = 10
+          TabOrder = 0
+          Text = 'performance'
+        end
+        object PerformanceInverseReceiveLabel: TLabel
+          AnchorSideLeft.Control = PerformanceInverseGroupBox
+          AnchorSideTop.Control = PerformanceInverseSendLabel
+          AnchorSideTop.Side = asrBottom
+          Left = 10
+          Height = 13
+          Top = 38
+          Width = 153
+          BorderSpacing.Left = 10
+          BorderSpacing.Top = 15
+          Caption = 'Receive the number of cores in:'
+          ParentColor = False
+        end
+        object PerformanceInverseReceiveEdit: TEdit
+          AnchorSideLeft.Control = PerformanceInverseSendEdit
+          AnchorSideTop.Control = PerformanceInverseReceiveLabel
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = PerformanceInverseSendEdit
+          AnchorSideRight.Side = asrBottom
+          Left = 172
+          Height = 21
+          Hint = 'Inverse performance model: given the performance that'#13#10'must be attained, calculate the required number of cores.'#13#10#13#10'If the web service for your performance model uses a'#13#10'different naming scheme, you can tweak it here.'
+          Top = 34
+          Width = 342
+          Alignment = taRightJustify
+          Anchors = [akTop, akLeft, akRight]
+          TabOrder = 1
+          Text = 'cores'
+        end
+      end
+    end
+    object NetworkTabSheet: TTabSheet
+      Hint = '(Note: this tab is optional)'#13#10#13#10'On this tab, you can specify which types of'#13#10'interconnection networks will be used for your cluster.'#13#10#13#10'Your network hardware vendor could provide you with'#13#10'a specific URL to load network design models for their'#13#10'hardware. If so, enter the URL in the provided space'#13#10'and press the "Load" button. Then, choose the desired'#13#10'network topology below by selecting its checkbox.'
+      Caption = 'Network'
+      ClientHeight = 520
+      ClientWidth = 990
+      object NetworkLocatorEdit: TLabeledEdit
+        AnchorSideRight.Control = NetworkLocatorButton
+        Left = 30
+        Height = 21
+        Top = 43
+        Width = 615
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Right = 20
+        EditLabel.AnchorSideLeft.Control = NetworkLocatorEdit
+        EditLabel.AnchorSideRight.Control = NetworkLocatorEdit
+        EditLabel.AnchorSideRight.Side = asrBottom
+        EditLabel.AnchorSideBottom.Control = NetworkLocatorEdit
+        EditLabel.Left = 30
+        EditLabel.Height = 14
+        EditLabel.Top = 26
+        EditLabel.Width = 158
+        EditLabel.Caption = 'Load models automatically using:'
+        EditLabel.ParentColor = False
+        TabOrder = 0
+        Text = 'http://localhost:8000/cgi-bin/network/locator.py'
+      end
+      object NetworkLocatorButton: TButton
+        AnchorSideLeft.Control = NetworkLocatorEdit
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = NetworkLocatorEdit
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = NetworkTabSheet
+        AnchorSideRight.Side = asrBottom
+        Left = 665
+        Height = 23
+        Top = 42
+        Width = 97
+        Anchors = [akTop, akRight]
+        BorderSpacing.Left = 20
+        BorderSpacing.Right = 30
+        Caption = 'Load'
+        OnClick = NetworkLocatorButtonClick
+        TabOrder = 1
+      end
+      object NetworkAlsoSendMemo: TMemo
+        AnchorSideLeft.Control = NetworkAlsoSendLabel
+        AnchorSideTop.Control = NetworkAlsoSendLabel
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = NetworkGroupBox
+        AnchorSideRight.Side = asrBottom
+        Left = 30
+        Height = 126
+        Hint = 'Whatever characteristics of a configuration you specify'#13#10'here will be sent to the network design module.'
+        Top = 204
+        Width = 368
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 5
+        Lines.Strings = (
+          'network_prefer_expandable=True'
+        )
+        ScrollBars = ssAutoBoth
+        TabOrder = 2
+      end
+      object NetworkAlsoReceiveMemo: TMemo
+        AnchorSideLeft.Control = NetworkAlsoReceiveLabel
+        AnchorSideTop.Control = NetworkAlsoSendMemo
+        AnchorSideRight.Control = NetworkTabSheet
+        AnchorSideRight.Side = asrBottom
+        Left = 428
+        Height = 126
+        Hint = 'Whatever characteristics you specify here will be'#13#10'searched for in the reply of the network design module,'#13#10'and inserted into the configuration being analyzed.'
+        Top = 204
+        Width = 334
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Right = 30
+        Lines.Strings = (
+          'network_topology'
+          'network_blocking_factor'
+          'network_torus_dimensions'
+          'network_switch_model'
+          'network_edge_switch_model'
+          'network_core_switch_model'
+          'network_equipment_size'
+          'network_power'
+          'network_weight'
+        )
+        ScrollBars = ssAutoBoth
+        TabOrder = 3
+      end
+      object NetworkAlsoSendLabel: TLabel
+        AnchorSideLeft.Control = NetworkLocatorEdit
+        AnchorSideTop.Control = NetworkGroupBox
+        AnchorSideTop.Side = asrBottom
+        Left = 30
+        Height = 14
+        Top = 185
+        Width = 173
+        BorderSpacing.Top = 15
+        Caption = 'Also send the following parameters:'
+        ParentColor = False
+      end
+      object NetworkAlsoReceiveLabel: TLabel
+        AnchorSideLeft.Control = NetworkAlsoSendMemo
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = NetworkAlsoSendLabel
+        AnchorSideTop.Side = asrCenter
+        Left = 428
+        Height = 14
+        Top = 185
+        Width = 199
+        BorderSpacing.Left = 30
+        Caption = 'Also receive the following characteristics:'
+        ParentColor = False
+      end
+      object NetworkGroupBox: TGroupBox
+        AnchorSideLeft.Control = NetworkLocatorEdit
+        AnchorSideTop.Control = NetworkLocatorEdit
+        AnchorSideTop.Side = asrBottom
+        Left = 30
+        Height = 91
+        Hint = 'Network model: given the number of compute nodes,'#13#10'calculate network cost.'#13#10#13#10'If the web service for your network design model uses'#13#10'a different naming scheme, you can tweak it here.'
+        Top = 79
+        Width = 368
+        BorderSpacing.Top = 15
+        Caption = 'Network model'
+        ClientHeight = 73
+        ClientWidth = 364
+        TabOrder = 4
+        object NetworkSendLabel: TLabel
+          AnchorSideLeft.Control = NetworkGroupBox
+          AnchorSideTop.Control = NetworkGroupBox
+          Left = 10
+          Height = 14
+          Top = 10
+          Width = 143
+          BorderSpacing.Left = 10
+          BorderSpacing.Top = 10
+          Caption = 'Send the number of nodes in:'
+          ParentColor = False
+        end
+        object NetworkSendEdit: TEdit
+          AnchorSideLeft.Control = NetworkSendLabel
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = NetworkSendLabel
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = NetworkGroupBox
+          AnchorSideRight.Side = asrBottom
+          Left = 163
+          Height = 21
+          Hint = 'Network model: given the number of compute nodes,'#13#10'calculate network cost.'#13#10#13#10'If the web service for your network design model uses'#13#10'a different naming scheme, you can tweak it here.'
+          Top = 7
+          Width = 191
+          Alignment = taRightJustify
+          Anchors = [akTop, akLeft, akRight]
+          BorderSpacing.Left = 10
+          BorderSpacing.Right = 10
+          TabOrder = 0
+          Text = 'nodes'
+        end
+        object NetworkReceiveLabel: TLabel
+          AnchorSideLeft.Control = NetworkGroupBox
+          AnchorSideTop.Control = NetworkSendLabel
+          AnchorSideTop.Side = asrBottom
+          Left = 10
+          Height = 14
+          Top = 39
+          Width = 119
+          BorderSpacing.Left = 10
+          BorderSpacing.Top = 15
+          Caption = 'Receive network cost in:'
+          ParentColor = False
+        end
+        object NetworkReceiveEdit: TEdit
+          AnchorSideLeft.Control = NetworkSendEdit
+          AnchorSideTop.Control = NetworkReceiveLabel
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = NetworkSendEdit
+          AnchorSideRight.Side = asrBottom
+          Left = 163
+          Height = 21
+          Hint = 'Network model: given the number of compute nodes,'#13#10'calculate network cost.'#13#10#13#10'If the web service for your network design model uses'#13#10'a different naming scheme, you can tweak it here.'
+          Top = 36
+          Width = 191
+          Alignment = taRightJustify
+          Anchors = [akTop, akLeft, akRight]
+          TabOrder = 1
+          Text = 'network_cost'
+        end
+      end
+    end
+    object UpsTabSheet: TTabSheet
+      Hint = '(Note: this tab is optional)'#13#10#13#10'On this tab, you can specify which types of'#13#10'uninterruptable power supply (UPS) systems will be'#13#10'used for your cluster.'#13#10#13#10'Your UPS vendor could provide you with a specific URL'#13#10'to load UPS design models for their hardware. If so,'#13#10'enter the URL in the provided space and press the'#13#10'"Load" button. Then, choose the desired'#13#10'UPS model below by selecting its checkbox.'
+      Caption = 'UPS'
+      ClientHeight = 520
+      ClientWidth = 990
+      object UpsLocatorButton: TButton
+        AnchorSideLeft.Control = UpsLocatorEdit
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = UpsLocatorEdit
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = UpsTabSheet
+        AnchorSideRight.Side = asrBottom
+        Left = 665
+        Height = 25
+        Top = 41
+        Width = 97
+        Anchors = [akTop, akRight]
+        BorderSpacing.Left = 20
+        BorderSpacing.Right = 30
+        Caption = 'Load'
+        OnClick = UpsLocatorButtonClick
+        TabOrder = 0
+      end
+      object UpsLocatorEdit: TLabeledEdit
+        AnchorSideRight.Control = UpsLocatorButton
+        Left = 30
+        Height = 21
+        Top = 43
+        Width = 615
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Right = 20
+        EditLabel.AnchorSideLeft.Control = UpsLocatorEdit
+        EditLabel.AnchorSideRight.Control = UpsLocatorEdit
+        EditLabel.AnchorSideRight.Side = asrBottom
+        EditLabel.AnchorSideBottom.Control = UpsLocatorEdit
+        EditLabel.Left = 30
+        EditLabel.Height = 14
+        EditLabel.Top = 26
+        EditLabel.Width = 158
+        EditLabel.Caption = 'Load models automatically using:'
+        EditLabel.ParentColor = False
+        TabOrder = 1
+        Text = 'http://localhost:8000/cgi-bin/ups/locator.py'
+      end
+      object UpsGroupBox: TGroupBox
+        AnchorSideTop.Control = UpsLocatorEdit
+        AnchorSideTop.Side = asrBottom
+        Left = 30
+        Height = 91
+        Hint = 'UPS model: given the required power, calculate UPS cost.'#13#10#13#10'If the web service for your UPS system design model'#13#10'uses a different naming scheme, you can tweak it here.'
+        Top = 79
+        Width = 368
+        BorderSpacing.Top = 15
+        Caption = 'UPS model'
+        ClientHeight = 73
+        ClientWidth = 364
+        TabOrder = 2
+        object UpsSendLabel: TLabel
+          AnchorSideLeft.Control = UpsGroupBox
+          AnchorSideTop.Control = UpsGroupBox
+          Left = 10
+          Height = 14
+          Top = 10
+          Width = 116
+          BorderSpacing.Left = 10
+          BorderSpacing.Top = 10
+          Caption = 'Send required power in:'
+          ParentColor = False
+        end
+        object UpsSendEdit: TEdit
+          AnchorSideLeft.Control = UpsSendLabel
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = UpsSendLabel
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = UpsGroupBox
+          AnchorSideRight.Side = asrBottom
+          Left = 136
+          Height = 21
+          Hint = 'UPS model: given the required power, calculate UPS cost.'#13#10#13#10'If the web service for your UPS system design model'#13#10'uses a different naming scheme, you can tweak it here.'
+          Top = 7
+          Width = 218
+          Alignment = taRightJustify
+          Anchors = [akTop, akLeft, akRight]
+          BorderSpacing.Left = 10
+          BorderSpacing.Right = 10
+          TabOrder = 0
+          Text = 'power'
+        end
+        object UpsReceiveLabel: TLabel
+          AnchorSideLeft.Control = UpsGroupBox
+          AnchorSideTop.Control = UpsSendLabel
+          AnchorSideTop.Side = asrBottom
+          Left = 10
+          Height = 14
+          Top = 39
+          Width = 99
+          BorderSpacing.Left = 10
+          BorderSpacing.Top = 15
+          Caption = 'Receive UPS cost in:'
+          ParentColor = False
+        end
+        object UpsReceiveEdit: TEdit
+          AnchorSideLeft.Control = UpsSendEdit
+          AnchorSideTop.Control = UpsReceiveLabel
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = UpsSendEdit
+          AnchorSideRight.Side = asrBottom
+          Left = 136
+          Height = 21
+          Hint = 'UPS model: given the required power, calculate UPS cost.'#13#10#13#10'If the web service for your UPS system design model'#13#10'uses a different naming scheme, you can tweak it here.'
+          Top = 36
+          Width = 218
+          Alignment = taRightJustify
+          Anchors = [akTop, akLeft, akRight]
+          TabOrder = 1
+          Text = 'ups_cost'
+        end
+      end
+      object UpsAlsoSendLabel: TLabel
+        AnchorSideLeft.Control = UpsLocatorEdit
+        AnchorSideTop.Control = UpsGroupBox
+        AnchorSideTop.Side = asrBottom
+        Left = 30
+        Height = 14
+        Top = 185
+        Width = 173
+        BorderSpacing.Top = 15
+        Caption = 'Also send the following parameters:'
+        ParentColor = False
+      end
+      object UpsAlsoSendMemo: TMemo
+        AnchorSideLeft.Control = UpsAlsoSendLabel
+        AnchorSideTop.Control = UpsAlsoSendLabel
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = UpsGroupBox
+        AnchorSideRight.Side = asrBottom
+        Left = 30
+        Height = 126
+        Hint = 'Whatever characteristics of a configuration you specify'#13#10'here will be sent to the UPS system design module.'
+        Top = 204
+        Width = 368
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 5
+        Lines.Strings = (
+          'min_ups_backup_time=600'
+        )
+        TabOrder = 3
+      end
+      object UpsAlsoReceiveLabel: TLabel
+        AnchorSideLeft.Control = UpsAlsoSendMemo
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = UpsAlsoSendLabel
+        AnchorSideTop.Side = asrCenter
+        Left = 428
+        Height = 14
+        Top = 185
+        Width = 199
+        BorderSpacing.Left = 30
+        Caption = 'Also receive the following characteristics:'
+        ParentColor = False
+      end
+      object UpsAlsoReceiveMemo: TMemo
+        AnchorSideLeft.Control = UpsAlsoReceiveLabel
+        AnchorSideTop.Control = UpsAlsoSendMemo
+        AnchorSideRight.Control = UpsTabSheet
+        AnchorSideRight.Side = asrBottom
+        Left = 428
+        Height = 126
+        Hint = 'Whatever characteristics you specify here will be'#13#10'searched for in the reply of the UPS system design'#13#10'module, and inserted into the configuration being'#13#10'analyzed.'
+        Top = 204
+        Width = 334
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Right = 30
+        Lines.Strings = (
+          'ups_backup_time'
+          'ups_heat'
+          'ups_model'
+          'ups_partitioning'
+          'ups_power_rating'
+          'ups_size_racks'
+          'ups_weight'
+        )
+        TabOrder = 4
+      end
+    end
+    object DesignTabSheet: TTabSheet
+      Hint = 'The "Design" tab is the main tab of the tool.'#13#10#13#10'Here, you can specify constraints for the entire cluster'#13#10'supercomputer (compare this to constraints imposed on'#13#10'individual compute nodes that you can specify on the'#13#10'"Nodes" tab).'#13#10#13#10'Then, choose the objective function. The less the value'#13#10'of the objective function for a specific configuration,'#13#10'the better is that configuration compared to others.'#13#10#13#10'After design process is complete, review configurations'#13#10'in the lower part of the window. They are sorted with'#13#10'the first in the list being the best.'
+      Caption = 'Design'
+      ClientHeight = 520
+      ClientWidth = 990
+      object DesignButton: TButton
+        Left = 30
+        Height = 25
+        Hint = 'The main button! It starts the design process.'#13#10#13#10'You can cancel it anytime, or undo the results.'
+        Top = 30
+        Width = 163
+        BorderSpacing.Left = 30
+        Caption = 'Start Design Process'
+        Enabled = False
+        OnClick = DesignButtonClick
+        TabOrder = 0
+      end
+      object DesignConstraintsGroupBox: TGroupBox
+        AnchorSideTop.Control = DesignButton
+        AnchorSideTop.Side = asrBottom
+        Left = 30
+        Height = 144
+        Top = 70
+        Width = 924
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 15
+        Caption = 'Global design constraints'
+        ClientHeight = 126
+        ClientWidth = 920
+        TabOrder = 1
+        object DesignObjFuncComboBox: TComboBox
+          AnchorSideTop.Control = DesignObjFuncLabel
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = DesignConstraintsMemo
+          AnchorSideRight.Side = asrBottom
+          Left = 244
+          Height = 21
+          Hint = 'Choose your desired objective function.'
+          Top = 87
+          Width = 198
+          Anchors = [akTop, akLeft, akRight]
+          ItemHeight = 13
+          OnEditingDone = DesignObjFuncComboBoxEditingDone
+          TabOrder = 0
+        end
+        object DesignObjFuncLabel: TLabel
+          AnchorSideLeft.Control = DesignConstraintsMemo
+          AnchorSideTop.Control = DesignConstraintsMemo
+          AnchorSideTop.Side = asrBottom
+          Left = 10
+          Height = 14
+          Hint = 'Choose your desired objective function.'
+          Top = 90
+          Width = 93
+          BorderSpacing.Top = 10
+          Caption = 'Objective function:'
+          ParentColor = False
+        end
+        object DesignConstraintsMemo: TMemo
+          AnchorSideLeft.Control = DesignConstraintsGroupBox
+          Left = 10
+          Height = 72
+          Hint = 'Global constraints are those that apply to the entire'#13#10'cluster supercomputer being desined, and not to its'#13#10'separate parts or subsystems.'#13#10#13#10'Rules for specifying constraints are identical to those'#13#10'on the "Nodes" tab (use "min_" and "max_" to prefix'#13#10'numerical characteristics).'#13#10#13#10'Configurations that do not meet your constraints will'#13#10'be marked as "disabled".'
+          Top = 8
+          Width = 432
+          BorderSpacing.Left = 10
+          Lines.Strings = (
+            'min_performance=240'
+            '#max_capex=150000'
+            '#max_power=10000'
+          )
+          TabOrder = 1
+        end
+      end
+      object DesignProgressBar: TProgressBar
+        AnchorSideLeft.Control = DesignButton
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = DesignButton
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Side = asrBottom
+        Left = 213
+        Height = 20
+        Hint = 'Progress bar: when you start the design process,'#13#10'it displays the percentage of configurations that'#13#10'have been handled.'
+        Top = 32
+        Width = 641
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Left = 20
+        TabOrder = 2
+      end
+      object DesignCurrentConfigMemo: TMemo
+        AnchorSideLeft.Control = DesignConfigRankLabel
+        AnchorSideTop.Control = DesignCurrentConfigSpinEdit
+        AnchorSideTop.Side = asrBottom
+        AnchorSideBottom.Control = DesignTabSheet
+        AnchorSideBottom.Side = asrBottom
+        Left = 30
+        Height = 239
+        Hint = 'Configurations are stored internally in "key=value"'#13#10'pairs. This pane represents the current configuration.'
+        Top = 274
+        Width = 510
+        Anchors = [akTop, akLeft, akBottom]
+        BorderSpacing.Top = 10
+        BorderSpacing.Bottom = 10
+        ScrollBars = ssAutoBoth
+        TabOrder = 3
+      end
+      object DesignCurrentConfigSpinEdit: TSpinEdit
+        AnchorSideLeft.Control = DesignConfigRankLabel
+        AnchorSideTop.Control = DesignConfigRankLabel
+        AnchorSideTop.Side = asrBottom
+        Left = 30
+        Height = 21
+        Hint = 'Switch from one configuration to another.'#13#10'Configuration №1 is the best one.'#13#10#13#10'A disabled configuration is marked with a red dot.'#13#10'Hover over the dot to learn why it was disabled.'#13#10#13#10'(If too many configurations are disabled, you may'#13#10'wish to clean the list by removing the disabled'#13#10'configurations for easier navigation. You can do'#13#10'it either manually or automatically, by the'#13#10'corresponding controls on the "Nodes" tab).'#13#10#13#10'If some constraints could not be checked for a'#13#10'configuration, it is marked with a yellow dot. Hover'#13#10'over the dot to learn which exactly constraints'#13#10'could not be checked.'
+        Top = 243
+        Width = 50
+        Enabled = False
+        OnChange = DesignCurrentConfigSpinEditChange
+        TabOrder = 4
+      end
+      object DesignCurrentConfigDisabledLabel: TLabel
+        AnchorSideLeft.Control = DesignConfigRankLabel
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = DesignConstraintsGroupBox
+        AnchorSideTop.Side = asrBottom
+        Left = 153
+        Height = 49
+        Top = 224
+        Width = 14
+        BorderSpacing.Left = 15
+        BorderSpacing.Top = 10
+        Caption = ' '
+        Font.Height = -40
+        ParentColor = False
+        ParentFont = False
+      end
+      object DesignConfigRankLabel: TLabel
+        AnchorSideLeft.Control = DesignButton
+        AnchorSideTop.Control = DesignConstraintsGroupBox
+        AnchorSideTop.Side = asrBottom
+        Left = 30
+        Height = 14
+        Top = 229
+        Width = 108
+        BorderSpacing.Top = 15
+        Caption = 'Current configuration:'
+        ParentColor = False
+      end
+      object DesignCurrentConfigUntestedLabel: TLabel
+        AnchorSideLeft.Control = DesignCurrentConfigDisabledLabel
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = DesignCurrentConfigDisabledLabel
+        Left = 187
+        Height = 49
+        Top = 224
+        Width = 14
+        BorderSpacing.Left = 20
+        Caption = ' '
+        Font.Height = -40
+        ParentColor = False
+        ParentFont = False
+      end
+      object DesignCancelButton: TButton
+        AnchorSideLeft.Control = DesignProgressBar
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = DesignButton
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = DesignConstraintsGroupBox
+        AnchorSideRight.Side = asrBottom
+        Left = 874
+        Height = 25
+        Hint = 'Cancel the design process currently in progress'
+        Top = 30
+        Width = 80
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Left = 20
+        Caption = 'Cancel'
+        Enabled = False
+        OnClick = DesignCancelButtonClick
+        TabOrder = 5
+      end
+      object DesignEssentialCharsMemo: TMemo
+        AnchorSideLeft.Control = DesignCurrentConfigMemo
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = DesignCurrentConfigMemo
+        AnchorSideRight.Control = DesignConstraintsGroupBox
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = DesignCurrentConfigMemo
+        AnchorSideBottom.Side = asrBottom
+        Left = 565
+        Height = 239
+        Hint = 'This pane lists essential characteristics of the'#13#10'configuration on the left in a human-readable form.'#13#10#13#10'Some characteristics only become available'#13#10'after you run the design procedure.'#13#10#13#10'Measurement units for certain characteristics'#13#10'(e.g., "Performance" or "Equipment size")'#13#10'depend on units returned by web services or'#13#10'used in your XML database.'
+        Top = 274
+        Width = 389
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Left = 25
+        ScrollBars = ssAutoBoth
+        TabOrder = 6
+      end
+    end
+    object SettingsTabSheet: TTabSheet
+      Caption = 'Settings'
+      ClientHeight = 523
+      ClientWidth = 986
+      object RackHeightSpinEdit: TSpinEdit
+        AnchorSideLeft.Control = RackOpExPerYearEdit
+        AnchorSideTop.Control = RackHeightLabel
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = RackOpExPerYearEdit
+        AnchorSideRight.Side = asrBottom
+        Left = 236
+        Height = 21
+        Hint = 'The height of your racks (standard rack is 42 units high).'#13#10'Set this to zero if you don''t want to compute the number of'#13#10'racks required to house your hardware.'
+        Top = 37
+        Width = 59
+        Anchors = [akTop, akLeft, akRight]
+        MaxValue = 1000
+        TabOrder = 0
+        Value = 42
+      end
+      object RackHeightLabel: TLabel
+        Left = 36
+        Height = 14
+        Top = 40
+        Width = 102
+        Caption = 'Rack height, in units:'
+        ParentColor = False
+      end
+      object SystemLifetimeLabel: TLabel
+        Left = 36
+        Height = 14
+        Top = 72
+        Width = 122
+        Caption = 'System lifetime, in years:'
+        ParentColor = False
+      end
+      object SystemLifetimeSpinEdit: TSpinEdit
+        AnchorSideLeft.Control = RackOpExPerYearEdit
+        AnchorSideTop.Control = SystemLifetimeLabel
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = RackOpExPerYearEdit
+        AnchorSideRight.Side = asrBottom
+        Left = 236
+        Height = 21
+        Hint = 'Lifetime of your system, used for calculating operating'#13#10'expenses (OpEx) and consequently total cost of'#13#10'ownership (TCO). Set this to zero if you do no want to'#13#10'calculate OpEx.'
+        Top = 69
+        Width = 59
+        Anchors = [akTop, akLeft, akRight]
+        TabOrder = 1
+        Value = 3
+      end
+      object KwhPriceLabel: TLabel
+        Left = 36
+        Height = 14
+        Top = 104
+        Width = 147
+        Caption = 'Price of kW·hour of electricity:'
+        ParentColor = False
+      end
+      object KwhPriceEdit: TEdit
+        AnchorSideLeft.Control = RackOpExPerYearEdit
+        AnchorSideTop.Control = KwhPriceLabel
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = RackOpExPerYearEdit
+        AnchorSideRight.Side = asrBottom
+        Left = 236
+        Height = 21
+        Hint = 'Price of 1 kW·hour of electricity. Set this to zero to'#13#10'ignore electricity costs in OpEx calculation.'
+        Top = 101
+        Width = 59
+        Anchors = [akTop, akLeft, akRight]
+        OnEditingDone = KwhPriceEditEditingDone
+        TabOrder = 2
+        Text = '0.35'
+      end
+      object RackOpExPerYearLabel: TLabel
+        Left = 36
+        Height = 14
+        Top = 136
+        Width = 170
+        Caption = 'Yearly operating expense per rack:'
+        ParentColor = False
+      end
+      object RackOpExPerYearEdit: TEdit
+        AnchorSideLeft.Control = RackOpExPerYearLabel
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = RackOpExPerYearLabel
+        AnchorSideTop.Side = asrCenter
+        Left = 236
+        Height = 21
+        Hint = 'How much it costs to house one rack in a data centre,'#13#10'per year. Set this to zero to disregard rental costs.'
+        Top = 133
+        Width = 59
+        BorderSpacing.Left = 30
+        OnEditingDone = RackOpExPerYearEditEditingDone
+        TabOrder = 3
+        Text = '3000'
+      end
+    end
+    object AboutTabSheet: TTabSheet
+      Caption = 'About'
+      ClientHeight = 520
+      ClientWidth = 990
+      object AboutLogoImage: TImage
+        Left = 36
+        Height = 48
+        Top = 26
+        Width = 48
+        BorderSpacing.Left = 30
+        Picture.Data = {
+          055449636F6EBE0E00000000010001003030000001000800A80E000016000000
+          2800000030000000600000000100080000000000000000000000000000000000
+          000000000000000000CE000000CF000000D0000000D1000000D2000001D20100
+          02D2020003D2030004D2040005D2050004D3040006D3060007D3070009D30900
+          0AD30A000BD40B000DD40D000ED40E000FD40F0010D4100010D5100011D51100
+          12D5120013D5130014D5140015D5150016D6160017D6170018D6180019D61900
+          1AD61A001CD61C001CD71C001DD71D001ED71E0020D7200021D8210022D82200
+          23D8230024D8240025D8250025D9250027D9270029D929002BD92B002CD92C00
+          2CDA2C002EDA2E0030DA300031DA310032DA320032DB320033DB330034DB3400
+          37DB370038DB380039DC39003ADC3A003CDC3C003DDD3D0041DD410042DD4200
+          43DD430043DE430048DF480049DF49004ADF4A004CDF4C004EDF4E004CE04C00
+          4FE04F0050E0500051E0510052E0520053E0530055E0550053E1530055E15500
+          59E159005AE15A005AE25A005BE25B005DE25D005EE35E005FE35F0061E36100
+          65E4650067E4670069E4690067E567006BE46B006BE56B006DE56D006EE56E00
+          70E6700072E6720074E6740075E6750079E779007AE77A007CE77C007AE87A00
+          7FE87F0081E9810082E9820083E9830084E9840086E9860085EA850086EA8600
+          87EA870088EA880089EA89008AEA8A008DEB8D008EEB8E008FEB8F0090EB9000
+          91EB910093EC930094EC940097EC970096ED96009AED9A009CED9C009DED9D00
+          9EED9E00A1EEA100A4EEA400A5EFA500A6EFA600A9F0A900AAF0AA00ABF0AB00
+          ACF0AC00ADF0AD00AFF1AF00B0F1B000B1F1B100B2F1B200B3F1B300B4F2B400
+          B5F2B500B6F2B600B8F2B800B9F3B900C0F4C000C1F4C100C4F4C400C5F4C500
+          C5F5C500C6F5C600C7F5C700C8F5C800C9F5C900CDF5CD00CDF6CD00CEF6CE00
+          D0F6D000D1F6D100D3F7D300D4F7D400D6F7D600D6F8D600D7F8D700D9F8D900
+          DBF8DB00D9F9D900DCF8DC00DDF8DD00DEF9DE00DFF9DF00E0F9E000E1F9E100
+          E2FAE200E3FAE300E5FAE500E6FAE600E7FBE700E8FBE800E9FBE900EAFBEA00
+          ECFBEC00EDFBED00EEFBEE00ECFCEC00EEFCEE00EFFCEF00F0FCF000F1FCF100
+          F2FCF200F5FDF500F6FDF600F7FDF700F8FDF800F7FEF700F9FEF900FAFEFA00
+          FCFEFC00FDFEFD00FEFEFE00FFFEFF00FEFFFE00FFFFFF000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000040404040404040404040404040404040404040404040404
+          0404040404040404040404040404040404040404040404040360C5CBCBCBCBCB
+          CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCAC9CBCBCBCBCBCBC8CBCBCBCBCBCBCB
+          CBCBCBCBCBCBCB04030560CBC8CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCB
+          CBCBCBC8BFBDC3CBCBCBCBCBC8CACBCBCBCBCBCBCBCBCB040403035ECBC8CBCB
+          CBCBCBCBCBCBCBCBCBCBCBCBC7823833291C18171310101021416A9FCBCBCBC8
+          CBCBCBCBCBCBCB04040404025ECBCBC8CBCBCBCBCBCBCBCBCBCBCBCBCBBD4305
+          05030D162E4F647679745F362874B1C7CBC8CBCBCBCBCB04040404040360C5CB
+          CBCBCBCBCBCBCBCBCBCBCBCBC8CBB86A633F4AADCBCBCBCBCBCBCBCBBA5E246F
+          B2CBC8C8CBCBCB0404040404030560CBC8CBCBCBCBCBCBCBCBCBCBCBCBC8CBCB
+          CBC550319BCBC8CBCBCBCBC8CBCB83033999CBC8CBCBCB04040404040403035E
+          CBC8CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBA30F1EA5CBC8CBCBCBCBC8CBCB71
+          02229CCBCBCBCB0404040404040404025ECBCBC8CBCBCBCBCBCBCBCBCBCBCBCB
+          CBC8CB2D0346C7CBCBCBCBCBCBCBC8CB32022EB6CBC8CB040404040404040404
+          0360C5CBCBCBCBCBCBCBCBCBCBCBCBCBCBCACB60031798CBCBCBCBCBCBCBCACB
+          9D030157CBC8CB040404040404040404030560CBC8CBCBCBCBCBCBCBCBCBCBCB
+          CBCBCB8A020275C7CBCBCBCBCBCBCBC8C14202029DCBCB040404040404040404
+          0403035ECBC8CBCBCBCBCBCBCBCBCBCBCBCBCBBC01024DC0CBCBCBCBCBCBCBCB
+          CB7D020347CBC8040404040404040404040404025ECBCBC8CBCBCBCBCBCBCBCB
+          CBCBC8CB170325BCC8CBCBCBCBCBCBCBCB96160312C1CB040404040404040404
+          040404040360C5CBCBCBCBCBCBCBCBCBCBCBCBCB490202B0CBCBCBCBCBCBCBCB
+          CBAA2D030F92CB04040404040404040404040404030560CBC8CBCBCBCBCBCBC8
+          CBCBCBCB7301018FCBCBCBCBCBCBCBCBCBBA3A030B7DCB040404040404040404
+          040404040403035ECBC8CBCBC5A0CBCBC8CBCBCB9C000262CBCBCBCBCBCBCBCB
+          CBC03E030870CB04040404040404040404040404040404025ECBCBC8C2512893
+          CBCBCBC8B70A0239CBC8CBCBCBCBCBCBCBBF3E03086DCB040404040404040404
+          04040404040404040360C5CBC879011ACBC8CBCBBE340307CBCBCBCBCBCBCBCB
+          CBB537030975CB0404040404040404040404040404040404030560CBCB9D1B03
+          CBCBCBCBC2550202A5CBCBCBCBCBCBCBCB9E1F030D89CB040404040404040404
+          04040404040404040403035ECBCB56027CCBC8CBC87502027BCBCBCBCBCBCBC8
+          C87A020411BBCB0404040404040404040404040404040404040404025ECBC231
+          14A8CBCBCB8C040352CBC8CBC8C9CBCBA919030359CBC8040404040404040404
+          0404040404040404040404040360C8BF4E3081B4CBA1200327CBCBCBCBCBBE8E
+          2302023CC5CBCB040404040404040403020100000001010203040404030560CB
+          C890604E44500E020680878276573502002670BBCBC8CB040404040404040302
+          4081A2B4AE957747080203030403035ECBCBC4BAAA866E5E575C5D5C5B5A627E
+          A3BEC6CBC8CBCB04040404040303279FCBCBC1B7A7A1B4BFC48D400B03040402
+          5ECBCBC8CBCBCBCBCBCBCBCBCBCBCBCBCBC8CBCBCBCBCB0404040404032CACCB
+          CB974C07000001113D71A645030404040360C5CBCBCBCBCBCBCBCBCBCBCBCBCB
+          CBCBCBCBCBCBCB04040404040C85CBCB97160203040403030302151D03040404
+          030560CBC8CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCB040404040325CBCBCB
+          1C0304040404040404030303040404040403035ECBC8CBCBCBCBCBCBCBCBCBCB
+          CBCBCBCBCBCBCB04040404035ECBCB8402040404040404040404040404040404
+          040404025ECBCBC8CBCBCBCBCBCBCBCBCBCBCBCBCBCBCB04040404027FCBCB53
+          03040404040404040404040404040404040404040360C5CBCBCBCBCBCBCBCBCB
+          CBCBCBCBCBCBCB04040404028ECBCB3B03040404040404040404040404040404
+          04040404030560CBC8CBCBCBCBCBCBCBCBCBCBCBCBCBCB04040404028BCBCB39
+          03040404040404040404040404040404040404040403035ECBC8CBCBCBCBCBCB
+          CBCBCBCBCBCBCB04040404027BCBCB4803040404040404040404040404040404
+          04040404040404025ECBCBC8CBCBCBCBCBCBCBCBCBCBCB04040404035DCBCB66
+          0304040404040404040404040404040404040404040404040360C5CBCBCBCBCB
+          CBCBCBCBCBCBCB04040404032FCBCB9402040404040404040404040404040404
+          0404040404040404030560CBC8CBCBCBCBCBCBCBCBCBCB040404040312ABCBCB
+          0C03040404040404040404040404040404040404040404040403035ECBC8CBCB
+          CBCBCBCBCBCBCB0404040404086ECBCB5C020404040404040404040404040404
+          0404040404040404040404025ECBCBC8CBCBCBCBCBCBCB04040404040333B5CB
+          A40303040404040404040404040404040404040404040404040404040360C5CB
+          CBCBCBCBCBCBCB0404040404030372C9C4540204040404040404040403030304
+          040404040404040404040404030560CBC8CBCBCBCBCBCB0404040404040308A0
+          CB991B030404040404040404051303030404040404040404040404040403035E
+          CBC8CBCBCBCBCB040404040404040311AFCB6908030404040404040416942003
+          040404040404040404040404040404025ECBCBC8CBCBCB040404040404040403
+          1E95CB5F05030304040404031FB93D0304040404040404040404040404040404
+          0360C5CBCBCBCB04040404040404040403176CC9882B01020202002A91CB6506
+          04040404040404040404040404040404030560CBC8CBCB040404040404040404
+          0303072178B3996B61719AC1CBCB740B04040404040404040404040404040404
+          0403035ECBC8CB040404040404040404040404030203345867685F4B2D030203
+          04040404040404040404040404040404040404025ECBCB040404040404040404
+          0404040404030302020202020303040404040404040404040404040404040404
+          040404040360C504040404040404040404040404040404040404040404040404
+          0404040404040404040404040404040404040404030560040404040404040404
+          0404040404040404040404040404040404040404040404040404040404040404
+          0404040404030304000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000
+        }
+      end
+      object AboutAuthorLabel: TLabel
+        AnchorSideLeft.Control = AboutLogoImage
+        AnchorSideLeft.Side = asrBottom
+        Left = 104
+        Height = 14
+        Top = 50
+        Width = 4
+        BorderSpacing.Left = 20
+        BorderSpacing.Right = 20
+        Caption = ' '
+        ParentColor = False
+      end
+      object AboutURLLabel: TLabel
+        AnchorSideLeft.Control = AboutMoreInfoLabel
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideRight.Side = asrBottom
+        Cursor = crHandPoint
+        Left = 321
+        Height = 14
+        Top = 26
+        Width = 4
+        BorderSpacing.Left = 10
+        BorderSpacing.Right = 10
+        Caption = ' '
+        Font.Color = clBlue
+        Font.Style = [fsUnderline]
+        ParentColor = False
+        ParentFont = False
+        OnClick = AboutURLLabelClick
+      end
+      object AboutMoreInfoLabel: TLabel
+        AnchorSideLeft.Control = AboutProgramTitleLabel
+        AnchorSideLeft.Side = asrBottom
+        Left = 218
+        Height = 14
+        Top = 26
+        Width = 93
+        BorderSpacing.Left = 110
+        Caption = 'For more info, see:'
+        ParentColor = False
+      end
+      object AboutProgramTitleLabel: TLabel
+        AnchorSideLeft.Control = AboutLogoImage
+        AnchorSideLeft.Side = asrBottom
+        Left = 104
+        Height = 14
+        Top = 26
+        Width = 4
+        BorderSpacing.Left = 20
+        BorderSpacing.Right = 20
+        Caption = ' '
+        ParentColor = False
+      end
+    end
+  end
+  object AStatusBar: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 599
+    Width = 994
+    Panels = <    
+      item
+        Width = 300
+      end    
+      item
+        Alignment = taRightJustify
+        Width = 100
+      end>
+    SimplePanel = False
+  end
+  object ToolBar: TToolBar
+    Left = 0
+    Height = 50
+    Top = 0
+    Width = 994
+    ButtonHeight = 40
+    ButtonWidth = 40
+    Caption = 'ToolBar'
+    Images = ToolBarImageList
+    Indent = 4
+    ShowCaptions = True
+    TabOrder = 2
+    object LoadDBToolButton: TToolButton
+      Left = 4
+      Hint = 'Load the graph database in XML format.'
+      Top = 2
+      Caption = 'Load XML DB'
+      ImageIndex = 0
+      OnClick = LoadDBToolButtonClick
+    end
+    object LoadCSVToolButton: TToolButton
+      Left = 73
+      Hint = 'Load the list of configurations that was'#13#10'previously exported in CSV format.'
+      Top = 2
+      Caption = 'Import from CSV'
+      ImageIndex = 1
+      OnClick = LoadCSVToolButtonClick
+    end
+    object Div1ToolButton: TToolButton
+      Left = 160
+      Top = 2
+      Width = 10
+      Caption = 'Div1ToolButton'
+      Style = tbsSeparator
+    end
+    object SaveCSVToolButton: TToolButton
+      Left = 170
+      Hint = 'Export the current list of'#13#10'configurations in CSV format.'
+      Top = 2
+      Caption = 'Export to CSV'
+      Enabled = False
+      ImageIndex = 2
+      OnClick = SaveCSVToolButtonClick
+    end
+    object Div2ToolButton: TToolButton
+      Left = 245
+      Top = 2
+      Width = 10
+      Caption = 'Div2ToolButton'
+      Style = tbsSeparator
+    end
+    object UndoToolButton: TToolButton
+      Left = 255
+      Hint = 'Undo the imposition of constraints or application of'#13#10'a heuristic.'#13#10#13#10'The number in brackets indicates the number of undo'#13#10'steps that remain before a pristine state will be reached.'
+      Top = 2
+      Caption = 'Undo'
+      Enabled = False
+      ImageIndex = 3
+      OnClick = UndoToolButtonClick
+    end
+  end
+  object OpenXMLFileDialog: TOpenDialog
+    Title = 'Open existing XML database file'
+    left = 496
+    top = 8
+  end
+  object SaveCSVFileDialog: TSaveDialog
+    Title = 'Save list of configurations as a CSV file'
+    left = 456
+    top = 8
+  end
+  object OpenCSVFileDialog: TOpenDialog
+    Title = 'Open existing CSV file'
+    left = 544
+    top = 8
+  end
+  object ToolBarImageList: TImageList
+    left = 616
+    top = 8
+    Bitmap = {
+      4C69040000001000000010000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000000000000000D0
+      F9F400D1F9FD00D1F9FF00D1F9FF00D1F9FF00D1F9FF00D1F9FF00D1F9FD00D0
+      F9F400000000000000000000000000000000000000000000000000D1F9FF00D1
+      F9FF00E7FCFF00E7FCFF00E7FCFFDBDBDBFFC3C3C3FFBFBFBFFFB5B5B5FFBDBD
+      BDFF00D1F9FF0000000000000000000000000000000000D1F9FF00D1F9FF00E7
+      FCFF00E7FCFF00E7FCFF00E7FCFFE8E8E8FF252525FF090909FF030303FF9696
+      96FF00D1F9FF00D1F9FF00000000000000000000000005D1F9FF00D1F9FF00E7
+      FCFF00E7FCFF00E7FCFF00E7FCFF535353FF585858FF000000FF949494FF00E7
+      FCFF00D1F9FF00D1F9FF0000000000000000000000001FD7F9FF04D1F9FF00D1
+      F9FF00E7FCFF00E7FCFF727272FFA4A4A4FF00E7FCFFAAAAAAFF00E7FCFF00D1
+      F9FF00D1F9FF04D4F9FF00000000000000000000000028D8FAFFC3F9FEFF12D3
+      F9FF09D2F9FFABABABFF828282FF00D1F9FF00D1F9FF01D1F9FF02D1F9FF03D1
+      F9FF0DE9FDFF04D4F9FF0000000000000000000000000AD2F9FFC4FAFFFFB1F8
+      FEFFE1E1E1FF505050FFECECECFF68F1FEFF56EFFDFF43EEFCFF31ECFDFF1EEA
+      FCFF0DE9FCFF04D4F9FF00000000000000000000000028D8FAFFC3F9FEFFB1F8
+      FFFFF0F0F0FFCACACAFF7AF2FDFF68F1FDFF56F0FDFF43EEFDFF31ECFDFF1FEB
+      FCFF0DE9FDFF04D1F9FF00000000000000000000000028D8F9FFC4FAFFFFB1F8
+      FEFF9FF7FDFF8DF5FEFF7BF3FEFF68F1FEFF56EFFDFF43EEFCFF31ECFDFF1EEA
+      FCFF0DE9FCFF04D4F9FF00000000000000000000000028D8FAFFC3F9FEFFB1F8
+      FFFF9FF6FEFF8CF5FDFF7AF2FDFF68F1FDFF56F0FDFF43EEFDFF31ECFDFF1FEB
+      FCFF0DE9FDFF04D4F9FF00000000000000000000000028D8F9FFC4FAFFFFB1F8
+      FEFF9FF7FDFF8DF5FEFF7BF3FEFF68F1FEFF56EFFDFF43EEFCFF31ECFDFF1EEA
+      FCFF0DE9FCFF04D4F9FF00000000000000000000000028D8FAFFC3F9FEFFB1F8
+      FFFF9FF6FEFF8CF5FDFF7AF2FDFF68F1FDFF56F0FDFF43EEFDFF31ECFDFF1FEB
+      FCFF0DE9FDFF04D4F9FF00000000000000000000000023D4F9FF21D4FAFFB1F8
+      FEFF9FF7FDFF8DF5FEFF7BF3FEFF68F1FEFF56EFFDFF43EEFCFF31ECFDFF1EEA
+      FCFF02D1F9FF00D1F9FF0000000000000000000000000000000020D4F9FF1DD4
+      FAFF9FF6FEFF8CF5FDFF7AF2FDFF68F1FDFF56F0FDFF43EEFDFF31ECFDFF05D2
+      F9FF02D1F9FF0000000000000000000000000000000000000000000000001ED4
+      F9FF1AD3F9FF17D3F9FF14D3F9FF11D3F9FF0ED2F9FF0BD2F9FF08D2F9FF05D1
+      F9FF000000000000000000000000000000000000000000000000000000000000
+      0000000000320000004A0000004F0000005B0000005300000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000059000000D9000000F7000000FC0000009A00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      002000000097000000BC000000FC000000940000001500000000000000000000
+      0000000000000000000000000000000000000000000000000000000000140000
+      0091000000720000001C00000064000000160000000000000000000000000000
+      00000000000000000000000000000000000000000000000000020000008A0000
+      007F000000000000000000000002000000000000000000000000000000000000
+      0000000000000000000000000000636363FF636363FF3D3D3DFF282828FF5E5E
+      5EFF636363FF636363FF636363FF636363FF636363FF636363FF636363FF6363
+      63FF636363FF636363FF636363FF636363FFFECBD7FFAF8992FFC79AA4FFFFC2
+      D0FF636363FFFFCCD8FFFFC9D6FFFFC6D3FFFFC2D0FF636363FFFFBCCCFFFFB8
+      C9FFFFB6C7FFFFB2C5FF636363FF636363FFFFD0DCFFFFCDD8FFFFCAD6FFFFC7
+      D3FF636363FFFFD0DCFFFFCDD8FFFFCAD6FFFFC7D3FF636363FFFFC0CFFFFFBD
+      CCFFFFB9CAFFFFB6C8FF636363FF636363FFFFD5DEFFFFD1DCFFFFCDD9FFFFCB
+      D7FF636363FFFFD5DEFFFFD1DCFFFFCDD9FFFFCBD7FF636363FFFFC4D2FFFFC1
+      D0FFFFBECDFFFFBBCBFF636363FF636363FFFFD8E1FFFFD5DFFFFFD2DDFFFFCF
+      DAFF636363FFFFD8E1FFFFD5DFFFFFD2DDFFFFCFDAFF636363FFFFC8D5FFFFC4
+      D2FFFFC2D0FFFFBFCEFF636363FF636363FF636363FF636363FF636363FF6363
+      63FF636363FF636363FF636363FF636363FF636363FF636363FF636363FF6363
+      63FF636363FF636363FF636363FF636363FFFFE0E8FFFFDDE5FFFFDAE3FFFFD6
+      E1FF636363FFFFE0E8FFFFDDE5FFFFDAE3FFFFD6E1FF636363FFFFD0DBFFFFCD
+      D9FFFFC9D7FFFFC7D4FF636363FF636363FFFFE4EBFFFFE1E8FFFFDEE5FFFFDA
+      E3FF636363FFFFE4EBFFFFE1E8FFFFDEE5FFFFDAE3FF636363FFFFD4DEFFFFD1
+      DCFFFFCED9FFFFCAD6FF636363FF636363FFFFE8EDFFFFE5EBFFFFE2E9FFFFDF
+      E6FF636363FFFFE8EDFFFFE5EBFFFFE2E9FFFFDFE6FF636363FFFFD8E1FFFFD5
+      DFFFFFD1DDFFFFCEDAFF636363FF636363FFFFECF1FFFFE9EEFFFFE6ECFFFFE3
+      E9FF636363FFFFECF1FFFFE9EEFFFFE6ECFFFFE3E9FF636363FFFFDCE4FFFFD9
+      E2FFFFD6E0FFFFD3DDFF636363FF636363FF636363FF636363FF636363FF6363
+      63FF636363FF636363FF636363FF636363FF636363FF636363FF636363FF6363
+      63FF636363FF636363FF636363FFFFC7D400FFC4D200FFC1D000FFBECD00FFBB
+      CA00FFB7C800FFB4C500FFB1C300FFADC100FFAABE00FFA7BC00FFA4B900FFA1
+      B700FF9DB400FF9BB300FF9BB200FFCBD700FFC8D500FFC5D300FFC1D000FFBE
+      CE00FFBBCB00FFB8C800FFB4C600FFB1C400FFAEC200FFABBF00FFA8BC00FFA4
+      BA00FFA1B800FF9EB500FF9BB300FFCFDB00FFCCD800FFC9D500FFC6D300FFC3
+      D100FFBFCF00FFBCCB00FFB9C900FFB5C700FFB2C400FFAFC200FFACC000FFA9
+      BD00FFA5BB00FFA2B900FF9FB600FFD3DE000000004300000037FFC9D600FFC7
+      D400FFC4D100FFC0CF00FFBCCD00FFBAC900FFB6C800FFB3C500FFB0C200FFAD
+      C000FFA9BE00FFA7BB00FFA3B800FFD7E0000000005D0000009900000009FFCB
+      D700FFC8D400FFC4D100FFC1D000FFBECD00FFBBCB00FFB7C800FFB4C500FFB1
+      C300FFADC100FFABBE00FFA8BB00636363FF636363FF2E2E2EFF323232FF6363
+      63FF636363FF626262FF636363FF636363FF636363FF636363FF636363FF6363
+      63FF636363FF636363FF636363FF636363FFFFCCD8FFEAB8C4FF6D545AFF8F6C
+      74FF5B5B5BFFA6848CFFEDBAC6FFFFC6D3FFFFC2D0FF636363FFFFBCCCFFFFB8
+      C9FFFFB6C7FFFFB2C5FF636363FF636363FFFFD0DCFFFFCDD8FFDEAFBAFF6951
+      56FF1C1C1CFF0A0808FF6E585DFFEFBDC8FFFFC7D3FF636363FFFFC0CFFFFFBD
+      CCFFFFB9CAFFFFB6C8FF636363FF636363FFFFD5DEFFFFD1DCFFFFCDD9FFB08C
+      94FF0F0F0FFF040303FF000000FF655155FFFFCBD7FF636363FFFFC4D2FFFFC1
+      D0FFFFBECDFFFFBBCBFF636363FF636363FFFFD8E1FFFFD5DFFFFFD2DDFFFFCF
+      DAFF636363FFFFD8E1FFFFD5DFFFFFD2DDFFFFCFDAFF636363FFFFC8D5FFFFC4
+      D2FFFFC2D0FFFFBFCEFF636363FF636363FF636363FF636363FF636363FF6363
+      63FF636363FF636363FF636363FF636363FF636363FF636363FF636363FF6363
+      63FF636363FF636363FF636363FF636363FFFFE0E8FFFFDDE5FFFFDAE3FFFFD6
+      E1FF636363FFFFE0E8FFFFDDE5FFFFDAE3FFFFD6E1FF636363FFFFD0DBFFFFCD
+      D9FFFFC9D7FFFFC7D4FF636363FF636363FFFFE4EBFFFFE1E8FFFFDEE5FFFFDA
+      E3FF636363FFFFE4EBFFFFE1E8FFFFDEE5FFFFDAE3FF636363FFFFD4DEFFFFD1
+      DCFFFFCED9FFFFCAD6FF636363FF636363FFFFE8EDFFFFE5EBFFFFE2E9FFFFDF
+      E6FF636363FFFFE8EDFFFFE5EBFFFFE2E9FFFFDFE6FF636363FFFFD8E1FFFFD5
+      DFFFFFD1DDFFFFCEDAFF636363FF636363FFFFECF1FFFFE9EEFFFFE6ECFFFFE3
+      E9FF636363FFFFECF1FFFFE9EEFFFFE6ECFFFFE3E9FF636363FFFFDCE4FFFFD9
+      E2FFFFD6E0FFFFD3DDFF636363FF636363FF636363FF636363FF636363FF6363
+      63FF636363FF636363FF636363FF636363FF636363FF636363FF636363FF6363
+      63FF636363FF636363FF636363FF000000000000000000000000000000000000
+      00000000000000B826FF00B826FFFFFFFF00FFFFFF00FFFFFF00000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000B826FF00B826FF00B826FFFFFFFF00FFFFFF0000000000000000000000
+      00000000000000000000000000000000000000000000000000000000000000B8
+      26FF00B826FF00B826FF00B826FF00B826FF00B826FF00B826FF00B826800000
+      000000000000000000000000000000000000000000000000000000B826FF00B8
+      26FF00B826FF00B826FF00B826FF00B826FF00B826FF00B826FF00B826FF00B8
+      2680000000000000000000000000000000000000000000B8260000B8260000B8
+      26FF00B826FF00B826FF00B826FF00B826FF00B826FF00B826FF00B826FF00B8
+      26FF00B8268000000000000000000000000000B8260000B8260000B8260000B8
+      260000B826FF00B826FF00B826FFFFFFFF00FFFFFF0000B826FF00B826FF00B8
+      26FF00B826FF00B82680000000000000000000B8260000B8260000B8260000B8
+      260000B8260000B826FF00B826FFFFFFFF000000000000B8268000B826FF00B8
+      26FF00B826FF00B826FF000000000000000000B8260000B8260000B8260000B8
+      2600000000000000000000B826FF00000000000000000000000000B8268000B8
+      26FF00B826FF00B826FF000000000000000000B8260000B8260000B826000000
+      00000000000000000000000000000000000000000000000000000000000000B8
+      26FF00B826FF00B826FF0000000000B826FF00B826FF00B826FF00B826FF0000
+      00000000000000000000000000000000000000000000000000000000000000B8
+      26FF00B826FF00B826FF0000000000B826FF00B826FF00B826FF00B826FF00B8
+      268000000000000000000000000000000000000000000000000000B8268000B8
+      26FF00B826FF00B826FF000000000000000000B826FF00B826FF00B826FF00B8
+      26FF00B826800000000000000000000000000000000000B8268000B826FF00B8
+      26FF00B826FF00B826FF000000000000000000B8268000B826FF00B826FF00B8
+      26FF00B826FF00B82680000000000000000000B8268000B826FF00B826FF00B8
+      26FF00B826FF00B8268000000000000000000000000000B8268000B826FF00B8
+      26FF00B826FF00B826FF00B826FF00B826FF00B826FF00B826FF00B826FF00B8
+      26FF00B82680000000000000000000000000000000000000000000B8268000B8
+      26FF00B826FF00B826FF00B826FF00B826FF00B826FF00B826FF00B826FF00B8
+      26800000000000000000000000000000000000000000000000000000000000B8
+      268000B826FF00B826FF00B826FF00B826FF00B826FF00B826FF00B826800000
+      0000000000000000000000000000
+    }
+  end
+end

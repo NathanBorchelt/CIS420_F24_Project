@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="parts-schema.xsd">
+
+  <!--
+       Copyright (C) 2014 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved.  This file is offered as-is,
+       without any warranty.  
+  -->
+
+  <!-- DRAM Memory -->
+  <!-- Power is set to 10W per DIMM module (more precise info is not available) -->
+  
+  <!-- 16 GBytes -->
+  <item main_memory_type="PC3" main_memory_speed="12800" main_memory_registers="registered" node_power="+10" node_free_dimm_count="-1" node_cost="+201" node_main_memory_size="+16">16 GB</item>
+
+  <!-- 32 GBytes -->
+  <item main_memory_type="PC3" main_memory_speed="12800" main_memory_registers="registered" node_power="+20" node_free_dimm_count="-2" node_cost="+402" node_main_memory_size="+32">32 GB</item>
+
+  <!-- 64 GBytes -->
+  <item main_memory_type="PC3" main_memory_speed="12800" main_memory_registers="registered" node_power="+40" node_free_dimm_count="-4" node_cost="+804" node_main_memory_size="+64">64 GB</item>
+
+</itemslist>

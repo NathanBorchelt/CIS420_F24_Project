@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <!--
+       Copyright (C) 2012 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved.  This file is offered as-is,
+       without any warranty.  
+  -->
+
+  <!-- "Start" and "End" vertices (defined before any included file starts to use them) -->
+  <item>Start</item>
+  <item>End</item>
+
+  <!-- A fictitious item that updates technical characteristics -->
+  <item ups_cost_per_kw="ups_cost / (ups_power_rating / 1000)">Update characteristics</item>
+  <item>Pre-end</item>
+  <edge from="Pre-end" to="Update characteristics"></edge>
+  <edge from="Update characteristics" to="End"></edge>
+
+  <!-- Load UPS configurations from this file -->
+  <include>ups-liebert-apm.xml</include>
+
+</itemslist>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+    <!--
+       Copyright (C) 2014 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved. This file is offered as-is,
+       without any warranty.  
+    -->
+
+    <!-- Power consumption: see http://h18004.www1.hp.com/products/quickspecs/productbulletin.html#spectype=north_america&type=html&docid=12586 -->
+    <!-- Weight is taken from a similar QDR InfiniBand switch model 489184-B21: http://h30094.www3.hp.com/product/sku/3981900/mfg_partno/489184-B21 -->
+    <!-- Prices are by Hewlett-Packard web store, see: http://h30094.www3.hp.com/product/sku/10409988/mfg_partno/648311-B21 -->
+    <!-- Prices last updated: 09 February 2014 -->
+    
+    <!-- Important! This switch has 34 ports; 16 are always connected to blade servers in the enclosure where the switch is installed,
+         the remaining 18 are available with QSFP connectors and go to the outside, to other switches. However, the network design tool
+         does not understand that ports are not all the same and tries to split 34 ports into two halves, with 17 ports going to
+         servers and the other 17 going outside. We specify the number of ports as 32 to cater to the network design tool (until it
+         becomes smarter), but keep in mind that you have two more ports for your own usage. -->
+
+    <item network_switch_model="HP 4X FDR InfiniBand Switch Module for c-Class BladeSystem (648312-B21) (34 ports)" network_vendor="Mellanox" network_technology="IB 4X FDR" network_switch_port_count="32" network_spine_modules="0" network_leaf_modules="0" network_switch_connector="QSFP" network_switch_size="0" network_switch_weight="3.45 " network_switch_power="150" network_switch_cost="12995">HP 4X FDR InfiniBand Switch Module for c-Class BladeSystem (648312-B21) (34 ports)</item>
+    <edge from="Start" to="HP 4X FDR InfiniBand Switch Module for c-Class BladeSystem (648312-B21) (34 ports)"/>
+    <edge from="HP 4X FDR InfiniBand Switch Module for c-Class BladeSystem (648312-B21) (34 ports)" to="End"/>
+
+</itemslist>

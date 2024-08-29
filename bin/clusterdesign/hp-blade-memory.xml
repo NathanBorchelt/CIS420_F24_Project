@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="parts-schema.xsd">
+
+  <!--
+       Copyright (C) 2012 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved.  This file is offered as-is,
+       without any warranty.  
+  -->
+
+  <!-- HP Memory -->
+  <!-- For each configuration, power is set to 18W (because no precise info is available) -->
+  <!-- Low-power memory runs one step slower -->
+
+  <!-- 32 GBytes, in different manners: 8x4GB, 4x8GB, 2x16GB -->
+  <item main_memory_type="PC3" main_memory_speed="10600" main_memory_registers="registered" node_power="+18" node_free_dimm_count="-8" node_cost="+840" node_main_memory_size="+32" main_memory_layout_per_cpu="8x4GB">32 GB PC3-10600R 8x4GB 1Rank Memory</item>
+
+  <item main_memory_type="PC3" main_memory_speed="10600" main_memory_registers="registered" node_power="+18" node_free_dimm_count="-4" node_cost="+796" node_main_memory_size="+32" main_memory_layout_per_cpu="4x8GB">32 GB PC3-10600R 4x8GB 2Rank Memory</item>
+
+  <item main_memory_type="PC3" main_memory_speed="10600" main_memory_registers="registered" main_memory_low_voltage="yes" node_power="+18" node_free_dimm_count="-2" node_cost="+1798" node_main_memory_size="+32" main_memory_layout_per_cpu="2x16GB">32 GB PC3L-10600R 2x16GB 2Rank Memory - Low Voltage</item>
+
+  <item main_memory_type="PC3" main_memory_speed="12800" main_memory_registers="registered" node_power="+18" node_free_dimm_count="-4" node_cost="+996" node_main_memory_size="+32" main_memory_layout_per_cpu="4x8GB">32 GB PC3-12800R 4x8GB 1Rank Memory</item>
+  
+  <!-- 64 GBytes: 16x4GB, 8x8GB, 4x16GB -->
+
+  <item main_memory_type="PC3" main_memory_speed="10600" main_memory_registers="registered" main_memory_low_voltage="yes" node_power="+18" node_free_dimm_count="-8" node_cost="+1592" node_main_memory_size="+64" main_memory_layout_per_cpu="8x8GB">64 GB PC3L-10600R 8x8GB 2Rank Memory - Low Voltage</item>
+
+  <item main_memory_type="PC3" main_memory_speed="10600" main_memory_registers="registered" main_memory_low_voltage="yes" node_power="+18" node_free_dimm_count="-4" node_cost="+3596" node_main_memory_size="+64" main_memory_layout_per_cpu="4x16GB">64 GB PC3L-10600R 4x16GB 2Rank Memory - Low Voltage</item>
+
+  <item main_memory_type="PC3" main_memory_speed="12800" main_memory_registers="registered" node_power="+18" node_free_dimm_count="-16" node_cost="+2224" node_main_memory_size="+64" main_memory_layout_per_cpu="16x4GB">64 GB PC3-12800R 16x4GB 1Rank Memory</item>
+
+  <item main_memory_type="PC3" main_memory_speed="12800" main_memory_registers="registered" node_power="+18" node_free_dimm_count="-8" node_cost="+1992" node_main_memory_size="+64" main_memory_layout_per_cpu="8x8GB">64 GB PC3-12800R 8x8GB 1Rank Memory</item>
+
+</itemslist>

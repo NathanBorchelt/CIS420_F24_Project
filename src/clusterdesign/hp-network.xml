@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <!--
+       Copyright (C) 2012 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved.  This file is offered as-is,
+       without any warranty.  
+  -->
+
+  <!-- HP Networking Equipment -->
+  
+  <item node_cost="+1295" network_tech="+ InfiniBand-4X-QDR" node_infiniband_port_count="+2">HP 4X QDR IB CX2 Dual Port Mezz HCA</item>
+  
+  <item node_cost="+0" network_tech="+ 10GbE" node_ten_gigabit_port_count="+2">Built-In 10GbE NC551i FlexFabric 2 Ports</item>
+  
+  <item node_cost="+0" network_tech="+ Gigabit Ethernet" node_gigabit_port_count="+1">Built-In Gigabit HCA</item>
+  
+</itemslist>

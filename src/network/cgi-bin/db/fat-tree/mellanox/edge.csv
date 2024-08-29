@@ -1,0 +1,4 @@
+"Configuration ID","enabled","network_leaf_modules","network_spine_modules","network_switch_connector","network_switch_cost","network_switch_model","network_switch_port_count","network_switch_power","network_switch_size","network_switch_weight","network_technology","network_vendor"
+"1","True","0","0","QSFP","10460","Mellanox SX6036 (36 ports)","36","207","1","8","IB 4X FDR","Mellanox"
+"2","True","6","3","QSFP","112830","Mellanox SX6506 (with 108 ports)","108","2611","7","77,3","IB 4X FDR","Mellanox"
+"3","True","36","18","QSFP","603550","Mellanox SX6536 (with 648 ports)","648","9072","31","327,4","IB 4X FDR","Mellanox"

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+    <!--
+       Copyright (C) 2013 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved. This file is offered as-is,
+       without any warranty.  
+    -->
+
+    <!-- Power consumption: typical, with active cables -->
+    <!-- Prices are courtesy of Colfax International, see: http://www.colfaxdirect.com -->
+    <!-- Prices last updated: 29 December 2013 -->
+
+    <item network_switch_model="Mellanox SX6036 (36 ports)" network_vendor="Mellanox" network_technology="IB 4X FDR" network_switch_port_count="36" network_spine_modules="0" network_leaf_modules="0" network_switch_connector="QSFP" network_switch_size="1" network_switch_weight="8" network_switch_power="207" network_switch_cost="10460">Mellanox SX6036 (36 ports)</item>
+    <edge from="Start" to="Mellanox SX6036 (36 ports)"/>
+    <edge from="Mellanox SX6036 (36 ports)" to="End"/>
+
+</itemslist>

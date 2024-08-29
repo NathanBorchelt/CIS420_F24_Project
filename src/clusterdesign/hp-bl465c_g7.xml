@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <!--
+       Copyright (C) 2012 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved.  This file is offered as-is,
+       without any warranty.  
+  -->
+
+  <!-- HP BL465c G7 Server -->
+
+  <!-- Compute node definition -->
+  <item node_model="HP BL465c G7" node_vendor="HP" node_form_factor="HP Blade" node_cost="1411" node_power="63" node_weight="6" node_equipment_size="0.625" enclosure_size="10" node_free_dimm_count="16">HP BL465c G7</item>
+  <!-- The equipment size specified here is a preliminary approximation, to be calculated more precisily at the placement stage.
+       The chassis can house 16 blade servers, and its size is 10U, therefore each server "takes up" approximately 0.625U -->
+
+  <edge from="Start" to="HP BL465c G7"></edge>
+  
+  <!-- Server description starts with CPUs -->
+  <!-- 10 CPUs of 6100 Series -->
+  <edge from="HP BL465c G7" to="AMD Opteron 6128 HE" to-partition="CPU1_6100_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6132 HE" to-partition="CPU1_6100_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6134" to-partition="CPU1_6100_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6136" to-partition="CPU1_6100_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6140" to-partition="CPU1_6100_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6164 HE" to-partition="CPU1_6100_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6166 HE" to-partition="CPU1_6100_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6172" to-partition="CPU1_6100_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6174" to-partition="CPU1_6100_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6176" to-partition="CPU1_6100_SERIES"></edge>
+
+  <!-- 8 CPUs of 6200 Series -->
+  <edge from="HP BL465c G7" to="AMD Opteron 6212" to-partition="CPU1_6200_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6220" to-partition="CPU1_6200_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6234" to-partition="CPU1_6200_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6238" to-partition="CPU1_6200_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6262 HE" to-partition="CPU1_6200_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6272" to-partition="CPU1_6200_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6274" to-partition="CPU1_6200_SERIES"></edge>
+  <edge from="HP BL465c G7" to="AMD Opteron 6276" to-partition="CPU1_6200_SERIES"></edge>
+  
+  <!-- Edges from the 1st partition to the 2nd partition -->
+  <!-- Second CPUs. They must match the first CPU -->
+  <edge from="AMD Opteron 6128 HE" from-partition="CPU1_6100_SERIES" to-partition="CPU2_6100_SERIES"></edge>
+  <edge from="AMD Opteron 6132 HE" from-partition="CPU1_6100_SERIES" to-partition="CPU2_6100_SERIES"></edge>
+  <edge from="AMD Opteron 6134" from-partition="CPU1_6100_SERIES" to-partition="CPU2_6100_SERIES"></edge>
+  <edge from="AMD Opteron 6136" from-partition="CPU1_6100_SERIES" to-partition="CPU2_6100_SERIES"></edge>
+  <edge from="AMD Opteron 6140" from-partition="CPU1_6100_SERIES" to-partition="CPU2_6100_SERIES"></edge>
+  <edge from="AMD Opteron 6164 HE" from-partition="CPU1_6100_SERIES" to-partition="CPU2_6100_SERIES"></edge>
+  <edge from="AMD Opteron 6166 HE" from-partition="CPU1_6100_SERIES" to-partition="CPU2_6100_SERIES"></edge>
+  <edge from="AMD Opteron 6172" from-partition="CPU1_6100_SERIES" to-partition="CPU2_6100_SERIES"></edge>
+  <edge from="AMD Opteron 6174" from-partition="CPU1_6100_SERIES" to-partition="CPU2_6100_SERIES"></edge>
+  <edge from="AMD Opteron 6176" from-partition="CPU1_6100_SERIES" to-partition="CPU2_6100_SERIES"></edge>
+
+  <edge from="AMD Opteron 6212" from-partition="CPU1_6200_SERIES" to-partition="CPU2_6200_SERIES"></edge>
+  <edge from="AMD Opteron 6220" from-partition="CPU1_6200_SERIES" to-partition="CPU2_6200_SERIES"></edge>
+  <edge from="AMD Opteron 6234" from-partition="CPU1_6200_SERIES" to-partition="CPU2_6200_SERIES"></edge>
+  <edge from="AMD Opteron 6238" from-partition="CPU1_6200_SERIES" to-partition="CPU2_6200_SERIES"></edge>
+  <edge from="AMD Opteron 6262 HE" from-partition="CPU1_6200_SERIES" to-partition="CPU2_6200_SERIES"></edge>
+  <edge from="AMD Opteron 6272" from-partition="CPU1_6200_SERIES" to-partition="CPU2_6200_SERIES"></edge>
+  <edge from="AMD Opteron 6274" from-partition="CPU1_6200_SERIES" to-partition="CPU2_6200_SERIES"></edge>
+  <edge from="AMD Opteron 6276" from-partition="CPU1_6200_SERIES" to-partition="CPU2_6200_SERIES"></edge>
+  
+  <!-- Vertices in partition CPU2_6100_SERIES all connect to a single vertex -->
+  <item>END_OF_CPU2_6100_SERIES</item>
+  <connect from-partition="CPU2_6100_SERIES" to="END_OF_CPU2_6100_SERIES"></connect>
+  <!-- Same for partition CPU2_6200_SERIES -->
+  <item>END_OF_CPU2_6200_SERIES</item>
+  <connect from-partition="CPU2_6200_SERIES" to="END_OF_CPU2_6200_SERIES"></connect>
+  
+  <!-- Memory -->
+  <!-- Compatibility relations.
+       Newer 6200 Series CPUs shall use only the fastest PC3-12800 memory, although they are also compatible with the slower PC3-10600 memory.
+       Older 6100 Series CPUs are only compatible with the older PC3-10600 memory -->
+
+  <!-- In case of 6100 Series CPU, PC3-10600 memory is used. -->
+    <!-- Memory options for CPU2. -->
+      <edge from="END_OF_CPU2_6100_SERIES" to="32 GB PC3-10600R 8x4GB 1Rank Memory" to-partition="RAM_FOR_CPU2_6100_SERIES"></edge>
+      <edge from="END_OF_CPU2_6100_SERIES" to="32 GB PC3-10600R 4x8GB 2Rank Memory" to-partition="RAM_FOR_CPU2_6100_SERIES"></edge>
+      <edge from="END_OF_CPU2_6100_SERIES" to="32 GB PC3L-10600R 2x16GB 2Rank Memory - Low Voltage" to-partition="RAM_FOR_CPU2_6100_SERIES"></edge>
+      <edge from="END_OF_CPU2_6100_SERIES" to="64 GB PC3L-10600R 8x8GB 2Rank Memory - Low Voltage" to-partition="RAM_FOR_CPU2_6100_SERIES"></edge>
+      <edge from="END_OF_CPU2_6100_SERIES" to="64 GB PC3L-10600R 4x16GB 2Rank Memory - Low Voltage" to-partition="RAM_FOR_CPU2_6100_SERIES"></edge>
+  
+      <!-- Memory options for CPU1. We make sure that CPU1 and CPU2 have the same amount of memory (for symmetry), although in generic systems
+           this is not strictly necessary. "to" is not used; defaults to "from". Copies of vertices are created automatically. -->
+      <edge from="32 GB PC3-10600R 8x4GB 1Rank Memory" from-partition="RAM_FOR_CPU2_6100_SERIES" to-partition="RAM_FOR_CPU1_6100_SERIES"></edge>
+      <edge from="32 GB PC3-10600R 4x8GB 2Rank Memory" from-partition="RAM_FOR_CPU2_6100_SERIES" to-partition="RAM_FOR_CPU1_6100_SERIES"></edge>
+      <edge from="32 GB PC3L-10600R 2x16GB 2Rank Memory - Low Voltage" from-partition="RAM_FOR_CPU2_6100_SERIES" to-partition="RAM_FOR_CPU1_6100_SERIES"></edge>
+      <edge from="64 GB PC3L-10600R 8x8GB 2Rank Memory - Low Voltage" from-partition="RAM_FOR_CPU2_6100_SERIES" to-partition="RAM_FOR_CPU1_6100_SERIES"></edge>
+      <edge from="64 GB PC3L-10600R 4x16GB 2Rank Memory - Low Voltage" from-partition="RAM_FOR_CPU2_6100_SERIES" to-partition="RAM_FOR_CPU1_6100_SERIES"></edge>
+      
+      <!-- If only CPU1 is present, it can be connected to RAM_FOR_CPU1. -->
+      <connect from-partition="CPU1_6100_SERIES" to-partition="RAM_FOR_CPU1_6100_SERIES"></connect>
+      
+      
+<!-- So far, we have 10 CPUs of 6100 Series, and they can be connected to any of the 5 possible PC3-10600 memory options. This makes
+     for 50 combinations of CPU1+RAM1.
+     But we can have two CPUs in one server (the same memory will be added automatically), so we have 100 combinations:
+     CPU1+RAM1 (50 combinations) + CPU1+CPU2+RAM1+RAM2 (50 combinations). -->
+
+      
+  <!-- The same repeats for 6200 Series CPUs, but this time the faster PC3-12800 memory is used. -->
+      <!-- First we add compatible memory for CPU2 -->  
+      <edge from="END_OF_CPU2_6200_SERIES" to="32 GB PC3-12800R 4x8GB 1Rank Memory" to-partition="RAM_FOR_CPU2_6200_SERIES"></edge>
+      <edge from="END_OF_CPU2_6200_SERIES" to="64 GB PC3-12800R 8x8GB 1Rank Memory" to-partition="RAM_FOR_CPU2_6200_SERIES"></edge>
+      
+      <!-- Then we connect each memory type of CPU2 to the same memory type for CPU1. -->
+      <edge from="32 GB PC3-12800R 4x8GB 1Rank Memory" from-partition="RAM_FOR_CPU2_6200_SERIES" to-partition="RAM_FOR_CPU1_6200_SERIES"></edge>
+      <edge from="64 GB PC3-12800R 8x8GB 1Rank Memory" from-partition="RAM_FOR_CPU2_6200_SERIES" to-partition="RAM_FOR_CPU1_6200_SERIES"></edge>
+  
+      <!-- If only CPU1 is present, it can be connected to RAM_FOR_CPU1. -->
+      <connect from-partition="CPU1_6200_SERIES" to-partition="RAM_FOR_CPU1_6200_SERIES"></connect>
+      
+<!-- There are 8 CPU 6200 Series models, and each can be connected to any of the 2 possible PC3-12800 memory options. This makes for
+     16 combinations. As we have two CPUs in a server, this is multiplied by 2 and is equal to 32 combinations.
+     With 100 combinations of 6100 Series CPU described above, this gives 100+32=132 combinations. -->
+      
+  <!-- This ends the available memory options. -->
+       
+
+  <!-- Connect all CPU combinations to the built-in interconnect which is always present -->
+  <connect from-partition="RAM_FOR_CPU1_6100_SERIES" to="Built-In 10GbE NC551i FlexFabric 2 Ports"></connect>
+  <connect from-partition="RAM_FOR_CPU1_6200_SERIES" to="Built-In 10GbE NC551i FlexFabric 2 Ports"></connect>
+  
+  <!-- From the built-in interconnect, we can go directly to an End... -->
+  <edge from="Built-In 10GbE NC551i FlexFabric 2 Ports" to="Pre-end"></edge>
+  <!-- ... or add another interconnection option -->
+  <edge from="Built-In 10GbE NC551i FlexFabric 2 Ports" to="HP 4X QDR IB CX2 Dual Port Mezz HCA"></edge>
+  <edge from="HP 4X QDR IB CX2 Dual Port Mezz HCA" to="Pre-end"></edge>
+  
+<!-- Any of the 132 combinations above can have one of the 2 available networking options.
+     This gives a total of 132*2=264 combinations for this server. -->
+
+</itemslist>

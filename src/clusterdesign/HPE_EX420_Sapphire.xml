@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+<item node_model="HPE Cray EX420 Sapphire" node_vendor="HPE" node_form_factor="HPE Cray EX4000" node_cost="+5200" node_power="100" node_weight="18" node_equipment_size="0.656" enclosure_size="42" node_free_dimm_count="16">HPE Cray EX420 Sapphire</item>
+
+<edge from="Start" to="HPE Cray EX420 Sapphire"></edge>
+
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Max 9480" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Max 9470" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Max 9468" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Max 9462" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Max 9460" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8490H" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8480+" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8470Q" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8470N" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8468V" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8468H" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8462Y+" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8460Y+" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8460H" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8458P" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8454H" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8452Y" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8450H" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8444H" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6458Q" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6454S" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6448Y" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6448H" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6444Y" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6442Y" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6438Y+" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6438N" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6438M" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6434H" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6428N" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6426Y" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6418H" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6416H" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 5420+" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 5418Y" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 5418N" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 5416S" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 5415+" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Silver 4416+" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Silver 4410Y" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Silver 4410T" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8470" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Platinum 8468" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6434" to-partition="CPU1_XEON4_SERIES"></edge>
+<edge from="HPE Cray EX420 Sapphire" to="Intel Sapphire Rapids Gold 6430" to-partition="CPU1_XEON4_SERIES"></edge>
+
+
+<edge from="Intel Sapphire Rapids Max 9480" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Max 9470" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Max 9468" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Max 9462" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Max 9460" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8490H" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8480+" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8470Q" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8470N" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8468V" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8468H" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8462Y+" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8460Y+" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8460H" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8458P" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8454H" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8452Y" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8450H" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8444H" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6458Q" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6454S" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6448Y" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6448H" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6444Y" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6442Y" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6438Y+" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6438N" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6438M" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6434H" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6428N" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6426Y" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6418H" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6416H" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 5420+" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 5418Y" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 5418N" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 5416S" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 5415+" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Silver 4416+" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Silver 4410Y" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Silver 4410T" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8470" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Platinum 8468" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6434" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+<edge from="Intel Sapphire Rapids Gold 6430" from-partition="CPU1_XEON4_SERIES" to-partition="CPU2_XEON4_SERIES"></edge>
+
+<item>END_OF_CPU2_XEON4_SERIES</item>
+<connect from-partition="CPU2_XEON4_SERIES" to="END_OF_CPU2_XEON4_SERIES"></connect>
+
+<edge from="END_OF_CPU2_XEON4_SERIES" to="64 GB PC5-38400 1x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_XEON4_SERIES"></edge>
+<edge from="END_OF_CPU2_XEON4_SERIES" to="256 GB PC5-38400 4x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_XEON4_SERIES"></edge>
+<edge from="END_OF_CPU2_XEON4_SERIES" to="512 GB PC5-38400 8x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_XEON4_SERIES"></edge>
+
+
+<edge from="64 GB PC5-38400 1x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_XEON4_SERIES" to-partition="RAM_FOR_CPU1_XEON4_SERIES"></edge>
+<edge from="256 GB PC5-38400 4x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_XEON4_SERIES" to-partition="RAM_FOR_CPU1_XEON4_SERIES"></edge>
+<edge from="512 GB PC5-38400 8x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_XEON4_SERIES" to-partition="RAM_FOR_CPU1_XEON4_SERIES"></edge>
+
+
+<connect from-partition="CPU1_XEON4_SERIES" to-partition="RAM_FOR_CPU1_XEON4_SERIES"></connect>
+<connect from-partition="RAM_FOR_CPU1_XEON4_SERIES" to="Built-In 10GbE NC551i FlexFabric 2 Ports"></connect>
+</itemslist>

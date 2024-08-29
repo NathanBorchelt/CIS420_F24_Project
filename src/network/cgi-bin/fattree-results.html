@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>Network Design Tool (Fat-tree and Torus, Demo): Results</title></head><body>
+<div style="text-align: center;"><span style="font-style: italic;">DISCLAIMER:
+USE THIS TOOL AT YOUR OWN RISK!<br>
+Please also read this <a style="color: red;" href="?task=help" target="_blank">price disclaimer</a>.<br>
+</span>
+</div>
+
+<br>
+
+<form><input value="Go back" onclick="history.go(-1)" type="button"></form>
+
+<br>
+
+<table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
+
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;"><span style="font-weight: bold; font-style: italic;">Capacity and
+Expandability</span><br>
+      </td>
+      <td style="vertical-align: top; width: 10%;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Type of network:<br>
+      </td>
+      <td style="vertical-align: top;">%s<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Initial number of nodes
+(as per your request):<br>
+&nbsp; <small><a href="../performance/fluentperf/fluentperf" target="_blank">(Calculate
+performance)</a></small><br>
+      </td>
+      <td style="vertical-align: middle;">%d<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Initial number of spare
+ports on
+edge level:<br>
+      </td>
+      <td style="vertical-align: top;">%d</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Expandable to, nodes (as
+per your request):<br>
+      </td>
+      <td style="vertical-align: top;">%d</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span style="font-weight: bold; font-style: italic;">Edge switches port
+distribution</span><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">To compute nodes:<br>
+      </td>
+      <td style="vertical-align: top;">%d<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">To the core level:<br>
+      </td>
+      <td style="vertical-align: top;">%d<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Resulting blocking factor:<br>
+      </td>
+      <td style="vertical-align: top;">%.1f<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span style="font-weight: bold; font-style: italic;">Procurement Information</span><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Model of edge switch:<br>
+      </td>
+      <td style="vertical-align: top;">%s</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Initial number of edge
+switches:<br>
+      </td>
+      <td style="vertical-align: top;">%d</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Model of core switch:<br>
+      </td>
+      <td style="vertical-align: top;">%s</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Number of core switches:<br>
+      </td>
+      <td style="vertical-align: top;">%d</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Cables:<br>
+      </td>
+      <td style="vertical-align: top;">%d</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span style="font-weight: bold; font-style: italic;">Quality Metrics</span><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Links between core and
+edge
+layers run in bundles of (denotes wiring regularity):<br>
+      </td>
+      <td style="vertical-align: top;">%s</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Core level port
+utilization (denotes used ports), percent:<br>
+      </td>
+      <td style="vertical-align: top;">%s<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span style="font-weight: bold; font-style: italic;">Technical
+Characteristics</span><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Power of network
+equipment, watts:<br>
+      </td>
+      <td style="vertical-align: top;">%d</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Weight of network
+equipment, kilograms:<br>
+      </td>
+      <td style="vertical-align: top;">%.1f</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Size of network
+equipment, in
+rack mount units:<br>
+      </td>
+      <td style="vertical-align: top;">%d</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp; Cost of network (switches
+and
+cables):<br>
+      </td>
+      <td style="vertical-align: top;">%d<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<form><input value="Go back" onclick="history.go(-1)" type="button"></form>
+
+<br>
+
+<br>
+</body></html>

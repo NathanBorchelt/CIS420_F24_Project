@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <!--
+       Copyright (C) 2013 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved. This file is offered as-is,
+       without any warranty.  
+  -->
+
+    <!-- Prices are courtesy of Colfax International, see: http://www.colfaxdirect.com -->
+    <!-- Prices last updated: 29 December 2013 -->
+    
+    <!-- Management module. SKU: MSX6000MAR -->
+    <item network_switch_weight="+3.1" network_switch_power="+14" network_switch_cost="+5940">MSX6000MAR Management module</item>
+
+</itemslist>

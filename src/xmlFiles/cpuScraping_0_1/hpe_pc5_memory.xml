@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="parts-schema.xsd">
+
+<item main_memory_type="PC5" main_memory_speed="38400" main_memory_registers="registered" node_power="+18" node_free_dimm_count="-1" node_cost="+499" node_main_memory_size="+64" main_memory_layout_per_cpu="1x64GB">64 GB PC5-38400 1x64GB 2Rank Memory</item>
+
+
+
+</itemslist><item main_memory_type="PC5" main_memory_speed="38400" main_memory_registers="registered" node_power="+18" node_free_dimm_count="-6" node_cost="+2994" node_main_memory_size="+384" main_memory_layout_per_cpu="6x64GB">384 GB PC5-38400 6x64GB 2Rank Memory</item>
+
+
+
+</itemslist><item main_memory_type="PC5" main_memory_speed="38400" main_memory_registers="registered" node_power="+18" node_free_dimm_count="-12" node_cost="+5988" node_main_memory_size="+768" main_memory_layout_per_cpu="12x64GB">768 GB PC5-38400 12x64GB 2Rank Memory</item>
+
+
+
+</itemslist>

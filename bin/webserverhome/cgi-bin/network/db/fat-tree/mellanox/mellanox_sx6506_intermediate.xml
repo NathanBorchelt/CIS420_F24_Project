@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+    <!--
+       Copyright (C) 2013 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved. This file is offered as-is,
+       without any warranty.  
+    -->
+
+    <!-- Include a configuration that has all 108 ports -->
+    <include>mellanox_sx6506_108_ports_only.xml</include>    
+
+    <!-- All 6 leaf modules are sequentially connected to one another. But there are
+         also configurations that use from 1 to 5 modules. Hence we connect the first 5
+         leaf partitions directly to the "End" vertex. This way, configurations with 1..5 leaf
+         modules also become possible. -->
+    <connect from-partition="108_L1" to="End"/>
+    <connect from-partition="108_L2" to="End"/>
+    <connect from-partition="108_L3" to="End"/>
+    <connect from-partition="108_L4" to="End"/>
+    <connect from-partition="108_L5" to="End"/>
+
+</itemslist>

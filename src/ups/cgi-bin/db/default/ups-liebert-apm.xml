@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <!--
+       Copyright (C) 2012 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved.  This file is offered as-is,
+       without any warranty.  
+  -->
+
+  <!-- UPS Model. Weight is given without any 15kW power blocks installed. -->
+  <item ups_model="Liebert APM (up to 45kW)" ups_size_racks="1" ups_weight="383" ups_cost="29000">Liebert APM (up to 45kW)</item>
+  
+  <!-- Liebert APM allows to expand UPS capabilities in 15kW blocks: -->
+  <item ups_power_rating="+15000" ups_weight="+34" ups_heat="+900" ups_cost="+6000">Liebert APM 15kW block</item>
+  
+  <!-- Up to three 15kW blocks can be installed into a 45kW frame, thus providing three distinct variants ot the UPS,
+       with 15kW, 30kW and 45kW power ratings. Each variant has its own backup time: 49 min, 21 min and 12 min,
+       correspondingly. From each "backup time" item, there goes an edge to the "Pre-end" vertex.
+  -->
+  <item ups_backup_time="49*60">Backup 49 min</item>
+  <edge from="Backup 49 min" to="Pre-end"></edge>
+  <item ups_backup_time="21*60">Backup 21 min</item>
+  <edge from="Backup 21 min" to="Pre-end"></edge>
+  <item ups_backup_time="12*60">Backup 12 min</item>
+  <edge from="Backup 12 min" to="Pre-end"></edge>
+
+  <!-- The graph flows linearly from start to end. We put copies of the 15kW block item into their respective
+       partitions. From each 15kW block, the edge can go either to the "backup time" item (and then to the "Pre-end"),
+       or proceed to the next 15kW block -->
+
+  <edge from="Start" to="Liebert APM (up to 45kW)"></edge>
+  <edge from="Liebert APM (up to 45kW)" to="Liebert APM 15kW block" to-partition="1 block partition"></edge>
+  <edge from="Liebert APM 15kW block" from-partition="1 block partition" to="Backup 49 min"></edge>
+  <edge from="Liebert APM 15kW block" from-partition="1 block partition" to-partition="2 blocks partition"></edge>
+  <edge from="Liebert APM 15kW block" from-partition="2 blocks partition" to="Backup 21 min"></edge>
+  <edge from="Liebert APM 15kW block" from-partition="2 blocks partition" to-partition="3 blocks partition"></edge>
+  <edge from="Liebert APM 15kW block" from-partition="3 blocks partition" to="Backup 12 min"></edge>
+
+</itemslist>

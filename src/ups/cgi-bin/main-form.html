@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>UPS Sizing Tool</title></head><body>
+<div style="text-align: center;"><span style="font-style: italic;">DISCLAIMER:
+USE THIS TOOL AT YOUR OWN RISK!</span><br>
+</div>
+
+<br>
+
+<form name="design" action="" method="get">
+  <fieldset><legend>Choose the optimal UPS for your computing needs</legend>
+  <input name="task" value="design" type="hidden"><br>
+  <table style="text-align: left; width: 940px; height: 49px;" border="0" cellpadding="2" cellspacing="2">
+    <tbody>
+      <tr>
+        <td style="vertical-align: top;"><span style="font-weight: bold;">What is the total power of your computing
+hardware that requires UPS backup, in watts?</span><br>
+Type here the total power, in watts, of all hardware that needs backup
+electrical power: compute nodes, network hardware, storage systems, and
+-- optionally, but recommended -- cooling systems.<br>
+        <br>
+        </td>
+        <td style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br>
+        </td>
+        <td style="vertical-align: middle;"><input name="power" value="12500" size="7"> </td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"><span style="font-weight: bold;">How long should be the battery backup time,
+        <span style="color: red;">in seconds</span>?</span><br>
+If backup time is not important, leave this blank (or zero)<br>
+        </td>
+        <td style="vertical-align: top;"><br>
+        </td>
+        <td style="vertical-align: middle;"><input name="min_ups_backup_time" value="0" size="7"></td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <input value="Calculate" type="submit"></fieldset>
+</form>
+
+<br>
+
+See also: <a href="http://clusterdesign.org/ups-sizing" target="_blank">detailed
+description</a>, <a href="?task=help" target="_blank">help</a> for
+automated
+queries.
+</body></html>

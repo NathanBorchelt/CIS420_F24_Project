@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <include>amd-epyc-Genoa.xml</include>
+  <include>hpe_pc5_memory.xml</include>
+  <!--HP netork only included for testing, need different for it to be more realistic-->
+  <include>hp-network.xml</include>
+ 
+  <item>Start</item>
+  <item>End</item>
+
+  <item node_peak_performance="cpu_cores * node_cpu_count * cpu_frequency * cpu_flops_per_cycle" node_main_memory_per_core="node_main_memory_size / cpu_cores / node_cpu_count">Update characteristics</item>
+  <item>Pre-end</item>
+  <edge from="Pre-end" to="Update characteristics"></edge>
+  <edge from="Update characteristics" to="End"></edge>
+
+  <include>HPE_DL365_Server.xml</include>
+</itemslist>

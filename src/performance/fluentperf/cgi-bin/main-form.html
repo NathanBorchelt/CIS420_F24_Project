@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <script type="text/javascript">
+<!--
+function validateForm ()
+{
+var c = document.forms["design"]["cores"].value;
+var p = document.forms["design"]["performance"].value;
+// If either both filled or both empty:
+if ((c!=null && c!="") == (p!=null && p!=""))
+  {
+  alert("One and only one field must be supplied: either Cores or Performance");
+  return false;
+  }
+}
+//-->
+  </script>
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>Performance model for ANSYS Fluent 13.0.0 "truck_111m"
+benchmark (Demo)</title>
+
+  
+</head><body>
+<div style="text-align: center;"><span style="font-style: italic;">DISCLAIMER:
+USE THIS TOOL AT YOUR OWN RISK!</span><br>
+<br>
+<div style="text-align: right;">Runs remaining before renewal
+(anti-abuse measure): %d <span style="color: red;">%s</span><br>
+</div>
+<span style="font-style: italic;"></span></div>
+
+<br>
+
+<form name="design" action="" method="get" onsubmit="return validateForm()">
+  <fieldset><legend>Calculate cluster performance on ANSYS Fluent
+13.0.0 "truck_111m" benchmark</legend>
+  <input name="task" value="design" type="hidden">
+  <input name="allow_throughput_mode" value="true" type="hidden"><br>
+  <table style="text-align: left; width: 940px; height: 49px;" border="0" cellpadding="2" cellspacing="2">
+    <tbody>
+      <tr>
+        <td style="vertical-align: top;"><span style="font-weight: bold;">What is the CPU frequency, in GHz?</span><br>
+Type here the clock frequency of CPUs in your compute nodes, in GHz.<br>
+        <br>
+        </td>
+        <td style="vertical-align: top;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br>
+        </td>
+        <td style="vertical-align: middle;"><input name="cpu_frequency" value="3,47" size="7"> </td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"><span style="font-weight: bold;">How many cores will you have in your
+cluster?</span><br>
+Specify the total number of compute cores in your cluster. The more
+cores you have, the bigger the performance. (This particular model is
+based on benchmark measurements performed with <a href="http://en.wikipedia.org/wiki/List_of_Intel_Xeon_microprocessors#.22Westmere-EP.22_.2832_nm.29" target="_blank"><span style="font-style: italic;">Intel Xeon 5600
+Series</span></a> CPUs. For other CPU architectures, performance could
+be higher or lower)<br>
+        </td>
+        <td style="vertical-align: top;"><br>
+        </td>
+        <td style="vertical-align: middle;"><input name="cores" value="256" size="7"> </td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"><br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">-- OR -</span>-<br>
+        <br>
+        </td>
+        <td style="vertical-align: top;"><br>
+        </td>
+        <td style="vertical-align: top;"><br>
+        </td>
+      </tr>
+      <tr>
+        <td style="vertical-align: middle;"><span style="font-weight: bold;">What performance rating would you like to
+achieve?</span><br>
+Specify the projected performance that you want your cluster computer
+to have when running this particular benchmark. For "ANSYS Fluent",
+performance rating is traditionally measured in "tasks solved per day".
+The below table will help you to forecast the desired performance of
+your supercomputer:<br>
+        <br>
+        <table style="text-align: left; width: 486px; height: 200px;" border="1" cellpadding="2" cellspacing="2">
+          <tbody>
+            <tr>
+              <td style="vertical-align: top; text-align: center; font-style: italic; font-weight: bold;">Performance
+rating</td>
+              <td style="vertical-align: top; text-align: center; font-style: italic; font-weight: bold;">One
+task every...</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top; text-align: center;">24<br>
+              </td>
+              <td style="vertical-align: top; text-align: center;">Every
+hour<br>
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top; text-align: center;">48<br>
+              </td>
+              <td style="vertical-align: top; text-align: center;">Every
+30 minutes<br>
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top; text-align: center;">96<br>
+              </td>
+              <td style="vertical-align: top; text-align: center;">Every
+15 minutes<br>
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top; text-align: center;">288<br>
+              </td>
+              <td style="vertical-align: top; text-align: center;">Every
+5 minutes<br>
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top; text-align: center;">480<br>
+              </td>
+              <td style="vertical-align: top; text-align: center;">Every
+3 minutes<br>
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top; text-align: center;">1440<br>
+              </td>
+              <td style="vertical-align: top; text-align: center;">Every
+minute<br>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </td>
+        <td style="vertical-align: top;"><br>
+        </td>
+        <td style="vertical-align: middle;"><input name="performance" value="" size="7"></td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <span style="font-weight: bold;">Benchmark:</span><br>
+<!-- Need to use double percent signs below, because this HTML template is processed by the Format() procedure which
+     parses and replaces percent signs. -->
+  <input name="benchmark" value="truck_111m" checked="checked" type="radio">Truck 111m <a href="http://www.ansys.com/Support/Platform+Support/Benchmarks+Overview/ANSYS+Fluent+Benchmarks/Release+13.0+Test+Cases/External+Flow+Over+a+Truck+Body+111m+%%28truck_111m%%29" target="_blank"><span style="font-style: italic;">"External Flow Over
+a Truck Body"</span></a> <br>
+  <br>
+  <span style="font-weight: bold;">Cluster interconnection network type:</span><br>
+  <input name="network_tech" value="infiniband-4x-qdr" checked="checked" type="radio">InfiniBand 4X QDR<br>
+  <input name="network_tech" value="10gbe" type="radio">10 Gigabit
+Ethernet<br>
+  <br>
+  <span style="font-weight: bold;">Output type:</span><br>
+  <input name="output_type" value="text" checked="checked" type="radio">Human-readable
+output<br>
+  <input name="output_type" value="csv" type="radio">Comma-separated
+values<br>
+  <input name="output_type" value="nvp" type="radio">Name-value pairs<br>
+  <br>
+  <input value="Calculate" type="submit"></fieldset>
+</form>
+
+<br>
+
+See also: <a href="http://clusterdesign.org/ansys-fluent-simple-performance-model" target="_blank">detailed description</a>, <a href="?task=help" target="_blank">help</a> for automated
+queries.
+</body></html>

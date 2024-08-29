@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+    <!--
+       Copyright (C) 2013 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved. This file is offered as-is,
+       without any warranty.  
+    -->
+
+    <!-- Include a configuration that has all 648 ports -->
+    <include>mellanox_sx6536_648_ports_only.xml</include>
+    
+    <!-- All 36 leaf modules are sequentially connected to one another. But there are
+         also configurations that use from 1 to 35 modules. Hence we connect the first 35
+         leaf partitions directly to the "End" vertex. This way, configurations with 1..35 leaf
+         modules also become possible. -->
+    <connect from-partition="648_L1" to="End"/>
+    <connect from-partition="648_L2" to="End"/>
+    <connect from-partition="648_L3" to="End"/>
+    <connect from-partition="648_L4" to="End"/>
+    <connect from-partition="648_L5" to="End"/>
+    <connect from-partition="648_L6" to="End"/>
+    <connect from-partition="648_L7" to="End"/>
+    <connect from-partition="648_L8" to="End"/>
+    <connect from-partition="648_L9" to="End"/>
+    <connect from-partition="648_L10" to="End"/>
+    <connect from-partition="648_L11" to="End"/>
+    <connect from-partition="648_L12" to="End"/>
+    <connect from-partition="648_L13" to="End"/>
+    <connect from-partition="648_L14" to="End"/>
+    <connect from-partition="648_L15" to="End"/>
+    <connect from-partition="648_L16" to="End"/>
+    <connect from-partition="648_L17" to="End"/>
+    <connect from-partition="648_L18" to="End"/>
+    <connect from-partition="648_L19" to="End"/>
+    <connect from-partition="648_L20" to="End"/>
+    <connect from-partition="648_L21" to="End"/>
+    <connect from-partition="648_L22" to="End"/>
+    <connect from-partition="648_L23" to="End"/>
+    <connect from-partition="648_L24" to="End"/>
+    <connect from-partition="648_L25" to="End"/>
+    <connect from-partition="648_L26" to="End"/>
+    <connect from-partition="648_L27" to="End"/>
+    <connect from-partition="648_L28" to="End"/>
+    <connect from-partition="648_L29" to="End"/>
+    <connect from-partition="648_L30" to="End"/>
+    <connect from-partition="648_L31" to="End"/>
+    <connect from-partition="648_L32" to="End"/>
+    <connect from-partition="648_L33" to="End"/>
+    <connect from-partition="648_L34" to="End"/>
+    <connect from-partition="648_L35" to="End"/>
+
+</itemslist>

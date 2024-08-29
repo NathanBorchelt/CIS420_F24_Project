@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+<item node_model="HPE ProLiant DL365 Gen11" node_vendor="HPE" node_form_factor="HPE ProLiant" node_cost="5714" node_power="100" node_weight="18" node_equipment_size="1" enclosure_size="42" node_free_dimm_count="24">HPE ProLiant DL365 Gen11</item>
+
+<edge from="Start" to="HPE ProLiant DL365 Gen11"></edge>
+
+
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9124" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9174F" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9224" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9254" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9274F" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9334" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9354" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9374F" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9454" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9474F" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9534" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9554" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9634" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9654" to-partition="CPU1_9004_SERIES"></edge>
+<!--<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9174F" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9274F" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9374F" to-partition="CPU1_9004_SERIES"></edge>
+<edge from="HPE ProLiant DL365 Gen11" to="AMD Genoa 9474F" to-partition="CPU1_9004_SERIES"></edge>-->
+
+<edge from="AMD Genoa 9124" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9174F" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9224" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9254" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9274F" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9334" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9354" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9374F" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9454" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9474F" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9534" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9554" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9634" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9654" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<!--<edge from="AMD Genoa 9174F" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9274F" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9374F" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>
+<edge from="AMD Genoa 9474F" from-partition="CPU1_9004_SERIES" to-partition="CPU2_9004_SERIES"></edge>-->
+
+<item>END_OF_CPU2_9004_SERIES</item>
+<connect from-partition="CPU2_9004_SERIES" to="END_OF_CPU2_9004_SERIES"></connect>
+
+<edge from="END_OF_CPU2_9004_SERIES" to="32 GB PC5-38400 1x32GB 1Rank Memory" to-partition="RAM_FOR_CPU2_9004_SERIES"></edge>
+<edge from="END_OF_CPU2_9004_SERIES" to="192 GB PC5-38400 6x32GB 1Rank Memory" to-partition="RAM_FOR_CPU2_9004_SERIES"></edge>
+<edge from="END_OF_CPU2_9004_SERIES" to="384 GB PC5-38400 12x32GB 1Rank Memory" to-partition="RAM_FOR_CPU2_9004_SERIES"></edge>
+
+
+<edge from="32 GB PC5-38400 1x32GB 1Rank Memory" from-partition="RAM_FOR_CPU2_9004_SERIES" to-partition="RAM_FOR_CPU1_9004_SERIES"></edge>
+<edge from="192 GB PC5-38400 6x32GB 1Rank Memory" from-partition="RAM_FOR_CPU2_9004_SERIES" to-partition="RAM_FOR_CPU1_9004_SERIES"></edge>
+<edge from="384 GB PC5-38400 12x32GB 1Rank Memory" from-partition="RAM_FOR_CPU2_9004_SERIES" to-partition="RAM_FOR_CPU1_9004_SERIES"></edge>
+
+<connect from-partition="CPU1_9004_SERIES" to-partition="RAM_FOR_CPU1_9004_SERIES"></connect>
+
+<connect from-partition="RAM_FOR_CPU1_9004_SERIES" to="Built-In 10GbE NC551i FlexFabric 2 Ports"></connect>
+
+
+
+<edge from="Built-In 10GbE NC551i FlexFabric 2 Ports" to="Pre-end"></edge>
+<edge from="Built-In 10GbE NC551i FlexFabric 2 Ports" to="HP 4X QDR IB CX2 Dual Port Mezz HCA"></edge>
+<edge from="HP 4X QDR IB CX2 Dual Port Mezz HCA" to="Pre-end"></edge>
+</itemslist>

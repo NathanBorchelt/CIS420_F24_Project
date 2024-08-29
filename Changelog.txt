@@ -1,0 +1,16 @@
+
+Changelog for "Cluster Design Tools"
+
+For more information, please visit http://ClusterDesign.org
+
+Version 0.8.5 -- Released 28 June 2015. (1) Since Python bug "Issue21323" has been fixed almost a year ago, the start-up scripts were amended to allow using Python versions 3.4.2 and higher. (2) Since "Portable Python" (a Python version for Windows that does not require installation) is no longer developed, mentions of "Portable Python" were wiped out from start-up scripts. (3) When SADDLE cannot call "dbcli" service, it now complains instead of a silent error. (4) "pyparsing" is now a required dependency for "svgwrite" library and has therefore been included in the bundle for user's convenience.
+
+Version 0.8.4 -- Released 12 August 2014. Changes to the network design tool: (1) (3) SADDLE is now the part of the software suite; (2) Added a blade switch for Hewlett-Packard blade enclosures; (3) Star networks are now designed only from edge switches, whereas previously they were designed from either edge or core switches. This change is necessary so that the network design tool doesn't accidentally design a 648-port star network for blade servers which cannot, in fact, be implemented, because edge switches in enclosures are still necessary.
+
+Version 0.8.3 -- Released 31 December 2013. Changes to the "dbcli" tool: (1) "dbcli" binaries moved to the web server home directory; (2) "dbcli" now has a very basic web interface. Changes to the network design module: (1) Network design tool now outputs sizes of switches used, as well as the number of ports on core switches; (2) "locator.py" tool for this particular module now uses underscores instead of dashes; (3) the name-value pairs output is now sorted; (4) Switch database format changed to that used by all other tools in the suite; (5) Switches updated to "fourteen data rate" (FDR) InfiniBand hardware made by Mellanox Technologies, including their 648-port switch. Changes to the UPS design module: made it more modular.
+
+Version 0.8.2 -- Released 30 September 2013. Changes: (1) Operating expense and total cost of ownership are now calculated automatically; (2) Web interface for ANSYS Fluent performance model now allows "throughput mode" by default; (3) Module "floorplan" included.
+
+Version 0.8.1a -- Released 24 January 2013. Changes: UPS sizing algorithm updated (in rare cases could return suboptimal configurations).
+
+Version 0.8.0 -- Released 17 December 2012. The first public release.

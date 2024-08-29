@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+    <!--
+       Copyright (C) 2013 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved. This file is offered as-is,
+       without any warranty.  
+    -->
+
+    <!-- For specifications, see: http://www.mellanox.com/related-docs/prod_ib_switch_systems/SX6506_User_Manual.pdf -->
+    <!-- Power consumption: typical, with active cables -->
+    <!-- Prices are courtesy of Colfax International, see: http://www.colfaxdirect.com -->
+    <!-- Prices last updated: 29 December 2013 -->
+    
+    <!-- Chassis: SKU: MSX6506-NR
+        Chassis-only characteristics:
+        Size: 7U (6U for the switch, 1U for the shelf).
+        Weight: 46 kg, with fans.
+        Power consumption: 1523 W (typical, with optical cables) -->
+
+    <item network_vendor="Mellanox" network_technology="IB 4X FDR" network_switch_connector="QSFP" network_switch_size="7" network_switch_weight="46" network_switch_power="1523" network_switch_cost="18915">Mellanox SX6506 Chassis (up to 108 ports)</item>
+    
+    <!-- Connect "Start" to chassis and then to the management module -->
+    <edge from="Start" to="Mellanox SX6506 Chassis (up to 108 ports)"/>
+    <edge from="Mellanox SX6506 Chassis (up to 108 ports)" to="MSX6000MAR Management module"/>
+    
+    <!-- There are up to 3 spine modules. Each adds some weight, power and cost.
+         Place copies of the spine module 3 times into 3 distinct partitions, named 108_S1 to 108_S3, simultaneously connecting them
+         in a sequential manner. That is, we only consider configurations where all 3 spine modules are installed. -->
+    <edge from="MSX6000MAR Management module" to="MSX6002FLR Spine module" to-partition="108_S1"/>
+    <edge from="MSX6002FLR Spine module" from-partition="108_S1" to-partition="108_S2"/>
+    <edge from="MSX6002FLR Spine module" from-partition="108_S2" to-partition="108_S3"/>
+    
+    <!-- There are up to 6 leaf modules, each providing 18 ports. Again, each adds some weight, power and cost.
+         We will create 6 distinct partitions, named 108_L1 to 108_L6, each containing a copy of the leaf module.
+         Due to some inflexibility in evaluation of expressions, we need to prepend each of the leaf modules
+         with a vertex which sets the name of the switch configuration. We'll name these vertices 108_L1N to 108_L6N. -->
+
+    <item network_switch_model="Mellanox SX6506 (with 18 ports)">108_L1N</item>
+    <item network_switch_model="Mellanox SX6506 (with 36 ports)">108_L2N</item>
+    <item network_switch_model="Mellanox SX6506 (with 54 ports)">108_L3N</item>
+    <item network_switch_model="Mellanox SX6506 (with 72 ports)">108_L4N</item>
+    <item network_switch_model="Mellanox SX6506 (with 90 ports)">108_L5N</item>
+    <item network_switch_model="Mellanox SX6506 (with 108 ports)">108_L6N</item>
+
+    <!-- Place copies of the leaf module in partitions L1 to L6 -->
+    <place to-partition="108_L1">MSX6001FR Leaf module</place>
+    <place to-partition="108_L2">MSX6001FR Leaf module</place>
+    <place to-partition="108_L3">MSX6001FR Leaf module</place>
+    <place to-partition="108_L4">MSX6001FR Leaf module</place>
+    <place to-partition="108_L5">MSX6001FR Leaf module</place>
+    <place to-partition="108_L6">MSX6001FR Leaf module</place>
+
+    <!-- Connect the 3rd spine module to vertex L1N -->
+    <edge from="MSX6002FLR Spine module" from-partition="108_S3" to="108_L1N"/>
+    
+    <!-- Connect sequentially: L1N to L1 to L2N to L2 to L3N ... to L6N to L6, and then to "End" -->
+    <connect from="108_L1N" to-partition="108_L1"/>
+    <connect from-partition="108_L1" to="108_L2N"/>
+    <connect from="108_L2N" to-partition="108_L2"/>
+    <connect from-partition="108_L2" to="108_L3N"/>
+    <connect from="108_L3N" to-partition="108_L3"/>
+    <connect from-partition="108_L3" to="108_L4N"/>
+    <connect from="108_L4N" to-partition="108_L4"/>
+    <connect from-partition="108_L4" to="108_L5N"/>
+    <connect from="108_L5N" to-partition="108_L5"/>
+    <connect from-partition="108_L5" to="108_L6N"/>
+    <connect from="108_L6N" to-partition="108_L6"/>
+    <connect from-partition="108_L6" to="End"/>
+
+</itemslist>

@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+
+
+
+
+
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>Network Design Tool (Fat-tree and Torus, Demo): Short help</title></head><body>
+<div style="text-align: center;"><span style="font-weight: bold;"><span style="color: red;"><br>
+Important: Price Disclaimer!</span><br>
+<br>
+</span>
+<div style="text-align: left;"><span style="font-weight: bold;"></span>1. Prices for <a href="http://www.mellanox.com/">Mellanox</a> products were taken from from <a href="http://www.colfaxdirect.com/" target="_blank">Colfax Direct</a>, a web shop of <a href="http://www.colfax-intl.com/">Colfax International</a>.<br>
+ 2. Prices are accurate as of December 2013.<br>
+ 3. For recent prices and current equipment, please go to <a href="http://www.colfaxdirect.com/" target="_blank">Colfax Direct</a>.<br>
+<span style="font-weight: bold;"></span></div>
+<span style="font-weight: bold;"><br>
+<br>
+Short help for making automated queries:</span><br>
+<br>
+<div style="text-align: left;">Note: Requests are case-sensitive.</div>
+<br>
+<div style="text-align: center;">
+<table style="text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="4" cellspacing="0">
+  <tbody>
+    <tr>
+      <td colspan="2" rowspan="1" style="vertical-align: top; text-align: center; font-weight: bold;">Request<br>
+      </td>
+      <td style="vertical-align: top; text-align: center; font-weight: bold;">What it does<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">task=help<br>
+      </td>
+      <td style="vertical-align: top;">This page<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">task=showdatabase<br>
+      </td>
+      <td style="vertical-align: top;">Prints contents of the switches database<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">task=design<br>
+      </td>
+      <td style="vertical-align: top;">Designs a fat-tree network, see additional parameters below:<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="1" rowspan="7" style="vertical-align: top; width: 5%;">&nbsp;</td>
+      <td style="width: 20%;">network_topology=&lt;topology&gt;<br>
+      </td>
+      <td style="vertical-align: top;">Use a particular topology. Available values for &lt;topology&gt; are:<br><span style="font-weight: bold;">fat-tree</span> &#8212; fat-tree networks (default)<br><span style="font-weight: bold;">torus</span> &#8212; torus networks<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">network_vendor=&lt;vendor&gt;<br>
+      </td>
+      <td style="vertical-align: top;">Use database for a particular vendor. Available values depend on what databases you have installed.<br>
+      <span style="font-weight: bold;">mellanox</span> &#8212; Mellanox Technologies (shipped with the tool by default)<br>
+      </td>
+    </tr>
+<tr>
+      <td>nodes=600<br>
+      </td>
+      <td style="vertical-align: top;">Number of cluster compute nodes that the network must support<br>
+      </td>
+    </tr>
+    <tr>
+      <td>nodes_future_max=700<br>
+      </td>
+      <td style="vertical-align: top;">Number
+of nodes that the network must be able to expand to. Only applicable to
+fat-tree networks, because torus networks are not easily expandable
+(trivial expansion attempts, such as stretching a torus along one of
+its dimensions, lead to imbalanced networks)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">blocking=&lt;blocking_factor&gt;<br>
+      </td>
+      <td style="vertical-align: top;">Allows to build networks with
+blocking (not applicable to star topologies). Default value is "1,0",
+which denotes a non-blocking network. Fractional values are accepted.
+The tool arranges the ports on switches in a way that guarantees
+that the resulting blocking factor will be less than or equal to the value specified here. <br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">prefer_expandable=&lt;boolean&gt;<br>
+      </td>
+      <td style="vertical-align: top;">Specifies
+whether the user prefers easy expandability over lowest cost. Only
+applicable to fat-tree networks. Default value for automated queries is
+"false": for example, a network designed in this way could use only 30
+ports out of 36 on edge switches -- this is cheaper, but not easily
+expandable because of complications of laying new cabling. However,
+most engineers expect edge switches to be filled as densely as
+possible, therefore the web form sets this to "true" by default.
+Resulting networks are more easily expandable, at the cost of more
+cables between edge and core layers.<br>
+      </td>
+    </tr>
+
+    
+    
+    
+    <tr>
+      <td style="vertical-align: top;">output_type=&lt;type&gt;<br>
+      </td>
+      <td style="vertical-align: top;">Set output format. Available values for &lt;type&gt; are:<br><span style="font-weight: bold;">text</span> &#8212; human-readable text<br><span style="font-weight: bold;">nvp</span> &#8212; name-value pairs (default)<br><span style="font-weight: bold;">csv</span> &#8212; comma-separated values (useful for loading results into spreadsheets)<br></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+</div>
+</body></html>

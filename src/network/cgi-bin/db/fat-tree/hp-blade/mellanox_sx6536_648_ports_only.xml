@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+    <!--
+       Copyright (C) 2013 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved. This file is offered as-is,
+       without any warranty.  
+    -->
+
+    <!-- For specifications, see: http://www.mellanox.com/related-docs/user_manuals/SX6536_user_manual.pdf -->
+    <!-- Power consumption: typical, with active cables -->
+    <!-- Prices are courtesy of Colfax International, see: http://www.colfaxdirect.com -->
+    <!-- Prices last updated: 29 December 2013 -->
+    
+    <!-- Chassis: SKU: MSX6536-NR
+        Chassis-only characteristics:
+        Size: 31U (29U for the switch, 2U for the shelf).
+        Weight: 152 kg, with fans.
+        Power consumption: 2600 W (typical, with optical cables) -->
+
+    <item network_vendor="Mellanox" network_technology="IB 4X FDR" network_switch_connector="QSFP" network_switch_size="31" network_switch_weight="152" network_switch_power="2600" network_switch_cost="63820">Mellanox SX6536 Chassis (up to 648 ports)</item>
+    
+    <!-- Connect "Start" to chassis -->
+    <edge from="Start" to="Mellanox SX6536 Chassis (up to 648 ports)"/>
+    <!-- For this large switch, use two management modules, placing them into partitions 648_M1 and 648_M2.
+         Create edges; vertex copies will be created in partitions automatically -->
+    <edge from="Mellanox SX6536 Chassis (up to 648 ports)" to="MSX6000MAR Management module" to-partition="648_M1"/>
+    <edge from="MSX6000MAR Management module" from-partition="648_M1" to-partition="648_M2"/>
+    
+    <!-- There are up to 18 spine modules. Each adds some weight, power and cost. -->
+    <!-- Place copies of the spine module 18 times into 18 distinct partitions, named 648_S1 to 648_S18, simultaneously connecting them
+         in a sequential manner. That is, we only consider configurations where all spine modules are installed. -->
+    <edge from="MSX6000MAR Management module" from-partition="648_M2" to="MSX6002FLR Spine module" to-partition="648_S1"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S1" to-partition="648_S2"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S2" to-partition="648_S3"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S3" to-partition="648_S4"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S4" to-partition="648_S5"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S5" to-partition="648_S6"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S6" to-partition="648_S7"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S7" to-partition="648_S8"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S8" to-partition="648_S9"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S9" to-partition="648_S10"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S10" to-partition="648_S11"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S11" to-partition="648_S12"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S12" to-partition="648_S13"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S13" to-partition="648_S14"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S14" to-partition="648_S15"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S15" to-partition="648_S16"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S16" to-partition="648_S17"/>
+    <edge from="MSX6002FLR Spine module" from-partition="648_S17" to-partition="648_S18"/>
+    
+    <!-- There are up to 36 leaf modules, each providing 18 ports. Again, each adds some weight, power and cost. -->
+    <!-- We will create 36 distinct partitions, named 648_L1 to 648_L36, each containing a copy of the leaf module.
+         Due to some inflexibility in evaluation of expressions, we need to prepend each of the leaf modules
+         with a vertex which sets the name of the switch configuration. We'll name these vertices 648_L1N to 648_L36N. -->
+
+    <item network_switch_model="Mellanox SX6536 (with 18 ports)">648_L1N</item>
+    <item network_switch_model="Mellanox SX6536 (with 36 ports)">648_L2N</item>
+    <item network_switch_model="Mellanox SX6536 (with 54 ports)">648_L3N</item>
+    <item network_switch_model="Mellanox SX6536 (with 72 ports)">648_L4N</item>
+    <item network_switch_model="Mellanox SX6536 (with 90 ports)">648_L5N</item>
+    <item network_switch_model="Mellanox SX6536 (with 108 ports)">648_L6N</item>
+    <item network_switch_model="Mellanox SX6536 (with 126 ports)">648_L7N</item>
+    <item network_switch_model="Mellanox SX6536 (with 144 ports)">648_L8N</item>
+    <item network_switch_model="Mellanox SX6536 (with 162 ports)">648_L9N</item>
+    <item network_switch_model="Mellanox SX6536 (with 180 ports)">648_L10N</item>
+    <item network_switch_model="Mellanox SX6536 (with 198 ports)">648_L11N</item>
+    <item network_switch_model="Mellanox SX6536 (with 216 ports)">648_L12N</item>
+    <item network_switch_model="Mellanox SX6536 (with 234 ports)">648_L13N</item>
+    <item network_switch_model="Mellanox SX6536 (with 252 ports)">648_L14N</item>
+    <item network_switch_model="Mellanox SX6536 (with 270 ports)">648_L15N</item>
+    <item network_switch_model="Mellanox SX6536 (with 288 ports)">648_L16N</item>
+    <item network_switch_model="Mellanox SX6536 (with 306 ports)">648_L17N</item>
+    <item network_switch_model="Mellanox SX6536 (with 324 ports)">648_L18N</item>
+    <item network_switch_model="Mellanox SX6536 (with 342 ports)">648_L19N</item>
+    <item network_switch_model="Mellanox SX6536 (with 360 ports)">648_L20N</item>
+    <item network_switch_model="Mellanox SX6536 (with 378 ports)">648_L21N</item>
+    <item network_switch_model="Mellanox SX6536 (with 396 ports)">648_L22N</item>
+    <item network_switch_model="Mellanox SX6536 (with 414 ports)">648_L23N</item>
+    <item network_switch_model="Mellanox SX6536 (with 432 ports)">648_L24N</item>
+    <item network_switch_model="Mellanox SX6536 (with 450 ports)">648_L25N</item>
+    <item network_switch_model="Mellanox SX6536 (with 468 ports)">648_L26N</item>
+    <item network_switch_model="Mellanox SX6536 (with 486 ports)">648_L27N</item>
+    <item network_switch_model="Mellanox SX6536 (with 504 ports)">648_L28N</item>
+    <item network_switch_model="Mellanox SX6536 (with 522 ports)">648_L29N</item>
+    <item network_switch_model="Mellanox SX6536 (with 540 ports)">648_L30N</item>
+    <item network_switch_model="Mellanox SX6536 (with 558 ports)">648_L31N</item>
+    <item network_switch_model="Mellanox SX6536 (with 576 ports)">648_L32N</item>
+    <item network_switch_model="Mellanox SX6536 (with 594 ports)">648_L33N</item>
+    <item network_switch_model="Mellanox SX6536 (with 612 ports)">648_L34N</item>
+    <item network_switch_model="Mellanox SX6536 (with 630 ports)">648_L35N</item>
+    <item network_switch_model="Mellanox SX6536 (with 648 ports)">648_L36N</item>
+
+    <!-- Place copies of the leaf module in partitions L1 to L36 -->
+    <place to-partition="648_L1">MSX6001FR Leaf module</place>
+    <place to-partition="648_L2">MSX6001FR Leaf module</place>
+    <place to-partition="648_L3">MSX6001FR Leaf module</place>
+    <place to-partition="648_L4">MSX6001FR Leaf module</place>
+    <place to-partition="648_L5">MSX6001FR Leaf module</place>
+    <place to-partition="648_L6">MSX6001FR Leaf module</place>
+    <place to-partition="648_L7">MSX6001FR Leaf module</place>
+    <place to-partition="648_L8">MSX6001FR Leaf module</place>
+    <place to-partition="648_L9">MSX6001FR Leaf module</place>
+    <place to-partition="648_L10">MSX6001FR Leaf module</place>
+    <place to-partition="648_L11">MSX6001FR Leaf module</place>
+    <place to-partition="648_L12">MSX6001FR Leaf module</place>
+    <place to-partition="648_L13">MSX6001FR Leaf module</place>
+    <place to-partition="648_L14">MSX6001FR Leaf module</place>
+    <place to-partition="648_L15">MSX6001FR Leaf module</place>
+    <place to-partition="648_L16">MSX6001FR Leaf module</place>
+    <place to-partition="648_L17">MSX6001FR Leaf module</place>
+    <place to-partition="648_L18">MSX6001FR Leaf module</place>
+    <place to-partition="648_L19">MSX6001FR Leaf module</place>
+    <place to-partition="648_L20">MSX6001FR Leaf module</place>
+    <place to-partition="648_L21">MSX6001FR Leaf module</place>
+    <place to-partition="648_L22">MSX6001FR Leaf module</place>
+    <place to-partition="648_L23">MSX6001FR Leaf module</place>
+    <place to-partition="648_L24">MSX6001FR Leaf module</place>
+    <place to-partition="648_L25">MSX6001FR Leaf module</place>
+    <place to-partition="648_L26">MSX6001FR Leaf module</place>
+    <place to-partition="648_L27">MSX6001FR Leaf module</place>
+    <place to-partition="648_L28">MSX6001FR Leaf module</place>
+    <place to-partition="648_L29">MSX6001FR Leaf module</place>
+    <place to-partition="648_L30">MSX6001FR Leaf module</place>
+    <place to-partition="648_L31">MSX6001FR Leaf module</place>
+    <place to-partition="648_L32">MSX6001FR Leaf module</place>
+    <place to-partition="648_L33">MSX6001FR Leaf module</place>
+    <place to-partition="648_L34">MSX6001FR Leaf module</place>
+    <place to-partition="648_L35">MSX6001FR Leaf module</place>
+    <place to-partition="648_L36">MSX6001FR Leaf module</place>
+
+    <!-- Connect the 18th spine module to vertex L1N -->
+    <edge from="MSX6002FLR Spine module" from-partition="648_S18" to="648_L1N"/>
+    
+    <!-- Connect sequentially: L1N to L1 to L2N to L2 to L3N ... to L36N to L36, and then to "End" -->
+    <connect from="648_L1N" to-partition="648_L1"/>
+    <connect from-partition="648_L1" to="648_L2N"/>
+    <connect from="648_L2N" to-partition="648_L2"/>
+    <connect from-partition="648_L2" to="648_L3N"/>
+    <connect from="648_L3N" to-partition="648_L3"/>
+    <connect from-partition="648_L3" to="648_L4N"/>
+    <connect from="648_L4N" to-partition="648_L4"/>
+    <connect from-partition="648_L4" to="648_L5N"/>
+    <connect from="648_L5N" to-partition="648_L5"/>
+    <connect from-partition="648_L5" to="648_L6N"/>
+    <connect from="648_L6N" to-partition="648_L6"/>
+    <connect from-partition="648_L6" to="648_L7N"/>
+    <connect from="648_L7N" to-partition="648_L7"/>
+    <connect from-partition="648_L7" to="648_L8N"/>
+    <connect from="648_L8N" to-partition="648_L8"/>
+    <connect from-partition="648_L8" to="648_L9N"/>
+    <connect from="648_L9N" to-partition="648_L9"/>
+    <connect from-partition="648_L9" to="648_L10N"/>
+    <connect from="648_L10N" to-partition="648_L10"/>
+    <connect from-partition="648_L10" to="648_L11N"/>
+    <connect from="648_L11N" to-partition="648_L11"/>
+    <connect from-partition="648_L11" to="648_L12N"/>
+    <connect from="648_L12N" to-partition="648_L12"/>
+    <connect from-partition="648_L12" to="648_L13N"/>
+    <connect from="648_L13N" to-partition="648_L13"/>
+    <connect from-partition="648_L13" to="648_L14N"/>
+    <connect from="648_L14N" to-partition="648_L14"/>
+    <connect from-partition="648_L14" to="648_L15N"/>
+    <connect from="648_L15N" to-partition="648_L15"/>
+    <connect from-partition="648_L15" to="648_L16N"/>
+    <connect from="648_L16N" to-partition="648_L16"/>
+    <connect from-partition="648_L16" to="648_L17N"/>
+    <connect from="648_L17N" to-partition="648_L17"/>
+    <connect from-partition="648_L17" to="648_L18N"/>
+    <connect from="648_L18N" to-partition="648_L18"/>
+    <connect from-partition="648_L18" to="648_L19N"/>
+    <connect from="648_L19N" to-partition="648_L19"/>
+    <connect from-partition="648_L19" to="648_L20N"/>
+    <connect from="648_L20N" to-partition="648_L20"/>
+    <connect from-partition="648_L20" to="648_L21N"/>
+    <connect from="648_L21N" to-partition="648_L21"/>
+    <connect from-partition="648_L21" to="648_L22N"/>
+    <connect from="648_L22N" to-partition="648_L22"/>
+    <connect from-partition="648_L22" to="648_L23N"/>
+    <connect from="648_L23N" to-partition="648_L23"/>
+    <connect from-partition="648_L23" to="648_L24N"/>
+    <connect from="648_L24N" to-partition="648_L24"/>
+    <connect from-partition="648_L24" to="648_L25N"/>
+    <connect from="648_L25N" to-partition="648_L25"/>
+    <connect from-partition="648_L25" to="648_L26N"/>
+    <connect from="648_L26N" to-partition="648_L26"/>
+    <connect from-partition="648_L26" to="648_L27N"/>
+    <connect from="648_L27N" to-partition="648_L27"/>
+    <connect from-partition="648_L27" to="648_L28N"/>
+    <connect from="648_L28N" to-partition="648_L28"/>
+    <connect from-partition="648_L28" to="648_L29N"/>
+    <connect from="648_L29N" to-partition="648_L29"/>
+    <connect from-partition="648_L29" to="648_L30N"/>
+    <connect from="648_L30N" to-partition="648_L30"/>
+    <connect from-partition="648_L30" to="648_L31N"/>
+    <connect from="648_L31N" to-partition="648_L31"/>
+    <connect from-partition="648_L31" to="648_L32N"/>
+    <connect from="648_L32N" to-partition="648_L32"/>
+    <connect from-partition="648_L32" to="648_L33N"/>
+    <connect from="648_L33N" to-partition="648_L33"/>
+    <connect from-partition="648_L33" to="648_L34N"/>
+    <connect from="648_L34N" to-partition="648_L34"/>
+    <connect from-partition="648_L34" to="648_L35N"/>
+    <connect from="648_L35N" to-partition="648_L35"/>
+    <connect from-partition="648_L35" to="648_L36N"/>
+    <connect from="648_L36N" to-partition="648_L36"/>
+    <connect from-partition="648_L36" to="End"/>
+
+</itemslist>

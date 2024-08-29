@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <!--
+       Copyright (C) 2014 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved.  This file is offered as-is,
+       without any warranty.  
+  -->
+
+  <!-- Include Intel Xeon CPUs, generic memory, InfiniBand networking equipment, and storage -->
+  <include>intel-xeon-2600.xml</include>
+  <include>intel-xeon-phi.xml</include>
+  <include>memory.xml</include>
+  <include>network.xml</include>
+  <include>hdd.xml</include>
+  <include>ssd.xml</include>
+  
+  <!-- "Start" and "End" vertices (defined before any included file starts to use them) -->
+  <item>Start</item>
+  <item>End</item>
+
+  <!-- A fictitious item that updates technical characteristics.
+       Add peak floating-point performance provided by the CPUs  -->
+  <item node_peak_performance="+cpu_cores * node_cpu_count * cpu_frequency * cpu_flops_per_cycle" node_main_memory_per_core="node_main_memory_size / cpu_cores / node_cpu_count">Update characteristics</item>
+  <item>Pre-end</item>
+  <edge from="Pre-end" to="Update characteristics"></edge>
+  <edge from="Update characteristics" to="End"></edge>
+
+  <!-- Include a generic server -->
+  <include>generic-server.xml</include>
+  
+</itemslist>

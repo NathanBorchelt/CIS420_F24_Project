@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+
+
+
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>ANSYS Fluent 13.0.0 Performance Model (Demo): Short help</title></head><body>
+<div style="text-align: center;"><span style="font-weight: bold;">Short
+help for making automated queries:</span><br>
+<br>
+<div style="text-align: left;">Note: Requests are not case-sensitive.</div>
+<br>
+<div style="text-align: center;">
+<table style="text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="4" cellspacing="0">
+  <tbody>
+    <tr>
+      <td colspan="2" rowspan="1" style="vertical-align: top; text-align: center; font-weight: bold;">Request<br>
+      </td>
+      <td style="vertical-align: top; text-align: center; font-weight: bold;">What
+it does<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">task=help<br>
+      </td>
+      <td style="vertical-align: top;">This page<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">task=design<br>
+      </td>
+      <td style="vertical-align: top;">Run in design mode, see
+additional parameters below:<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="1" rowspan="6" style="vertical-align: top; width: 5%;">&nbsp;</td>
+      <td style="width: 20%;">cpu_frequency=3<br>
+      </td>
+      <td style="vertical-align: top;">Clock frequency of CPUs in compute nodes, in GHz. Fractional values are accepted. Example: <span style="font-weight: bold;">"cpu_frequency=3,47"</span> stands for "3,47" GHz.<br>
+      </td>
+    </tr>
+    <tr>
+      <td>cores=2048<br>
+      </td>
+      <td style="vertical-align: top;">Number
+of CPU cores in computer cluster. Output will include performance
+attainable with this number of cores. This field contradicts with <span style="font-weight: bold;">"performance"</span>, only one must be specified.
+      </td>
+    </tr>
+    <tr>
+      <td>performance=480<br>
+      </td>
+      <td style="vertical-align: top;">Indicates
+performance that you want your computer cluster to attain. Output will
+include the number of cores required to attain specified performance.
+This field contradicts with <span style="font-weight: bold;">"cores"</span>, only one must be specified.<br>
+      </td>
+    </tr>
+    <tr>
+      <td>benchmark=&lt;benchmark&gt;</td><td style="vertical-align: top;">The benchmark for which you want to run the model. Available value for &lt;benchmark&gt; is <span style="font-weight: bold;">truck_111m</span>, which is <a href="http://www.ansys.com/Support/Platform+Support/Benchmarks+Overview/ANSYS+Fluent+Benchmarks/Release+13.0+Test+Cases/External+Flow+Over+a+Truck+Body+111m+%28truck_111m%29" target="_blank"><span style="font-style: italic;">"External Flow Over a Truck Body"</span></a>.<br>
+
+      
+      
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">network_tech=&lt;tech&gt;<br>
+      </td>
+      <td style="vertical-align: top;">Technology of the cluster interconnection network. Available values for &lt;tech&gt; are:<br>
+      <span style="font-weight: bold;">infiniband-4x-qdr</span> &#8212; InfiniBand 4X QDR<br>
+      <span style="font-weight: bold;">10gbe</span> &#8212; 10Gigabit Ethernet<br>
+      <br>
+If both vaues are specified, separated with a comma, the best option is determined by the model and returned to the user.<br>
+      </td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;">output_type=&lt;type&gt;<br>
+      </td>
+      <td style="vertical-align: top;">Set output format. Available
+values for &lt;type&gt; are:<br>
+      <span style="font-weight: bold;">text</span> &#8212; human-readable text<br>
+      <span style="font-weight: bold;">nvp</span> &#8212; name-value pairs
+(default)<br>
+      <span style="font-weight: bold;">csv</span> &#8212; comma-separated
+values (useful for loading results into spreadsheets)<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+</div>
+
+</body></html>

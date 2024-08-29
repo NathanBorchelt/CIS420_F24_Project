@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+<item node_model="HPE Cray EX425 Milan" node_vendor="HPE" node_form_factor="HPE Cray EX4000" node_cost="+5200" node_power="100" node_weight="18" node_equipment_size="0.656" enclosure_size="42" node_free_dimm_count="16">HPE Cray EX425 Milan</item>
+
+<edge from="Start" to="HPE Cray EX425 Milan"></edge>
+
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 72F3" to-partition="CPU1_7003_SERIES"></edge>
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 7313" to-partition="CPU1_7003_SERIES"></edge>
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 7343" to-partition="CPU1_7003_SERIES"></edge>
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 73F3" to-partition="CPU1_7003_SERIES"></edge>
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 7413" to-partition="CPU1_7003_SERIES"></edge>
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 7443" to-partition="CPU1_7003_SERIES"></edge>
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 7453" to-partition="CPU1_7003_SERIES"></edge>
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 74F3" to-partition="CPU1_7003_SERIES"></edge>
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 7513" to-partition="CPU1_7003_SERIES"></edge>
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 7543" to-partition="CPU1_7003_SERIES"></edge>
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 75F3" to-partition="CPU1_7003_SERIES"></edge>
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 7643" to-partition="CPU1_7003_SERIES"></edge>
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 7663" to-partition="CPU1_7003_SERIES"></edge>
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 7713" to-partition="CPU1_7003_SERIES"></edge>
+	<edge from="HPE Cray EX425 Milan" to="AMD Milan 7763" to-partition="CPU1_7003_SERIES"></edge>
+
+
+<edge from="AMD Milan 72F3" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+<edge from="AMD Milan 7313" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+<edge from="AMD Milan 7343" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+<edge from="AMD Milan 73F3" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+<edge from="AMD Milan 7413" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+<edge from="AMD Milan 7443" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+<edge from="AMD Milan 7453" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+<edge from="AMD Milan 74F3" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+<edge from="AMD Milan 7513" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+<edge from="AMD Milan 7543" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+<edge from="AMD Milan 75F3" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+<edge from="AMD Milan 7643" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+<edge from="AMD Milan 7663" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+<edge from="AMD Milan 7713" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+<edge from="AMD Milan 7763" from-partition="CPU1_7003_SERIES" to-partition="CPU2_7003_SERIES"></edge>
+
+<item>END_OF_CPU2_7003_SERIES</item>
+<connect from-partition="CPU2_7003_SERIES" to="END_OF_CPU2_7003_SERIES"></connect>
+
+<edge from="END_OF_CPU2_7003_SERIES" to="64 GB PC4-25600 1x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_7003_SERIES"></edge>
+<edge from="END_OF_CPU2_7003_SERIES" to="256 GB PC4-25600 4x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_7003_SERIES"></edge>
+<edge from="END_OF_CPU2_7003_SERIES" to="512 GB PC4-25600 8x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_7003_SERIES"></edge>
+<edge from="END_OF_CPU2_7003_SERIES" to="64 GB PC4-23464 1x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_7003_SERIES"></edge>
+<edge from="END_OF_CPU2_7003_SERIES" to="256 GB PC4-23464 4x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_7003_SERIES"></edge>
+<edge from="END_OF_CPU2_7003_SERIES" to="512 GB PC4-23464 8x64GB 2Rank Memory" to-partition="RAM_FOR_CPU2_7003_SERIES"></edge>
+
+
+<edge from="64 GB PC4-25600 1x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_7003_SERIES" to-partition="RAM_FOR_CPU1_7003_SERIES"></edge>
+<edge from="256 GB PC4-25600 4x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_7003_SERIES" to-partition="RAM_FOR_CPU1_7003_SERIES"></edge>
+<edge from="512 GB PC4-25600 8x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_7003_SERIES" to-partition="RAM_FOR_CPU1_7003_SERIES"></edge>
+<edge from="64 GB PC4-23464 1x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_7003_SERIES" to-partition="RAM_FOR_CPU1_7003_SERIES"></edge>
+<edge from="256 GB PC4-23464 4x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_7003_SERIES" to-partition="RAM_FOR_CPU1_7003_SERIES"></edge>
+<edge from="512 GB PC4-23464 8x64GB 2Rank Memory" from-partition="RAM_FOR_CPU2_7003_SERIES" to-partition="RAM_FOR_CPU1_7003_SERIES"></edge>
+
+
+<connect from-partition="CPU1_7003_SERIES" to-partition="RAM_FOR_CPU1_7003_SERIES"></connect>
+<connect from-partition="RAM_FOR_CPU1_7003_SERIES" to="Built-In 10GbE NC551i FlexFabric 2 Ports"></connect>
+</itemslist>

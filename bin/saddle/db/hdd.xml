@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <!--
+       Copyright (C) 2014 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved.  This file is offered as-is,
+       without any warranty.  
+  -->
+
+  <!-- Hard disk drives -->
+  
+  <!-- Prices last updated: June 2014 -->
+  
+  <!-- A single drive -->
+  <item node_cost="+276" node_power="+5" hdd_vendor="+ Western Digital" hdd_count="+1" hdd_volume="+1000" hdd_rpm="10000" hdd_interface="SATA" hdd_form_factor="2.5">Western Digital WD1000CHTZ 1TB</item>
+
+</itemslist>

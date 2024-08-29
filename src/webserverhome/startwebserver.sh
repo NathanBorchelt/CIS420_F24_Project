@@ -1,0 +1,95 @@
+#!/bin/bash
+
+#    "startwebserver.sh" - Web server start-up script for the GNU/Linux environment
+#
+#    Written in 2012 by Konstantin S. Solnushkin (http://clusterdesign.org)
+#
+#    To the extent possible under law, the author has dedicated all copyright and related and
+#    neighboring rights to this software to the public domain worldwide. This software is distributed
+#    without any warranty. 
+#
+#    For the complete text of the "CC0 Public Domain Dedication",
+#    see <http://creativecommons.org/publicdomain/zero/1.0/>. 
+
+# Require the following Python version:
+PYTHON_REQ_VER="3.4.2"
+PYTHON=python3
+
+WEB_SERVER_SCRIPT=cgiwebserver.py
+MODELING_SERVICE_LOCATION=http://localhost:8000/
+
+# ------------------ No need to edit below this line -------------
+
+python_not_available () {
+	# If we reached here, then Python was not available. Inform the user and exit.
+
+	echo
+	echo Python was not found on PATH.
+	echo Please install Python ver. $PYTHON_REQ_VER or greater. Thanks!
+	exit 1
+}
+
+webserverscript_not_found () {
+	# If we reached here, then the Python script to launch the web server was not found
+
+	echo
+	echo The script "$WEB_SERVER_SCRIPT" was not found in the same directory as this batch file, "'"$WORK_DIR"'"
+	echo Make sure you downloaded the whole set of scripts. Thanks!
+	echo
+	exit 2
+}
+
+
+# The working directory is the path where this batch file is located:
+
+WORK_DIR=`dirname $0`
+
+# Check if Python is installed anywhere on PATH:
+
+pyVersion=$(python -V)
+pyVerList=($pyVersion)
+pyNum=${pyVerList[1]}
+
+oIFS="$IFS"
+IFS="\."
+
+pyVerSplit=($pyNum)
+
+IFS="$oIFS"
+unset oIFS
+if [[ "${pyVerSplit[0]}" -eq "3" ]]; then
+	if [[ "${pyVerSplit[1]}" -lt "4" ]]; then
+		python_not_available
+	elif [[ "${pyVerSplit[1]}" -eq "4" ]]; then
+		if [[ "${pyVerSplit[2]}" -lt "2" ]]; then
+			epython_not_available
+		fi
+	fi
+fi
+
+# Python is available, the executable is in $PYTHON
+
+# Change the directory first
+
+cd $WORK_DIR
+
+# Python is available, and the version is suitable
+# Finally, we can launch the Python CGI web server
+
+[ -x $WEB_SERVER_SCRIPT ] || webserverscript_not_found
+
+# Inform the user that we are finally starting
+
+echo Starting CGI Web server...
+
+if [ -v DISPLAY ]
+then {
+    # Graphics is available
+	$PYTHON $WEB_SERVER_SCRIPT
+}
+else {
+	$PYTHON $WEB_SERVER_SCRIPT &
+	echo Use \"kill $!\" to stop it
+	echo Go to $MODELING_SERVICE_LOCATION to run models manually
+}
+fi

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <!--
+       Copyright (C) 2013 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved.  This file is offered as-is,
+       without any warranty.  
+  -->
+
+  <!-- HP BL460c Gen8 Server
+  
+    See web-based configurator by Hewlett-Packard:
+
+    http://h71016.www7.hp.com/dstore/MiddleFrame.asp?page=config&ProductLineId=431&FamilyId=3530&BaseId=42474&oi=E9CED&BEID=19701&SBLID=
+    
+  -->
+
+  <!-- Compute node definition -->
+  <item node_model="HP BL460c Gen8" node_vendor="HP" node_form_factor="HP Blade" node_cost="3410" node_power="385" node_weight="6" node_equipment_size="0.625" enclosure_size="10" node_free_dimm_count="16">HP BL460c Gen8</item>
+  <!-- The equipment size specified here is a preliminary approximation, to be calculated more precisely at the placement stage.
+       The chassis can house 16 blade servers, and its size is 10U, therefore each server "takes up" approximately 0.625U -->
+
+  <edge from="Start" to="HP BL460c Gen8"></edge>
+  
+  <!-- Server description starts with CPUs -->
+  <edge from="HP BL460c Gen8" to="Intel Xeon E5-2650L v2" to-partition="CPU1"></edge>
+  <edge from="HP BL460c Gen8" to="Intel Xeon E5-2660 v2" to-partition="CPU1"></edge>
+  <edge from="HP BL460c Gen8" to="Intel Xeon E5-2670 v2" to-partition="CPU1"></edge>
+  <edge from="HP BL460c Gen8" to="Intel Xeon E5-2680 v2" to-partition="CPU1"></edge>
+  <edge from="HP BL460c Gen8" to="Intel Xeon E5-2690 v2" to-partition="CPU1"></edge>
+  <edge from="HP BL460c Gen8" to="Intel Xeon E5-2695 v2" to-partition="CPU1"></edge>
+  <edge from="HP BL460c Gen8" to="Intel Xeon E5-2697 v2" to-partition="CPU1"></edge>
+  
+  <!-- Edges from the 1st partition to the 2nd partition -->
+  <!-- Second CPUs. They must match the first CPU -->
+  <edge from="Intel Xeon E5-2650L v2" from-partition="CPU1" to-partition="CPU2"></edge>
+  <edge from="Intel Xeon E5-2660 v2" from-partition="CPU1" to-partition="CPU2"></edge>
+  <edge from="Intel Xeon E5-2670 v2" from-partition="CPU1" to-partition="CPU2"></edge>
+  <edge from="Intel Xeon E5-2680 v2" from-partition="CPU1" to-partition="CPU2"></edge>
+  <edge from="Intel Xeon E5-2690 v2" from-partition="CPU1" to-partition="CPU2"></edge>
+  <edge from="Intel Xeon E5-2695 v2" from-partition="CPU1" to-partition="CPU2"></edge>
+  <edge from="Intel Xeon E5-2697 v2" from-partition="CPU1" to-partition="CPU2"></edge>
+  
+  <!-- Vertices in partition CPU2 all connect to a single vertex -->
+  <item>END_OF_CPU2</item>
+  <connect from-partition="CPU2" to="END_OF_CPU2"></connect>
+  
+  <!-- Memory -->
+
+    <!-- Memory options for CPU2. -->
+      <edge from="END_OF_CPU2" to="32 GB PC3-14900R 4x8GB Dual Rank Memory" to-partition="RAM_FOR_CPU2"></edge>
+      <edge from="END_OF_CPU2" to="64 GB PC3-14900R 8x8GB Dual Rank Memory" to-partition="RAM_FOR_CPU2"></edge>
+  
+    <!-- Memory options for CPU1. We make sure that CPU1 and CPU2 have the same amount of memory (for symmetry), although in generic systems
+         this is not strictly necessary. "to" is not used; defaults to "from". Copies of vertices are created automatically. -->
+      <edge from="32 GB PC3-14900R 4x8GB Dual Rank Memory" from-partition="RAM_FOR_CPU2" to-partition="RAM_FOR_CPU1"></edge>
+      <edge from="64 GB PC3-14900R 8x8GB Dual Rank Memory" from-partition="RAM_FOR_CPU2" to-partition="RAM_FOR_CPU1"></edge>
+      
+      <!-- If only CPU1 is present, it can be connected to RAM_FOR_CPU1. -->
+      <connect from-partition="CPU1" to-partition="RAM_FOR_CPU1"></connect>
+
+  <!-- Connect all CPU combinations to the built-in interconnect which is (supposedly) always present -->
+  <connect from-partition="RAM_FOR_CPU1" to="HP FlexFabric 10Gb 2-port 534FLB FlexibleLOM"></connect>
+  
+  <!-- From the built-in interconnect, we can go directly to the "Pre-end" vertex... -->
+  <edge from="HP FlexFabric 10Gb 2-port 534FLB FlexibleLOM" to="Pre-end"></edge>
+  <!-- ... or we can add another interconnection option -->
+  <edge from="HP FlexFabric 10Gb 2-port 534FLB FlexibleLOM" to="HP InfiniBand 4X FDR/EN Dual Port 544M Adapter"></edge>
+  <edge from="HP InfiniBand 4X FDR/EN Dual Port 544M Adapter" to="Pre-end"></edge>
+  
+<!-- Any of the 28 combinations above can have one of the 2 available networking options.
+     This gives a total of 28*2=56 combinations for this server. -->
+
+</itemslist>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <!--
+       Copyright (C) 2014 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved.  This file is offered as-is,
+       without any warranty.  
+  -->
+
+  <!-- Intel Xeon Phi coprocessor boards -->
+  
+  <!-- Price is Intel's recommended customer price from: http://ark.intel.com/products/family/71840/Intel-Xeon-Phi-Coprocessors#@Server
+       Prices last updated: June 2014 -->
+  
+  <!-- Intel Xeon Phi Coprocessor 7120P (16GB, 1.238 GHz, 61 core). Adds 1208 GFLOPS of peak floating-point performance -->
+  <item node_cost="+4129" node_peak_performance="+1208" accelerator_model="+ Intel Xeon Phi 7120P" accelerator_vendor="Intel" accelerator_count="+1" node_power="+300">Intel Xeon Phi Coprocessor 7120P</item>
+
+</itemslist>

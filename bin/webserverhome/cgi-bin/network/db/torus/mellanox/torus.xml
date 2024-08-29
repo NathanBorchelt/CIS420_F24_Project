@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
+
+  <!--
+       Copyright (C) 2013 Konstantin S. Solnushkin
+       
+       Copying and distribution of this file, with or without modification,
+       are permitted in any medium without royalty provided the copyright
+       notice and this notice are preserved. This file is offered as-is,
+       without any warranty.  
+  -->
+
+    <!-- "Start" and "End" vertices (defined before any included file starts to use them) -->
+    <item>Start</item>
+    <item>End</item>
+
+    <!-- Include the following networking equipment -->
+    <include>mellanox_6036.xml</include>
+  
+</itemslist>
