@@ -1,3 +1,5 @@
+#!/usr/bin/python3.8
+
 import json, os, copy
 import resource
 import CPU, Memory ,Blade, Node, Chassis, GpuBlade, GPU

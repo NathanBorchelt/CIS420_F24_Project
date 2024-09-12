@@ -1,3 +1,5 @@
+#!/usr/bin/python3.8
+
 import RackMount, Blade
 
 class ComputeNode(RackMount.RackMount):

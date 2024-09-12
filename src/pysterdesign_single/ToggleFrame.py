@@ -1,3 +1,4 @@
+#!/usr/bin/python3.8
 #https://stackoverflow.com/a/52152773
 from tkinter import Frame
 

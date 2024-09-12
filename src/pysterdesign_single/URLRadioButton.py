@@ -1,3 +1,4 @@
+#!/usr/bin/python3.8
 from tkinter import Radiobutton, StringVar, Entry, Scrollbar, font
 
 from ToggleFrame import ToggleFrame

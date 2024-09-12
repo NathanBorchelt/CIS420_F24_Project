@@ -1,4 +1,4 @@
-
+#!/usr/bin/python3.8
 
 from tkinter import BOTTOM, LEFT, RIGHT, TOP, Button, Entry, IntVar, font
 from typing import Union

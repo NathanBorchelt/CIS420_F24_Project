@@ -1,3 +1,4 @@
+#!/usr/bin/python3.8
 import Blade, CPU, Memory, GPU
 
 class GpuBlade(Blade.Blade):

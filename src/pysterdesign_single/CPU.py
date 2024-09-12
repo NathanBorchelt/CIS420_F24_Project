@@ -1,3 +1,4 @@
+#!/usr/bin/python3.8
 from typing import Dict, List
 from sys import exit as e_exit
 

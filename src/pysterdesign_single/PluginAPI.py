@@ -1,3 +1,5 @@
+#!/usr/bin/python3.8
+
 from os.path import dirname, basename, isfile, join
 import glob
 

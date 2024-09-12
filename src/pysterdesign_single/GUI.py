@@ -1,3 +1,4 @@
+#!/usr/bin/python3.8
 try:
     from tkinter import BOTH, BOTTOM, LEFT, NONE, RAISED, RIGHT, SUNKEN, TOP, X, Y, Button, Checkbutton, DoubleVar, Entry, Frame, IntVar, Label, OptionMenu, PhotoImage, Radiobutton, Scrollbar, StringVar, Text, Tk, font
 except ImportError:
