@@ -1,0 +1,42 @@
+{"blade" : {
+    "HPE Cray EX4252": {
+        "accepted_cpus" : ["AMD-EPYC-Genoa"],
+        "max_cpus" : 2,
+        "dimms_per_cpu" : 12,
+        "max_dimm_capacity" : 64,
+        "memory_gen": 5,
+        "max_transfer_rate" : 4800
+    }, "HPE Cray EX425": {
+        "accepted_cpus" : ["AMD-EPYC-Milan", "AMD-EPYC-Rome"],
+        "max_cpus" : 2,
+        "dimms_per_cpu" : 8,
+        "max_dimm_capacity" : 64,
+        "memory_gen": 4,
+        "max_transfer_rate" : 3200
+    }, "HPE Cray EX420": {
+        "accepted_cpus" : ["Intel-Xeon-Saphire Rapids"],
+        "max_cpus" : 2,
+        "dimms_per_cpu" : 8,
+        "max_dimm_capacity" : 64,
+        "memory_gen": 5,
+        "max_transfer_rate" : 4800
+    }, "HPE Cray EX235n": {
+        "accepted_cpus" : ["AMD-EPYC-Milan"],
+        "max_cpus" : 1,
+        "dimms_per_cpu" : 8,
+        "max_dimm_capacity" : 64,
+        "memory_gen": 4,
+        "max_transfer_rate" : 3200,
+        "accepted_gpus" : "Nvidia Ampere A100",
+        "max_gpus" : 4
+    }, "HPE Cray EX235a": {
+        "accepted_cpus" : ["AMD-EPYC-Milan"],
+        "max_cpus" : 1,
+        "dimms_per_cpu" : 8,
+        "max_dimm_capacity" : 64,
+        "memory_gen": 4,
+        "max_transfer_rate" : 3200,
+        "accepted_gpus" : "AMD Instinct M250X",
+        "max_gpus" : 4
+    }
+}}

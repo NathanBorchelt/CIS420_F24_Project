@@ -1,0 +1,86 @@
+{
+	"memory": {
+		"DDR": [{
+			"gen": 4,
+			"performance": [{
+					"speed": 2666,
+					"capacity": 128,
+					"price": 598
+				},
+				{
+					"speed": 2666,
+					"capacity": 64,
+					"price": 80
+				},
+				{
+					"speed": 3200,
+					"capacity": 128,
+					"price": 689
+				},
+				{
+					"speed": 3200,
+					"capacity": 64,
+					"price": 162
+				},
+				{
+					"speed": 2933,
+					"capacity": 64,
+					"price": 300
+				},
+				{
+					"speed": 2400,
+					"capacity": 32,
+					"price": 155
+				},
+				{
+					"speed": 2133,
+					"capacity": 64,
+					"price": 225
+				},
+				{
+					"speed": 2400,
+					"capacity": 64,
+					"price": 151
+				},
+				{
+					"speed": 2666,
+					"capacity": 512,
+					"price": 2500
+				},
+				{
+					"speed": 2666,
+					"capacity": 256,
+					"price": 290
+				}
+			]
+		}, {
+			"gen": 5,
+			"performance": [{
+					"speed": 4800,
+					"capacity": 64,
+					"price": 290
+				},
+				{
+					"speed": 4800,
+					"capacity": 32,
+					"price": 135
+				},
+				{
+					"speed": 4800,
+					"capacity": 16,
+					"price": 85
+				},
+				{
+					"speed": 4800,
+					"capacity": 128,
+					"price": 1501
+				},
+				{
+					"speed": 4800,
+					"capacity": 256,
+					"price": 5733
+				}
+			]
+		}]
+	}
+}

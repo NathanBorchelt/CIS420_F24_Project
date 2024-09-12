@@ -7,7 +7,7 @@
 
 <item main_memory_type="PC4" main_memory_speed="25600" main_memory_registers="registered" node_power="+18" node_free_dimm_count="-8" node_cost="+28736" node_main_memory_size="+512" main_memory_layout_per_cpu="8x64GB">512 GB PC4-25600 8x64GB 2Rank Memory</item>
 
-/n/n<item main_memory_type="PC4" main_memory_speed="23464" main_memory_registers="registered" node_power="+18" node_free_dimm_count="-1" node_cost="+1003" node_main_memory_size="+64" main_memory_layout_per_cpu="1x64GB">64 GB PC4-23464 1x64GB 2Rank Memory</item>
+<item main_memory_type="PC4" main_memory_speed="23464" main_memory_registers="registered" node_power="+18" node_free_dimm_count="-1" node_cost="+1003" node_main_memory_size="+64" main_memory_layout_per_cpu="1x64GB">64 GB PC4-23464 1x64GB 2Rank Memory</item>
 
 <item main_memory_type="PC4" main_memory_speed="23464" main_memory_registers="registered" node_power="+18" node_free_dimm_count="-4" node_cost="+4012" node_main_memory_size="+256" main_memory_layout_per_cpu="4x64GB">256 GB PC4-23464 4x64GB 2Rank Memory</item>
 

@@ -1,0 +1,603 @@
+{"cpus" : {
+    "7232P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1],
+        "price" : 450,
+        "cores" : 8,
+        "cache" : {
+            "l1" : "512b1",
+            "l2" : "4b2",
+            "l3" : "32b2"
+        },
+        "tdp" : 120,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 3.1,
+            "all_boost" : 3.2,
+            "max_boost" : 3.2
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7302P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1],
+        "price" : 825,
+        "cores" : 16,
+        "cache" : {
+            "l1" : "1b2",
+            "l2" : "8b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 155,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 3,
+            "all_boost" : 3.3,
+            "max_boost" : 3.3
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7402P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1],
+        "price" : 1250,
+        "cores" : 24,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "12b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 180,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.8,
+            "all_boost" : 3.35,
+            "max_boost" : 3.35
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7502P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1],
+        "price" : 2300,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "2b2",
+            "l2" : "16b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 180,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.5,
+            "all_boost" : 3.35,
+            "max_boost" : 3.35
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7702P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1],
+        "price" : 2300,
+        "cores" : 64,
+        "cache" : {
+            "l1" : "4b2",
+            "l2" : "32b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 200,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2,
+            "all_boost" : 3.35,
+            "max_boost" : 3.35
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7252" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 475,
+        "cores" : 8,
+        "cache" : {
+            "l1" : "512b1",
+            "l2" : "4b2",
+            "l3" : "64b2"
+        },
+        "tdp" : 120,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.8,
+            "all_boost" : 3.2,
+            "max_boost" : 3.2
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7262" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 575,
+        "cores" : 8,
+        "cache" : {
+            "l1" : "512b1",
+            "l2" : "4b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 155,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 3.2,
+            "all_boost" : 3.4,
+            "max_boost" : 3.4
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7272" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 625,
+        "cores" : 12,
+        "cache" : {
+            "l1" : "768b1",
+            "l2" : "6b2",
+            "l3" : "64b2"
+        },
+        "tdp" : 120,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.9,
+            "all_boost" : 3.2,
+            "max_boost" : 3.2
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7282" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 650,
+        "cores" : 16,
+        "cache" : {
+            "l1" : "1b2",
+            "l2" : "8b2",
+            "l3" : "64b2"
+        },
+        "tdp" : 120,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.8,
+            "all_boost" : 3.2,
+            "max_boost" : 3.2
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7302" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 978,
+        "cores" : 16,
+        "cache" : {
+            "l1" : "1b2",
+            "l2" : "8b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 155,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 3,
+            "all_boost" : 3.3,
+            "max_boost" : 3.3
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7352" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 1350,
+        "cores" : 24,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "12b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 155,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.3,
+            "all_boost" : 3.2,
+            "max_boost" : 3.2
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7402" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 1783,
+        "cores" : 24,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "12b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 180,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.8,
+            "all_boost" : 3.35,
+            "max_boost" : 3.35
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7452" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 2025,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "2b2",
+            "l2" : "16b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 155,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.35,
+            "all_boost" : 3.35,
+            "max_boost" : 3.35
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7502" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 2600,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "2b2",
+            "l2" : "16b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 180,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.5,
+            "all_boost" : 3.35,
+            "max_boost" : 3.35
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7532" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 2112,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "2b2",
+            "l2" : "16b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 200,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.4,
+            "all_boost" : 3.3,
+            "max_boost" : 3.3
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7542" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 3400,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "2b2",
+            "l2" : "16b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 225,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.9,
+            "all_boost" : 3.4,
+            "max_boost" : 3.4
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7552" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 4025,
+        "cores" : 48,
+        "cache" : {
+            "l1" : "3b2",
+            "l2" : "24b2",
+            "l3" : "192b2"
+        },
+        "tdp" : 200,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.2,
+            "all_boost" : 3.35,
+            "max_boost" : 3.35
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7642" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 4775,
+        "cores" : 48,
+        "cache" : {
+            "l1" : "3b2",
+            "l2" : "24b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 225,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.3,
+            "all_boost" : 3.3,
+            "max_boost" : 3.3
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7662" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 6150,
+        "cores" : 64,
+        "cache" : {
+            "l1" : "4b2",
+            "l2" : "32b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 225,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2,
+            "all_boost" : 3.3,
+            "max_boost" : 3.3
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7702" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 6450,
+        "cores" : 64,
+        "cache" : {
+            "l1" : "4b2",
+            "l2" : "32b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 200,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2,
+            "all_boost" : 3.35,
+            "max_boost" : 3.35
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7742" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 6950,
+        "cores" : 64,
+        "cache" : {
+            "l1" : "4b2",
+            "l2" : "32b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 225,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.25,
+            "all_boost" : 3.4,
+            "max_boost" : 3.4
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7F32" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 2100,
+        "cores" : 8,
+        "cache" : {
+            "l1" : "512b1",
+            "l2" : "4b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 180,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 3.7,
+            "all_boost" : 3.9,
+            "max_boost" : 3.9
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7F52" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 3100,
+        "cores" : 16,
+        "cache" : {
+            "l1" : "1b2",
+            "l2" : "8b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 240,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 3.5,
+            "all_boost" : 3.9,
+            "max_boost" : 3.9
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7F72" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 2450,
+        "cores" : 24,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "12b2",
+            "l3" : "192b2"
+        },
+        "tdp" : 240,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 3.2,
+            "all_boost" : 3.7,
+            "max_boost" : 3.7
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7F12" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Rome",
+        "cpu_configs" : [1, 2],
+        "price" : 7300,
+        "cores" : 64,
+        "cache" : {
+            "l1" : "4b2",
+            "l2" : "32b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 280,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.6,
+            "all_boost" : 3.3,
+            "max_boost" : 3.3
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }
+}}

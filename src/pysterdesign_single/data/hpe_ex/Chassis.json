@@ -1,0 +1,7 @@
+{"chassis": {
+    "HPE Cray EX4000": {
+        "height" : 96
+    }, "HPE Cray EX2500": {
+        "height" : 42
+    }
+}}

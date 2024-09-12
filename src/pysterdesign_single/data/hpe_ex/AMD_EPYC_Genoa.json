@@ -1,0 +1,435 @@
+{"cpus":{
+    "9354P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1],
+        "price" : 2730,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "2b2",
+            "l2" : "32b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 280,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 3.25,
+            "all_boost" : 3.8,
+            "max_boost" : 3.8
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9454P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1],
+        "price" : 4598,
+        "cores" : 48,
+        "cache" : {
+            "l1" : "3b2",
+            "l2" : "48b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 290,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 2.75,
+            "all_boost" : 3.8,
+            "max_boost" : 3.8
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9554P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1],
+        "price" : 7104,
+        "cores" : 64,
+        "cache" : {
+            "l1" : "4b2",
+            "l2" : "64b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 360,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 3.1,
+            "all_boost" : 3.75,
+            "max_boost" : 3.75
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9654P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1],
+        "price" : 10625,
+        "cores" : 96,
+        "cache" : {
+            "l1" : "6b2",
+            "l2" : "96b2",
+            "l3" : "384b2"
+        },
+        "tdp" : 360,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 2.4,
+            "all_boost" : 3.55,
+            "max_boost" : 3.7
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9124" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1, 2],
+        "price" : 1083,
+        "cores" : 16,
+        "cache" : {
+            "l1" : "1b2",
+            "l2" : "16b2",
+            "l3" : "64b2"
+        },
+        "tdp" : 200,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 3,
+            "all_boost" : 3.6,
+            "max_boost" : 3.7
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9174F" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1, 2],
+        "price" : 3850,
+        "cores" : 16,
+        "cache" : {
+            "l1" : "1b2",
+            "l2" : "16b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 320,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 4.1,
+            "all_boost" : 4.15,
+            "max_boost" : 4.4
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9224" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1, 2],
+        "price" : 1825,
+        "cores" : 24,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "24b2",
+            "l3" : "64b2"
+        },
+        "tdp" : 200,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 2.5,
+            "all_boost" : 3.65,
+            "max_boost" : 3.7
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9254" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1, 2],
+        "price" : 2299,
+        "cores" : 24,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "24b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 200,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 2.9,
+            "all_boost" : 3.9,
+            "max_boost" : 4.15
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9274F" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1, 2],
+        "price" : 3060,
+        "cores" : 24,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "24b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 320,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 4.05,
+            "all_boost" : 4.1,
+            "max_boost" : 4.3
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9334" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1, 2],
+        "price" : 2990,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "2b2",
+            "l2" : "32b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 210,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 2.7,
+            "all_boost" : 3.85,
+            "max_boost" : 3.9
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9354" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1, 2],
+        "price" : 3420,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "2b2",
+            "l2" : "32b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 280,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 3.25,
+            "all_boost" : 3.75,
+            "max_boost" : 3.8
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9374F" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1, 2],
+        "price" : 4850,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "2b2",
+            "l2" : "32b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 320,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 3.85,
+            "all_boost" : 4.1,
+            "max_boost" : 4.3
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9454" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1, 2],
+        "price" : 5225,
+        "cores" : 48,
+        "cache" : {
+            "l1" : "3b2",
+            "l2" : "48b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 290,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 2.75,
+            "all_boost" : 3.65,
+            "max_boost" : 3.8
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9474F" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1, 2],
+        "price" : 6780,
+        "cores" : 48,
+        "cache" : {
+            "l1" : "3b2",
+            "l2" : "48b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 360,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 3.6,
+            "all_boost" : 3.95,
+            "max_boost" : 4.1
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9534" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1, 2],
+        "price" : 8803,
+        "cores" : 64,
+        "cache" : {
+            "l1" : "4b2",
+            "l2" : "64b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 280,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 2.45,
+            "all_boost" : 3.55,
+            "max_boost" : 3.7
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9554" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1, 2],
+        "price" : 9087,
+        "cores" : 64,
+        "cache" : {
+            "l1" : "4b2",
+            "l2" : "64b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 360,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 3.1,
+            "all_boost" : 3.75,
+            "max_boost" : 3.75
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9634" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1, 2],
+        "price" : 10304,
+        "cores" : 84,
+        "cache" : {
+            "l1" : "5.25b2",
+            "l2" : "84b2",
+            "l3" : "384b2"
+        },
+        "tdp" : 290,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 2.25,
+            "all_boost" : 3.1,
+            "max_boost" : 3.7
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }, "9654" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Genoa",
+        "cpu_configs" : [1, 2],
+        "price" : 11805,
+        "cores" : 84,
+        "cache" : {
+            "l1" : "6b2",
+            "l2" : "96b2",
+            "l3" : "384b2"
+        },
+        "tdp" : 360,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 5 , "speed" : 4800, "max_memory" : "6b4", "slots" : 12}
+        ],
+        "clock_speed" : {
+            "base" : 2.4,
+            "all_boost" : 3.55,
+            "max_boost" : 3.7
+        },
+        "feature_size" : "5e-9",
+        "flops_per_cycle" : 24,
+        "pcie" : [128, 5.0]
+    }
+}}

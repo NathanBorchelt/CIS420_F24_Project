@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <itemslist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items-schema.xsd">
-<item node_model="HPE Cray EX4252 Genoa" node_vendor="HPE" node_form_factor="HPE Cray EX4000" node_cost="+5200" node_power="100" node_weight="18" node_equipment_size="1.5" enclosure_size="48" node_free_dimm_count="24">HPE Cray EX4252 Genoa</item>
+<item node_model="HPE Cray EX4252 Genoa" node_vendor="HPE" node_form_factor="HPE Cray EX4000" node_cost="+39779" node_power="100" node_weight="18" node_equipment_size="1.5" enclosure_size="48" node_free_dimm_count="24">HPE Cray EX4252 Genoa</item>
 
 <edge from="Start" to="HPE Cray EX4252 Genoa"></edge>
 

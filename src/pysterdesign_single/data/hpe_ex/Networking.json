@@ -1,0 +1,24 @@
+{"networking" : {
+    "Nvidia" : {
+        "Quantum CS8500" : {
+            "price" : 178026,
+            "port_count" : 800,
+            "port_speed" : 200,
+            "switch_throughput" : 320000,
+            "infiniband" : ["HDR", "4"]
+        },
+        "Mellanox MCX75510AAS-NEAT" : {
+            "price" : 1499,
+            "port_count" : 1,
+            "port_speed" : 400,
+            "infiniband" : ["NDR", "4"]
+        },
+        "Quantum-2 QM9700" : {
+            "price" : 40165,
+            "port_count" : 32,
+            "port_speed" : 400,
+            "switch_throughput" : 51200,
+            "infiniband" : ["NDR", "4"]
+        }
+    }
+}}

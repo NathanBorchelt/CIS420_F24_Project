@@ -3,19 +3,19 @@
 
   <!--
        Copyright (C) 2012 Konstantin S. Solnushkin
-       
+
        Copying and distribution of this file, with or without modification,
        are permitted in any medium without royalty provided the copyright
        notice and this notice are preserved.  This file is offered as-is,
-       without any warranty.  
+       without any warranty.
   -->
 
   <!-- UPS Model. Weight is given without any 15kW power blocks installed. -->
   <item ups_model="Liebert APM (up to 45kW)" ups_size_racks="1" ups_weight="383" ups_cost="29000">Liebert APM (up to 45kW)</item>
-  
+
   <!-- Liebert APM allows to expand UPS capabilities in 15kW blocks: -->
   <item ups_power_rating="+15000" ups_weight="+34" ups_heat="+900" ups_cost="+6000">Liebert APM 15kW block</item>
-  
+
   <!-- Up to three 15kW blocks can be installed into a 45kW frame, thus providing three distinct variants ot the UPS,
        with 15kW, 30kW and 45kW power ratings. Each variant has its own backup time: 49 min, 21 min and 12 min,
        correspondingly. From each "backup time" item, there goes an edge to the "Pre-end" vertex.

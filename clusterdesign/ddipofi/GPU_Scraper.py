@@ -24,7 +24,7 @@ class GPU:
 class Nvidia_DGX_GPU(GPU):
 	H100 = {
 		"cost" : "$40000"
-	}	
+	}
 	A100_80GB = {
 		"cost" : "$15000"
 	}
@@ -40,7 +40,7 @@ class Nvidia_DGX_GPU(GPU):
 	P100 = {
 		"cost" : "$500"
 	}
-	
+
 #values that arent in wiki
 class AMD_Instinct_GPU(GPU): #TODO no information available for most gpus
 	MI6 = {
@@ -100,7 +100,7 @@ def main():
 		"Nvidia_DGX" : "https://en.wikipedia.org/wiki/Nvidia_DGX",
 		"AMD_Instinct" : "https://en.wikipedia.org/wiki/AMD_Instinct"
 	}
-	
+
 	for url in urls:
 		f = open(url + ".xml", "w")
 		r = requests.get(urls.get(url))
@@ -108,7 +108,7 @@ def main():
 		f.close()
 		gpus = []
 		vendor = url[0:url.find("_")]
-		
+
 		f = open(url + ".xml", "r")
 		if vendor.lower() == "Nvidia".lower():
 			CONST_LABEL_START = "<th style=\"white-space:nowrap;\"><br /><br />Accelerator\n"
@@ -116,7 +116,7 @@ def main():
 			CONST_LABEL_END = "</th></tr></tbody></table>\n"
 			CONST_ENTRY_START = "<td><a href"
 			i = 0
-			
+
 			for line in f:
 				#get vendor and model
 				if line == CONST_LABEL_START:
@@ -139,44 +139,44 @@ def main():
 					startIndex = line.find("\">") + 2
 					gpus[i].architecture = line[startIndex:-10]
 					line = skip_line(f, 3)
-					
+
 					#get cores
 					gpus[i].cores = line[4:-6]
 					line = skip_line(f, 3)
-					
+
 					#get core frequency
 					gpus[i].core_frequency = line[4:-6].replace("&#160;", " ")
 					line = skip_line(f, 4)
-					
+
 					#get vram
 					gpus[i].vram = line[4:-6]
 					line = skip_line(f, 2)
-					
+
 					#get flops
 					flops = float(line[4:-13]) * 1e12
 					cores = int(gpus[i].cores)
 					clock = int(gpus[i].core_frequency[0:-5]) * 1e6
 					gpus[i].flops_per_cycle = str(round(flops / (cores * clock)))
 					line = skip_line(f, 10)
-					
+
 					#get codename
 					gpus[i].codename = line[4:-6]
 					line = skip_line(f, 2)
-					
+
 					#get l2 cache
 					gpus[i].l2_cache = line[4:-6]
 					line = f.readline()
-					
+
 					#get power
 					gpus[i].tdp = line[4:-6]
 					gpus[i].acp = str(round(int(line[4:-7]) * 0.7)) + "W"
 					gpus[i].node_power = "+" + gpus[i].tdp
 					line = skip_line(f, 3)
-					
+
 					#get lithography
 					endIndex = line.find("nm") + 2
 					gpus[i].feature_size = line[9:endIndex].replace("&#160;", " ")
-					
+
 					i += 1
 		elif vendor.lower() == "AMD".lower():
 			CONST_TABLE_START = "<th>TBP Peak\n"
@@ -184,7 +184,7 @@ def main():
 			CONST_ENTRY_START = "<tr>\n"
 			i = 0
 			line = f.readline()
-			
+
 			while line:
 				if line == CONST_TABLE_START:
 					tableStart = f.tell()
@@ -196,30 +196,30 @@ def main():
 							gpus.append(gpu)
 							#get vendor
 							gpus[i].vendor = vendor
-							
+
 							#get model
 							gpus[i].model = line[4:-1]
 							line = skip_line(f, 2)
-							
+
 							#set cost
 							model = gpus[i].model
 							gpus[i].node_cost = getattr(gpus[i], model).get("cost").replace("$", "+")
-							
+
 							#set core frequency
 							gpus[i].core_frequency = getattr(gpus[i], model).get("coreFreq")
-							
+
 							#set l2 cache
 							gpus[i].l2_cache = getattr(gpus[i], model).get("l2Cache")
 
 							#get architecture
 							gpus[i].architecture = line[4:-1]
-								
+
 							#get cores
 							line = skip_line(f, 2)
 							if line[-3:-1] == "nm":
 								line = skip_line(f, 2)
 							gpus[i].cores = str(int(line[4:-1]) * 64)
-					
+
 							#get flops TODO not all right flops
 							lastFlop = f.tell()
 							secFlop = f.tell()
@@ -239,7 +239,7 @@ def main():
 							cores = int(gpus[i].cores)
 							clock = int(gpus[i].core_frequency[0:-5]) * 1e6
 							gpus[i].flops_per_cycle = str(round(flops / (cores * clock)))
-							
+
 							#get power
 							f.seek(secFlop)
 							line = f.readline()
@@ -247,16 +247,16 @@ def main():
 							gpus[i].tdp = str(tdp) + " W"
 							gpus[i].acp = str(round(tdp * 0.7)) + " W"
 							gpus[i].node_power = "+" + gpus[i].tdp
-							
+
 							i += 1
 					i = 0
-					f.seek(tableStart)			
+					f.seek(tableStart)
 					line = skip_line(f, 2)
-					
+
 					for x in range(0, len(gpus)):
 						#get lithography
 						line = skip_line(f, 5)
-						if line[-3:-1] == "nm":	
+						if line[-3:-1] == "nm":
 							startIndex = line.find('>') + 1
 							gpus[i].feature_size = line[startIndex:-1]
 						else:
@@ -274,7 +274,7 @@ def main():
 								gpus[i].vram = line[startIndex:-1]
 							else:
 								gpus[i].vram = gpus[i - 1].vram
-						
+
 						while line[-2:-1] != "W":
 							line = skip_line(f, 2)
 						line = skip_line(f, 2)

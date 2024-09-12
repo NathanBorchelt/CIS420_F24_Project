@@ -1,0 +1,91 @@
+{"infiniband" : {
+    "SDR" : {
+        "signal_rate" : 2.5,
+        "link_throughput" : {
+            "1" : 2,
+            "4" : 8,
+            "8" : 16,
+            "12" : 24
+        },
+        "encoding" : 8,
+        "modulation" : "NRZ",
+        "latancy" : 5
+    }, "DDR" : {
+        "signal_rate" : 5,
+        "link_throughput" : {
+            "1" : 4,
+            "4" : 16,
+            "8" : 32,
+            "12" : 48
+        },
+        "encoding" : 8,
+        "modulation" : "NRZ",
+        "latancy" : 2.5
+    }, "QDR" : {
+        "signal_rate" : 10,
+        "link_throughput" : {
+            "1" : 8,
+            "4" : 32,
+            "8" : 64,
+            "12" : 96
+        },
+        "encoding" : 8,
+        "modulation" : "NRZ",
+        "latancy" : 1.3
+    }, "FDR10" : {
+        "signal_rate" : 10.3125,
+        "link_throughput" : {
+            "1" : 10,
+            "4" : 40,
+            "8" : 80,
+            "12" : 120
+        },
+        "encoding" : 8,
+        "modulation" : "NRZ",
+        "latancy" : 0.7
+    }, "FDR" : {
+        "signal_rate" : 14.0625,
+        "link_throughput" : {
+            "1" : 13.64,
+            "4" : 54.54,
+            "8" : 109.08,
+            "12" : 163.64
+        },
+        "encoding" : 64,
+        "modulation" : "NRZ",
+        "latancy" : 0.7
+    }, "EDR" : {
+        "signal_rate" : 25.78125,
+        "link_throughput" : {
+            "1" : 25,
+            "4" : 100,
+            "8" : 200,
+            "12" : 300
+        },
+        "encoding" : 64,
+        "modulation" : "NRZ",
+        "latancy" : 0.5
+    }, "HDR" : {
+        "signal_rate" : 50,
+        "link_throughput" : {
+            "1" : 50,
+            "4" : 200,
+            "8" : 400,
+            "12" : 600
+        },
+        "encoding" : 64,
+        "modulation" : "PAM4",
+        "latancy" : 0.6
+    }, "NDR" : {
+        "signal_rate" : 100,
+        "link_throughput" : {
+            "1" : 100,
+            "4" : 400,
+            "8" : 800,
+            "12" : 1200
+        },
+        "encoding" : 64,
+        "modulation" : "PAM4",
+        "latancy" : 0.6
+    }
+}}

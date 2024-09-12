@@ -1,0 +1,339 @@
+{"cpus":{
+    "7351P": {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Naples",
+        "cpu_configs" : [1],
+        "price" : 750,
+        "cores" : 16,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "8b2",
+            "l3" : "64b2"
+        },
+        "tdp" : 170,
+        "memory_specs" : [
+            {"class" : "DDR","gen" : 4,"speed" : 2666,"max_memory" : "2b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.4,
+            "all_boost" : 2.9,
+            "max_boost" : 2.9
+        },
+        "feature_size" : "14e-9",
+        "flops_per_cycle" : 8,
+        "pcie" : [128, 3.0]
+    }, "7401P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Naples",
+        "cpu_configs" : [1],
+        "price" : 1075,
+        "cores" : 24,
+        "cache" : {
+            "l1" : "2.25b2",
+            "l2" : "12b2",
+            "l3" : "64b2"
+        },
+        "tdp" : 170,
+        "memory_specs" : [
+            {"class" : "DDR","gen" : 4,"speed" : 2666,"max_memory" : "2b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2,
+            "all_boost" : 2.8,
+            "max_boost" : 3
+        },
+        "feature_size" : "14e-9",
+        "flops_per_cycle" : 8,
+        "pcie" : [128, 3.0]
+    }, "7551P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Naples",
+        "cpu_configs" : [1],
+        "price" : 2100,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "3b2",
+            "l2" : "16b2",
+            "l3" : "64b2"
+        },
+        "tdp" : 180,
+        "memory_specs" : [
+            {"class" : "DDR","gen" : 4,"speed" : 2666,"max_memory" : "2b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2,
+            "all_boost" : 2.55,
+            "max_boost" : 3
+        },
+        "feature_size" : "14e-9",
+        "flops_per_cycle" : 8,
+        "pcie" : [128, 3.0]
+    }, "7251" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Naples",
+        "cpu_configs" : [1, 2],
+        "price" : 574,
+        "cores" : 8,
+        "cache" : {
+            "l1" : "768b1",
+            "l2" : "4b2",
+            "l3" : "32b2"
+        },
+        "tdp" : 120,
+        "memory_specs" : [
+            {"class" : "DDR","gen" : 4,"speed" : 2400,"max_memory" : "2b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.1,
+            "all_boost" : 2.9,
+            "max_boost" : 2.9
+        },
+        "feature_size" : "14e-9",
+        "flops_per_cycle" : 8,
+        "pcie" : [128, 3.0]
+    }, "7261" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Naples",
+        "cpu_configs" : [1, 2],
+        "price" : 480,
+        "cores" : 8,
+        "cache" : {
+            "l1" : "768b1",
+            "l2" : "4b2",
+            "l3" :"64b2"
+        },
+        "tdp" : 170,
+        "memory_specs" : [
+            {"class" : "DDR","gen" : 4,"speed" : 2666,"max_memory" : "2b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.5,
+            "all_boost" : 2.9,
+            "max_boost" : 2.9
+        },
+        "feature_size" : "14e-9",
+        "flops_per_cycle" : 8,
+        "pcie" : [128, 3.0]
+    }, "7281" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Naples",
+        "cpu_configs" : [1, 2],
+        "price" : 650,
+        "cores" : 16,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "8b2",
+            "l3" :"32b2"
+        },
+        "tdp" : 170,
+        "memory_specs" : [
+            {"class" : "DDR","gen" : 4,"speed" : 2666,"max_memory" : "2b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.1,
+            "all_boost" : 2.7,
+            "max_boost" : 2.7
+        },
+        "feature_size" : "14e-9",
+        "flops_per_cycle" : 8,
+        "pcie" : [128, 3.0]
+    }, "7301" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Naples",
+        "cpu_configs" : [1, 2],
+        "price" : 825,
+        "cores" : 16,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "8b2",
+            "l3" : "64b2"
+        },
+        "tdp" : 170,
+        "memory_specs" : [
+            {"class" : "DDR","gen" : 4,"speed" : 2666,"max_memory" : "2b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.2,
+            "all_boost" : 2.7,
+            "max_boost" : 2.7
+        },
+        "feature_size" : "14e-9",
+        "flops_per_cycle" : 8,
+        "pcie" : [128, 3.0]
+    }, "7351" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Naples",
+        "cpu_configs" : [1, 2],
+        "price" : 1100,
+        "cores" : 16,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "8b2",
+            "l3" :"64b2"
+        },
+        "tdp" : 170,
+        "memory_specs" : [
+            {"class" : "DDR","gen" : 4,"speed" : 2666,"max_memory" : "2b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.4,
+            "all_boost" : 2.9,
+            "max_boost" : 2.9
+        },
+        "feature_size" : "14e-9",
+        "flops_per_cycle" : 8,
+        "pcie" : [128, 3.0]
+    }, "7371" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Naples",
+    "cpu_configs" : [1, 2],
+    "price" : 1550,
+    "cores" : 16,
+    "cache" : {
+        "l1" : "1.5b2",
+        "l2" : "8b2",
+        "l3" :"64b2"
+    },
+    "tdp" : 170,
+    "memory_specs" : [
+        {"class" : "DDR","gen" : 4,"speed" : 2666,"max_memory" : "2b4", "slots" : 16}
+    ],
+    "clock_speed" : {
+        "base" : 3.1,
+        "all_boost" : 3.6,
+        "max_boost" : 3.8
+    },
+    "feature_size" : "14e-9",
+    "flops_per_cycle" : 8,
+    "pcie" : [128, 3.0]
+    }, "7401" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Naples",
+    "cpu_configs" : [1, 2],
+    "price" : 1850,
+    "cores" : 24,
+    "cache" : {
+        "l1" : "2.25b2",
+        "l2" : "12b2",
+        "l3" :"64b2"
+    },
+    "tdp" : 170,
+    "memory_specs" : [
+        {"class" : "DDR","gen" : 4,"speed" : 2666,"max_memory" : "2b4", "slots" : 16}
+    ],
+    "clock_speed" : {
+        "base" : 2,
+        "all_boost" : 2.8,
+        "max_boost" : 3
+    },
+    "feature_size" : "14e-9",
+    "flops_per_cycle" : 8,
+    "pcie" : [128, 3.0]
+    }, "7451" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Naples",
+        "cpu_configs" : [1, 2],
+        "price" : 2400,
+        "cores" : 24,
+        "cache" : {
+            "l1" : "2.25b2",
+            "l2" : "12b2",
+            "l3" :"64b2"
+        },
+        "tdp" : 180,
+        "memory_specs" : [
+            {"class" : "DDR","gen" : 4,"speed" : 2666,"max_memory" : "2b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.3,
+            "all_boost" : 2.9,
+            "max_boost" : 3.2
+        },
+        "feature_size" : "14e-9",
+        "flops_per_cycle" : 8,
+        "pcie" : [128, 3.0]
+    }, "7501" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Naples",
+        "cpu_configs" : [1, 2],
+        "price" : 3400,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "3b2",
+            "l2" : "16b2",
+            "l3" :"64b2"
+        },
+        "tdp" : 170,
+        "memory_specs" : [
+            {"class" : "DDR","gen" : 4,"speed" : 2666,"max_memory" : "2b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2,
+            "all_boost" : 2.6,
+            "max_boost" : 3
+        },
+        "feature_size" : "14e-9",
+        "flops_per_cycle" : 8,
+        "pcie" : [128, 3.0]
+    }, "7551" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Naples",
+        "cpu_configs" : [1, 2],
+        "price" : 3400,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "3b2",
+            "l2" : "16b2",
+            "l3" :"64b2"
+        },
+        "tdp" : 180,
+        "memory_specs" : [
+            {"class" : "DDR","gen" : 4,"speed" : 2666,"max_memory" : "2b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2,
+            "all_boost" : 2.55,
+            "max_boost" : 3
+        },
+        "feature_size" : "14e-9",
+        "flops_per_cycle" : 8,
+        "pcie" : [128, 3.0]
+    }, "7601" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Naples",
+        "cpu_configs" : [1, 2],
+        "price" : 4200,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "3b2",
+            "l2" : "16b2",
+            "l3" :"64b2"
+        },
+        "tdp" : 180,
+        "memory_specs" : [
+            {"class" : "DDR","gen" : 4,"speed" : 2666,"max_memory" : "2b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.2,
+            "all_boost" : 2.7,
+            "max_boost" : 3.2
+        },
+        "feature_size" : "14e-9",
+        "flops_per_cycle" : 8,
+        "pcie" : [128, 3.0]
+    }
+}}

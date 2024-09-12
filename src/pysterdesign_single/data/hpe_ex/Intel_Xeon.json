@@ -1,0 +1,2061 @@
+{"cpus": {
+	"Max 9480": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [1,2],
+		"price": 12980,
+		"cores": 56,
+		"cache": {
+			"l1": "4480b1",
+			"l2": "112b2",
+			"l3": "112.5b2"
+		},
+		"tdp": 350,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 1.9,
+			"all_boost": 2.6,
+			"max_boost": 3.5
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Max 9470": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 11590,
+		"cores": 52,
+		"cache": {
+			"l1": "4160b1",
+			"l2": "104b2",
+			"l3": "105b2"
+		},
+		"tdp": 350,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2,
+			"all_boost": 2.7,
+			"max_boost": 3.5
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Max 9468": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 9900,
+		"cores": 48,
+		"cache": {
+			"l1": "3840b1",
+			"l2": "96b2",
+			"l3": "105b2"
+		},
+		"tdp": 350,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.1,
+			"all_boost": 2.6,
+			"max_boost": 3.5
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Max 9462": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 7995,
+		"cores": 32,
+		"cache": {
+			"l1": "2560b1",
+			"l2": "64b2",
+			"l3": "75b2"
+		},
+		"tdp": 350,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.7,
+			"all_boost": 3.1,
+			"max_boost": 3.5
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Max 9460": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 8750,
+		"cores": 40,
+		"cache": {
+			"l1": "3200b1",
+			"l2": "80b2",
+			"l3": "97.5b2"
+		},
+		"tdp": 350,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.2,
+			"all_boost": 2.7,
+			"max_boost": 3.5
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Bronze 3408U": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1
+		],
+		"price": 425,
+		"cores": 8,
+		"cache": {
+			"l1": "640b1",
+			"l2": "16b2",
+			"l3": "22.5b2"
+		},
+		"tdp": 125,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4000,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 1.8,
+			"all_boost": 1.9,
+			"max_boost": 1.9
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 5411N": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1
+		],
+		"price": 1388,
+		"cores": 28,
+		"cache": {
+			"l1": "2240b1",
+			"l2": "56b2",
+			"l3": "45b2"
+		},
+		"tdp": 165,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 1.9,
+			"all_boost": 2.8,
+			"max_boost": 3.9
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 5412U": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1
+		],
+		"price": 1113,
+		"cores": 24,
+		"cache": {
+			"l1": "1920b1",
+			"l2": "48b2",
+			"l3": "45b2"
+		},
+		"tdp": 185,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.1,
+			"all_boost": 2.9,
+			"max_boost": 3.9
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 5415+": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 1076,
+		"cores": 8,
+		"cache": {
+			"l1": "640b1",
+			"l2": "16b2",
+			"l3": "22.5b2"
+		},
+		"tdp": 150,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.9,
+			"all_boost": 3.6,
+			"max_boost": 4.1
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 5416S": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 944,
+		"cores": 16,
+		"cache": {
+			"l1": "1280b1",
+			"l2": "32b2",
+			"l3": "30b2"
+		},
+		"tdp": 150,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2,
+			"all_boost": 2.8,
+			"max_boost": 4
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 5418N": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 1664,
+		"cores": 24,
+		"cache": {
+			"l1": "1920b1",
+			"l2": "48b2",
+			"l3": "45b2"
+		},
+		"tdp": 165,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4000,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 1.8,
+			"all_boost": 2.9,
+			"max_boost": 3.8
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 5418Y": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 1493,
+		"cores": 24,
+		"cache": {
+			"l1": "1920b1",
+			"l2": "48b2",
+			"l3": "45b2"
+		},
+		"tdp": 185,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2,
+			"all_boost": 2.8,
+			"max_boost": 3.8
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 5420+": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 1493,
+		"cores": 28,
+		"cache": {
+			"l1": "2240b1",
+			"l2": "56b2",
+			"l3": "52.5b2"
+		},
+		"tdp": 205,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2,
+			"all_boost": 2.7,
+			"max_boost": 4.1
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 5423N": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1
+		],
+		"price": 1508,
+		"cores": 20,
+		"cache": {
+			"l1": "1600b1",
+			"l2": "40b2",
+			"l3": "37.5b2"
+		},
+		"tdp": 145,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.1,
+			"all_boost": 3,
+			"max_boost": 4
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 5433N": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1
+		],
+		"price": 1701,
+		"cores": 20,
+		"cache": {
+			"l1": "1600b1",
+			"l2": "40b2",
+			"l3": "37.5b2"
+		},
+		"tdp": 160,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.3,
+			"all_boost": 3.1,
+			"max_boost": 4.1
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6414U": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1
+		],
+		"price": 2296,
+		"cores": 32,
+		"cache": {
+			"l1": "2560b1",
+			"l2": "64b2",
+			"l3": "60b2"
+		},
+		"tdp": 250,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2,
+			"all_boost": 2.6,
+			"max_boost": 3.4
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6416H": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2,
+			4
+		],
+		"price": 1444,
+		"cores": 18,
+		"cache": {
+			"l1": "1440b1",
+			"l2": "36b2",
+			"l3": "45b2"
+		},
+		"tdp": 165,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.2,
+			"all_boost": 2.9,
+			"max_boost": 4.2
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6418H": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2,
+			4
+		],
+		"price": 2065,
+		"cores": 24,
+		"cache": {
+			"l1": "1920b1",
+			"l2": "48b2",
+			"l3": "60b2"
+		},
+		"tdp": 185,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.1,
+			"all_boost": 2.9,
+			"max_boost": 4
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6421N": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1
+		],
+		"price": 2065,
+		"cores": 24,
+		"cache": {
+			"l1": "1920b1",
+			"l2": "48b2",
+			"l3": "60b2"
+		},
+		"tdp": 185,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.1,
+			"all_boost": 2.9,
+			"max_boost": 4
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6426Y": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 1517,
+		"cores": 16,
+		"cache": {
+			"l1": "1280b1",
+			"l2": "32b2",
+			"l3": "37.5b2"
+		},
+		"tdp": 185,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.5,
+			"all_boost": 3.3,
+			"max_boost": 4.1
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6428N": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 3200,
+		"cores": 32,
+		"cache": {
+			"l1": "2560b1",
+			"l2": "64b2",
+			"l3": "60b2"
+		},
+		"tdp": 185,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4000,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 1.8,
+			"all_boost": 2.5,
+			"max_boost": 3.8
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6430": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 2138,
+		"cores": 32,
+		"cache": {
+			"l1": "2560b1",
+			"l2": "64b2",
+			"l3": "60b2"
+		},
+		"tdp": 270,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.1,
+			"all_boost": 2.6,
+			"max_boost": 3.4
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6434": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 2607,
+		"cores": 8,
+		"cache": {
+			"l1": "640b1",
+			"l2": "16b2",
+			"l3": "22.5b2"
+		},
+		"tdp": 195,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 3.7,
+			"all_boost": 4.1,
+			"max_boost": 4.1
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6434H": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2,
+			4,
+			8
+		],
+		"price": 2607,
+		"cores": 8,
+		"cache": {
+			"l1": "640b1",
+			"l2": "16b2",
+			"l3": "22.5b2"
+		},
+		"tdp": 195,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 3.7,
+			"all_boost": 4.1,
+			"max_boost": 4.1
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6438M": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 3273,
+		"cores": 32,
+		"cache": {
+			"l1": "2560b1",
+			"l2": "64b2",
+			"l3": "60b2"
+		},
+		"tdp": 205,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.2,
+			"all_boost": 2.8,
+			"max_boost": 3.9
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6438N": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 3351,
+		"cores": 32,
+		"cache": {
+			"l1": "2560b1",
+			"l2": "64b2",
+			"l3": "60b2"
+		},
+		"tdp": 205,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2,
+			"all_boost": 2.7,
+			"max_boost": 3.6
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6438Y+": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 3141,
+		"cores": 32,
+		"cache": {
+			"l1": "2560b1",
+			"l2": "64b2",
+			"l3": "60b2"
+		},
+		"tdp": 205,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2,
+			"all_boost": 2.8,
+			"max_boost": 4
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6442Y": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 2065,
+		"cores": 24,
+		"cache": {
+			"l1": "1920b1",
+			"l2": "48b2",
+			"l3": "60b2"
+		},
+		"tdp": 225,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.6,
+			"all_boost": 3.3,
+			"max_boost": 4
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6444Y": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 1517,
+		"cores": 16,
+		"cache": {
+			"l1": "1280b1",
+			"l2": "32b2",
+			"l3": "45b2"
+		},
+		"tdp": 270,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 3.6,
+			"all_boost": 4,
+			"max_boost": 4
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6448H": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2,
+			4
+		],
+		"price": 3658,
+		"cores": 32,
+		"cache": {
+			"l1": "2560b1",
+			"l2": "64b2",
+			"l3": "60b2"
+		},
+		"tdp": 250,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 3.6,
+			"all_boost": 3.2,
+			"max_boost": 4.1
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6448Y": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 3583,
+		"cores": 32,
+		"cache": {
+			"l1": "2560b1",
+			"l2": "64b2",
+			"l3": "60b2"
+		},
+		"tdp": 225,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.1,
+			"all_boost": 3,
+			"max_boost": 4.1
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6454S": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 3157,
+		"cores": 32,
+		"cache": {
+			"l1": "2560b1",
+			"l2": "64b2",
+			"l3": "60b2"
+		},
+		"tdp": 270,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.2,
+			"all_boost": 2.8,
+			"max_boost": 3.4
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Gold 6458Q": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 6416,
+		"cores": 32,
+		"cache": {
+			"l1": "2560b1",
+			"l2": "64b2",
+			"l3": "60b2"
+		},
+		"tdp": 350,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 3.1,
+			"all_boost": 4,
+			"max_boost": 4
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8444H": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2,
+			4,
+			8
+		],
+		"price": 4234,
+		"cores": 16,
+		"cache": {
+			"l1": "1280b1",
+			"l2": "32b2",
+			"l3": "45b2"
+		},
+		"tdp": 270,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.9,
+			"all_boost": 3.2,
+			"max_boost": 4
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8450H": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2,
+			4,
+			8
+		],
+		"price": 4708,
+		"cores": 28,
+		"cache": {
+			"l1": "2240b1",
+			"l2": "56b2",
+			"l3": "75b2"
+		},
+		"tdp": 250,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2,
+			"all_boost": 2.6,
+			"max_boost": 3.5
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8452Y": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 3995,
+		"cores": 36,
+		"cache": {
+			"l1": "2880b1",
+			"l2": "72b2",
+			"l3": "67.5b2"
+		},
+		"tdp": 250,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2,
+			"all_boost": 2.8,
+			"max_boost": 3.8
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8454H": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2,
+			4,
+			8
+		],
+		"price": 6540,
+		"cores": 32,
+		"cache": {
+			"l1": "2560b1",
+			"l2": "64b2",
+			"l3": "82.5b2"
+		},
+		"tdp": 270,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.1,
+			"all_boost": 2.7,
+			"max_boost": 3.4
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8458P": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 6759,
+		"cores": 44,
+		"cache": {
+			"l1": "2560b1",
+			"l2": "88b2",
+			"l3": "82.5b2"
+		},
+		"tdp": 350,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.7,
+			"all_boost": 3.2,
+			"max_boost": 3.8
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8460H": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2,
+			4,
+			8
+		],
+		"price": 10710,
+		"cores": 40,
+		"cache": {
+			"l1": "3200b1",
+			"l2": "80b2",
+			"l3": "105b2"
+		},
+		"tdp": 330,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.2,
+			"all_boost": 3.1,
+			"max_boost": 3.8
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8460Y+": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 5558,
+		"cores": 40,
+		"cache": {
+			"l1": "3200b1",
+			"l2": "80b2",
+			"l3": "105b2"
+		},
+		"tdp": 300,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2,
+			"all_boost": 2.8,
+			"max_boost": 3.7
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8461V": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1
+		],
+		"price": 4491,
+		"cores": 48,
+		"cache": {
+			"l1": "3840b1",
+			"l2": "96b2",
+			"l3": "97.5b2"
+		},
+		"tdp": 300,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.2,
+			"all_boost": 2.8,
+			"max_boost": 3.7
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8462Y+": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 5945,
+		"cores": 32,
+		"cache": {
+			"l1": "2560b1",
+			"l2": "64b2",
+			"l3": "60b2"
+		},
+		"tdp": 300,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.8,
+			"all_boost": 3.6,
+			"max_boost": 4.1
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8468": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 7214,
+		"cores": 48,
+		"cache": {
+			"l1": "3840b1",
+			"l2": "96b2",
+			"l3": "105b2"
+		},
+		"tdp": 350,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.1,
+			"all_boost": 3.1,
+			"max_boost": 3.8
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8468H": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2,
+			4,
+			8
+		],
+		"price": 13923,
+		"cores": 48,
+		"cache": {
+			"l1": "3840b1",
+			"l2": "96b2",
+			"l3": "105b2"
+		},
+		"tdp": 330,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.1,
+			"all_boost": 3,
+			"max_boost": 3.8
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8468V": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 7121,
+		"cores": 48,
+		"cache": {
+			"l1": "3840b1",
+			"l2": "96b2",
+			"l3": "97.5b2"
+		},
+		"tdp": 330,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.4,
+			"all_boost": 2.9,
+			"max_boost": 3.8
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8470": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 9359,
+		"cores": 52,
+		"cache": {
+			"l1": "4160b1",
+			"l2": "104b2",
+			"l3": "105b2"
+		},
+		"tdp": 350,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2,
+			"all_boost": 3,
+			"max_boost": 3.8
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8470N": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 9520,
+		"cores": 52,
+		"cache": {
+			"l1": "4160b1",
+			"l2": "104b2",
+			"l3": "97.5b2"
+		},
+		"tdp": 300,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 1.7,
+			"all_boost": 2.7,
+			"max_boost": 3.6
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8470Q": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 9410,
+		"cores": 52,
+		"cache": {
+			"l1": "4160b1",
+			"l2": "104b2",
+			"l3": "105b2"
+		},
+		"tdp": 350,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.1,
+			"all_boost": 3.2,
+			"max_boost": 3.8
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8471N": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1
+		],
+		"price": 5171,
+		"cores": 52,
+		"cache": {
+			"l1": "4160b1",
+			"l2": "104b2",
+			"l3": "97.5b2"
+		},
+		"tdp": 300,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 1.8,
+			"all_boost": 2.8,
+			"max_boost": 3.6
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8480": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 10710,
+		"cores": 56,
+		"cache": {
+			"l1": "4480b1",
+			"l2": "112b2",
+			"l3": "105b2"
+		},
+		"tdp": 350,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2,
+			"all_boost": 3,
+			"max_boost": 3.8
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Platinum 8490H": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2,
+			4,
+			8
+		],
+		"price": 17000,
+		"cores": 60,
+		"cache": {
+			"l1": "4800b1",
+			"l2": "120b2",
+			"l3": "112.5b2"
+		},
+		"tdp": 350,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4800,
+				"max_memory": "2b4",
+				"slots": 8
+			},
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4400,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 1.9,
+			"all_boost": 2.9,
+			"max_boost": 3.5
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Silver 4410T": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1
+		],
+		"price": 624,
+		"cores": 10,
+		"cache": {
+			"l1": "800b1",
+			"l2": "20b2",
+			"l3": "26.25b2"
+		},
+		"tdp": 150,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4000,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2.7,
+			"all_boost": 3.4,
+			"max_boost": 4
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Silver 4410Y": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 573,
+		"cores": 12,
+		"cache": {
+			"l1": "960b1",
+			"l2": "24b2",
+			"l3": "30b2"
+		},
+		"tdp": 150,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4000,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2,
+			"all_boost": 2.8,
+			"max_boost": 3.9
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	},
+	"Silver 4416+": {
+		"brand" : "Intel",
+		"subbrand" : "Xeon",
+		"codename" : "Saphire Rapids",
+		"cpu_configs": [
+			1,
+			2
+		],
+		"price": 1186,
+		"cores": 20,
+		"cache": {
+			"l1": "1600b1",
+			"l2": "40b2",
+			"l3": "37.5b2"
+		},
+		"tdp": 165,
+		"memory_specs": [
+			{
+				"class": "DDR",
+				"gen": 5,
+				"speed": 4000,
+				"max_memory": "4b4",
+				"slots": 16
+			}
+		],
+		"clock_speed": {
+			"base": 2,
+			"all_boost": 2.9,
+			"max_boost": 3.9
+		},
+		"feature_size": "10e-9",
+		"flops_per_cycle": 32
+	}
+}}

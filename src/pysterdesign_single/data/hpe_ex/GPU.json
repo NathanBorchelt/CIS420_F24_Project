@@ -1,0 +1,39 @@
+{"gpus" :{
+    "AMD Instinct M250X" : {
+        "clock" : {
+            "base" : 1000,
+            "boost" : 1700
+        },
+        "FP64" : {
+            "base" :  28.16,
+            "boost" : 47.87
+        },"FP32" : {
+            "base" :  28.16,
+            "boost" : 47.87
+        },"FP16" : {
+            "base" :  225.3,
+            "boost" : 383.0
+        },
+        "memory" : 128,
+        "tdp" : 500,
+        "max_gpus" : 4,
+        "comment" : "AMD does better at number processing than AI, so results may very depending on workload"
+    },
+    "Nvidia Ampere A100" : {
+        "clock" : {
+            "base" : 1065,
+            "boost" : 1410
+        },
+        "FP64" : {
+            "base" :  19.49
+        },"FP32" : {
+            "base" :  155.92
+        },"FP16" : {
+            "base" :  311.84
+        },
+        "memory" : 80,
+        "tdp" : 300,
+        "max_gpus" : 4,
+        "comment" : "These FPs are from the Tensor Cores, which are much better at AI than AMD's cores"
+    }
+}}

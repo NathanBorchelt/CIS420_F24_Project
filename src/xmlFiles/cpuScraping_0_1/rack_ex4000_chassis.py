@@ -9,8 +9,8 @@ import RackUnit
 from re import findall
 from shutil import copy
 
-
-NODE_COST = 5200
+#ignoring other node types.: 73533.34/Node all in. 16x32 for each node = 10144/node 11805/ 9564 Genoa, 23610/node
+NODE_COST = 39779
 NODE_WEIGHT = 18
 
 RACK_HEIGHT = 48

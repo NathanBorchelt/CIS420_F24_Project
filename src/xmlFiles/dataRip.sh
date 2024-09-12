@@ -51,26 +51,32 @@ fi
 if [[ $pythonAutoPull -ne "0" ]]; then
 	pip install scrapy
 	cd cpuScraping_0_1
-	
+
 	echo -e "\n\n\n\n\nThere is currently an issue with Scrapy and it using MD5 for one of the algoriths.\nI did a quick and dirty patch to the souce code, but I do not remember what it was.\nWhoever runs this and runs into this issue please report it as an issue with a copy of the error message from the terminal."
-	
+
 	read -p "Thank you for understanding (Press enter to continue)" temp
-	
+
 	unset temp
-	
-	cat ../cpuSpiders.txt | while read line || [[ -n $line ]];	
+
+	cat ../cpuSpiders.txt | while read line || [[ -n $line ]];
 	do
-	   scrapy crawl "$line"
-	   python "cpuDataCleaning_$line.py"
+		scrapy crawl "$line"
+		python "cpuDataCleaning_$line.py"
 	done
-	
+
 	python "rack_ex4000_chassis.py"
-	
+
 fi
 
 cd ../
 
 cp "./slingshot.xml" ./clusterdesign/
 cp "./slingshot.xml" ./saddle/db/
+
+cp "./hpe_pc4_memory.xml" ./clusterdesign/
+cp "./hpe_pc4_memory.xml" ./saddle/db/
+
+cp "./hpe_pc5_memory.xml" ./clusterdesign/
+cp "./hpe_pc5_memory.xml" ./saddle/db/
 
 echo -e "\n\nDONE\n\n"

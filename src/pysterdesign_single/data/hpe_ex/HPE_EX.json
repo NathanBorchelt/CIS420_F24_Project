@@ -1,0 +1,10 @@
+{"components":{
+    "AMD_EPYC_Genoa" : "cpus",
+    "AMD_EPYC_Milan" : "cpus",
+    "AMD_EPYC_Rome" : "cpus",
+    "Intel_Xeon" : "cpus",
+    "Memory" : "memory",
+    "Node" : "node",
+    "Blade" : "blade",
+    "Chassis" : "chassis"
+}}

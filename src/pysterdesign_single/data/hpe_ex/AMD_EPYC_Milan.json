@@ -1,0 +1,459 @@
+{"cpus":{
+    "7313P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1],
+        "price" : 913,
+        "cores" : 16,
+        "cache" : {
+            "l1" : "1b2",
+            "l2" : "8b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 155,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 3,
+            "all_boost" : 3.7,
+            "max_boost" : 3.7
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7443P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1],
+        "price" : 1337,
+        "cores" : 24,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "12b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 200,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.85,
+            "all_boost" : 4,
+            "max_boost" : 4
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7543P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1],
+        "price" : 2730,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "2b2",
+            "l2" : "16b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 225,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.8,
+            "all_boost" : 3.7,
+            "max_boost" : 3.7
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7713P" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1],
+        "price" : 5010,
+        "cores" : 64,
+        "cache" : {
+            "l1" : "4b2",
+            "l2" : "32b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 225,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2,
+            "all_boost" : 3.675,
+            "max_boost" : 3.675
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "72F3" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 2468,
+        "cores" : 8,
+        "cache" : {
+            "l1" : "512b1",
+            "l2" : "4b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 180,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 3.7,
+            "all_boost" : 4.1,
+            "max_boost" : 4.1
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7313" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 1083,
+        "cores" : 16,
+        "cache" : {
+            "l1" : "1b2",
+            "l2" : "8b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 155,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 3,
+            "all_boost" : 3.7,
+            "max_boost" : 3.7
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7343" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 1565,
+        "cores" : 16,
+        "cache" : {
+            "l1" : "1b2",
+            "l2" : "8b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 190,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 3.2,
+            "all_boost" : 3.9,
+            "max_boost" : 3.9
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "73F3" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 3521,
+        "cores" : 16,
+        "cache" : {
+            "l1" : "1b2",
+            "l2" : "8b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 240,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 3.5,
+            "all_boost" : 4,
+            "max_boost" : 4
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7413" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 1825,
+        "cores" : 24,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "12b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 180,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.65,
+            "all_boost" : 3.6,
+            "max_boost" : 3.6
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7443" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 2010,
+        "cores" : 24,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "12b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 200,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.85,
+            "all_boost" : 4,
+            "max_boost" : 4
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7453" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 1570,
+        "cores" : 28,
+        "cache" : {
+            "l1" : "1.75b2",
+            "l2" : "14b2",
+            "l3" : "64b2"
+        },
+        "tdp" : 225,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.75,
+            "all_boost" : 3.45,
+            "max_boost" : 3.45
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "74F3" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 2900,
+        "cores" : 24,
+        "cache" : {
+            "l1" : "1.5b2",
+            "l2" : "12b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 240,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 3.2,
+            "all_boost" : 4,
+            "max_boost" : 4
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7513" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 2840,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "2b2",
+            "l2" : "16b2",
+            "l3" : "128b2"
+        },
+        "tdp" : 200,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.6,
+            "all_boost" : 3.65,
+            "max_boost" : 3.65
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7543" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 3761,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "2b2",
+            "l2" : "16b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 225,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.8,
+            "all_boost" : 3.7,
+            "max_boost" : 3.7
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "75F3" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 4860,
+        "cores" : 32,
+        "cache" : {
+            "l1" : "2b2",
+            "l2" : "16b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 280,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.95,
+            "all_boost" : 4,
+            "max_boost" : 4
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7643" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 4995,
+        "cores" : 48,
+        "cache" : {
+            "l1" : "3b2",
+            "l2" : "24b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 225,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.3,
+            "all_boost" : 3.6,
+            "max_boost" : 3.6
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7663" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 6366,
+        "cores" : 56,
+        "cache" : {
+            "l1" : "3.5b2",
+            "l2" : "28b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 240,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2,
+            "all_boost" : 3.5,
+            "max_boost" : 3.5
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7713" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 7060,
+        "cores" : 64,
+        "cache" : {
+            "l1" : "4b2",
+            "l2" : "32b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 225,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2,
+            "all_boost" : 3.675,
+            "max_boost" : 3.675
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }, "7763" : {
+        "brand" : "AMD",
+        "subbrand" : "EPYC",
+        "codename" : "Milan",
+        "cpu_configs" : [1, 2],
+        "price" : 7890,
+        "cores" : 64,
+        "cache" : {
+            "l1" : "4b2",
+            "l2" : "32b2",
+            "l3" : "256b2"
+        },
+        "tdp" : 280,
+        "memory_specs" :[
+            {"class": "DDR", "gen" : 4 , "speed" : 3200, "max_memory" : "4b4", "slots" : 16}
+        ],
+        "clock_speed" : {
+            "base" : 2.45,
+            "all_boost" : 3.5,
+            "max_boost" : 3.5
+        },
+        "feature_size" : "7e-9",
+        "flops_per_cycle" : 16,
+        "pcie" : [128, 4.0]
+    }
+}}

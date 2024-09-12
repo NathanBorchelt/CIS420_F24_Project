@@ -1,0 +1,11 @@
+{"node" : {
+    "HPE Cray EX4XXx":{
+        "height" : 12,
+        "accepted_blades" : ["HPE Cray EX4252", "HPE Cray EX425", "HPE Cray EX420"],
+        "blades_per_node" : 4
+    }, "HPE Cray EX235x" : {
+        "height" : 12,
+        "accepted_blades" : ["HPE Cray EX235n", "HPE Cray EX235a"],
+        "blades_per_node" : 2
+    }
+}}
