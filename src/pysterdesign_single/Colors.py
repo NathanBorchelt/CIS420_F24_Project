@@ -1,4 +1,4 @@
-#!/usr/bin/python3.8
+#!/usr/local/bin/python3.8
 #https://stackoverflow.com/a/51592104
 from typing import Tuple
 

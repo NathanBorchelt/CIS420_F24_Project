@@ -1,4 +1,5 @@
-#!/usr/bin/python3.8
+#!/usr/local/bin/python3.8
+
 from tkinter import LEFT, BOTH, RIGHT, Y, Canvas, Scrollbar, Widget, X, TOP
 from typing import Type
 from ToggleFrame import ToggleFrame

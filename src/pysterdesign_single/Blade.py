@@ -1,4 +1,3 @@
-#!/usr/bin/python3.8
 import CPU, Memory
 
 class Blade(object):
