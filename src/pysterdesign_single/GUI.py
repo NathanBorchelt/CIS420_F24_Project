@@ -1058,6 +1058,8 @@ class ClusterDesign(Tk):#predefine the globals here
         undoButton = Button(fileOptionsFrame, text="    Undo    ", padx=colorDict["fileio_padx"], pady=colorDict["fileio_pady"], bg=colorDict["fileio_btn_bg"], fg=colorDict["fileio_btn_fg"], activebackground=colorDict["fileio_btn_alt_bg"], activeforeground=colorDict["fileio_btn_alt_fg"])
 
 
+
+        importJSONdbButton.pack(side=LEFT, anchor='nw')
         importXMLdbButton.pack(side=LEFT, anchor='nw')
         importCSVdbButton.pack(side=LEFT, anchor='nw')
         exportCSVButton.pack(side=LEFT, anchor='nw')
