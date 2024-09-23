@@ -1,4 +1,5 @@
 #!/usr/bin/python3.8
+#pip3.8 install tkinter-tooltip
 
 
 try:
