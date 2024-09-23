@@ -36,6 +36,8 @@ KNOWN_NETWORK_TECH = ['"InfiniBand"', '"10Gb Ethernet"']
 ALLOW_THROUGHPUT_DEFAULT = True
 
 def __validation(parameters: dict[str: Union[str, float, int, bool]]) -> bool:
+    
+    ## BEGIN MANDATORY PARAMETERS CHECK
     if("benchmark" not in parameters):
         #need to use error pop up window for this, implement later
         #same goes for all the others
@@ -62,21 +64,57 @@ def __validation(parameters: dict[str: Union[str, float, int, bool]]) -> bool:
     if("AllowThroughput" not in parameters):
         parameters["AllowThroughput"] = ALLOW_THROUGHPUT_DEFAULT
     else:
-        allowThroughput = parameters["AllowThroughput"]
+        allowThroughput: bool = parameters["AllowThroughput"]
         if(isinstance(allowThroughput, str)):
             allowThroughput = allowThroughput.lower()
             if((allowThroughput == "true") or (allowThroughput == "false")):
                 parameters["AllowThroughput"] = (allowThroughput == "true")
             else:
-                print('"AllowThroughput" must be a positive floating-point value')
+                print('"AllowThroughput" must be a boolean value')
             return False
+        
+    #END MANDATORY PARAMETERS CHECK
+
+    #Cores XOR Performance
+
+    coresParam: bool = ("Cores" in parameters)
+    performanceParam: bool = ("Performance" in parameters)
+
+    if(coresParam ^ performanceParam):
+        print('"Cores" and "Performance" are contradictory, one (and only one) must be defined')
+        return False
+    
+    #may need to come back and do DirectModel, Ref lines 130 and 143 in ansysfluent_13.pas
+    if(coresParam):
+        try:
+            parameters["Cores"] = int(parameters["Cores"])
+            if parameters["Cores"] < 1:
+                raise ValueError()
+        except:
+            print('"Cores" must be a positive integer')
+            return False
+    elif(performanceParam):
+        try:
+            parameters["Performance"] = float(parameters["Performance"])
+            if parameters["Performance"] < 0.0:
+                raise ValueError()
+        except:
+            print('"Performance" must be a positive floating-point value')
+            return False
+    else:
+        #How the hell did you get here
+        print("Not sure how you got here, this should be litterally impossible")
+        SystemExit(1)
+
+    return True
 
 def execute(parameters: dict[str: Union[str, float, int, bool]]) -> object:
 
         if __validation(parameters):
             print("valid")
         else:
-            return None
+            print("invalid")
+        return None
 
 
     
