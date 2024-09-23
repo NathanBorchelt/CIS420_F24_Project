@@ -35,29 +35,29 @@ KNOWN_BENCHMARK_TYPES = ['"truck_111m"']
 KNOWN_NETWORK_TECH = ['"InfiniBand"', '"10Gb Ethernet"']
 ALLOW_THROUGHPUT_DEFAULT = True
 
-
-def execute(parameters: dict[str: Union[str, float, int, bool]]) -> object:
+def __validation(parameters: dict[str: Union[str, float, int, bool]]) -> bool:
     if("benchmark" not in parameters):
         #need to use error pop up window for this, implement later
         #same goes for all the others
         print("Benchmark must be specified: "+ ", ".join(KNOWN_BENCHMARK_TYPES))
-        return
+        return False
     
     if("networkTech" not in parameters):
         print("Network technology must be specified: "+ ", ".join(KNOWN_NETWORK_TECH))
-        return
+        return False
 
     if("cpuFrequency" in parameters):
         try:
             if float(parameters["cpuFrequency"]) <= 0.0:
                 raise ValueError("Not a positive CPU Freq")
+            parameters["cpuFrequency"] = float(parameters["cpuFrequency"])
         except ValueError:
             print("CPU frequency must be a positive floating-point value")
-            return
+            return False
             
     else:
         print("CPU frequency must be specified")
-        return
+        return False
     
     if("AllowThroughput" not in parameters):
         parameters["AllowThroughput"] = ALLOW_THROUGHPUT_DEFAULT
@@ -69,8 +69,14 @@ def execute(parameters: dict[str: Union[str, float, int, bool]]) -> object:
                 parameters["AllowThroughput"] = (allowThroughput == "true")
             else:
                 print('"AllowThroughput" must be a positive floating-point value')
-            return
-        
+            return False
+
+def execute(parameters: dict[str: Union[str, float, int, bool]]) -> object:
+
+        if __validation(parameters):
+            print("valid")
+        else:
+            return None
 
 
     
