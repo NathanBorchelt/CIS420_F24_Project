@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, Dict
 
 try:
     import tkinter
@@ -31,22 +31,33 @@ This file is part of "FluentPerf", a simple performance model for ANSYS/Fluent s
 =============================
 """
 
-KNOWN_BENCHMARK_TYPES = ['"truck_111m"']
-KNOWN_NETWORK_TECH = ['"InfiniBand"', '"10Gb Ethernet"']
-ALLOW_THROUGHPUT_DEFAULT = True
 
-def __validation(parameters: dict[str: Union[str, float, int, bool]]) -> bool:
-    
+def __init__(self):
+    self.KNOWN_BENCHMARK_TYPES:list = ['"truck_111m"']
+    self.KNOWN_NETWORK_TECH:list = ['"InfiniBand"', '"10Gb Ethernet"']
+    self.ALLOW_THROUGHPUT_DEFAULT:bool = True
+
+    self.K_CPU:float = 3.75
+    self.CORES_PER_MACHINE:int = 12
+    self.MAX_CORES_INGINIBAND:int = 3072
+    self.MAX_CORES_10GB_ETH:int = 384
+
+def __validation(self, parameters: Dict) -> bool:
+    self.CHOSEN_NETWORK = ""
     ## BEGIN MANDATORY PARAMETERS CHECK
     if("benchmark" not in parameters):
         #need to use error pop up window for this, implement later
         #same goes for all the others
-        print("Benchmark must be specified: "+ ", ".join(KNOWN_BENCHMARK_TYPES))
+        print("Benchmark must be specified: "+ ", ".join(self.KNOWN_BENCHMARK_TYPES))
         return False
     
     if("networkTech" not in parameters):
-        print("Network technology must be specified: "+ ", ".join(KNOWN_NETWORK_TECH))
+        print("Network technology must be specified: "+ ", ".join(self.KNOWN_NETWORK_TECH))
         return False
+    else:
+        if(parameters["networkTech"] not in self.NOWN_NETWORK_TECH):
+            print("Invalid Network, must be one of the following: "+ ", ".join(self.KNOWN_NETWORK_TECH))
+            return False
 
     if("cpuFrequency" in parameters):
         try:
@@ -62,7 +73,7 @@ def __validation(parameters: dict[str: Union[str, float, int, bool]]) -> bool:
         return False
     
     if("AllowThroughput" not in parameters):
-        parameters["AllowThroughput"] = ALLOW_THROUGHPUT_DEFAULT
+        parameters["AllowThroughput"] = self.ALLOW_THROUGHPUT_DEFAULT
     else:
         allowThroughput: bool = parameters["AllowThroughput"]
         if(isinstance(allowThroughput, str)):
@@ -104,11 +115,29 @@ def __validation(parameters: dict[str: Union[str, float, int, bool]]) -> bool:
     else:
         #How the hell did you get here
         print("Not sure how you got here, this should be litterally impossible")
-        SystemExit(1)
+        raise SystemExit(1)
 
     return True
 
-def execute(parameters: dict[str: Union[str, float, int, bool]]) -> object:
+def efficiency(self, parameters: Dict) -> float:
+    k:float = 0.0
+    b:float = 0.0
+
+    if(parameters["networkTech"].lower() in '"InfiniBand"'.lower()):
+        k = -0.00979
+        b = 88.42231
+    elif(parameters["networkTech"].lower() in '"10Gb Ethernet"'.lower()):
+        k = -0.08270
+        b = 101.9848
+    else:
+        return None
+    
+    return (k * int(parameters["Cores"]) * b) / 100
+
+def performance(self, parameters: Dict) -> float:
+    return float(parameters["cpuFrequency"]) * self.K_CPU * (int(parameters["Cores"]) / self.CORES_PER_MACHINE) * efficiency(self, parameters)    
+
+def execute(parameters: Dict) -> object:
 
         if __validation(parameters):
             print("valid")
@@ -117,13 +146,14 @@ def execute(parameters: dict[str: Union[str, float, int, bool]]) -> object:
         return None
 
 
+
     
 
     
     
-    print(parameters)
-    print("heur cost perf execute")
-    return "cost perf execution"
+#    print(parameters)
+#    print("heur cost perf execute")
+#    return "cost perf execution"
 
 
 def identity() -> str:
