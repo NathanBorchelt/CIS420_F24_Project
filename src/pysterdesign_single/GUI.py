@@ -7,8 +7,12 @@ try:
 except ImportError:
    from Tkinter import BOTH, BOTTOM, LEFT, NONE, RAISED, RIGHT, SUNKEN, TOP, X, Y, Button, Checkbutton, DoubleVar, Entry, Frame, IntVar, Label, OptionMenu, PhotoImage, Radiobutton, Scrollbar, StringVar, Text, Tk, font
 
-import resource
-
+hasResource : bool = False
+try:
+    import resource
+    hasResource = True
+except ImportError:
+    pass
 from sys import argv
 from tkinter import END, Toplevel, filedialog
 import traceback
@@ -1153,6 +1157,7 @@ try:
 except:
     pass
 application = ClusterDesign()
-print(str(round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1000,2))+"MB")
+if(hasResource):
+    print(str(round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1000,2))+"MB")
 print(dir())
 application.mainloop()
