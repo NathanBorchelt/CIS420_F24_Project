@@ -1019,7 +1019,7 @@ class ClusterDesign(Tk):#predefine the globals here
                 if fileName[-4::] != '.xml':
                     raise ValueError("Selected file is not an XML file")
                 with open(fileName, 'r') as xmlData:
-                    print(xmlData.read())
+                    #print(xmlData.read())
                     parseXML(xmlData.read())
             except Exception as e:
                 ErrorPopUp(e)
