@@ -25,6 +25,8 @@ from ScrollableFrame import ScrollableFrame
 from IndexCounterEntry import IndexCounterEntry
 import PluginAPI
 
+from xmlParser import parseXML
+
 
 '''
 Universal methods that are designed to be usable anywhere, thus must come first, even though they get assined to static variables
@@ -1018,6 +1020,7 @@ class ClusterDesign(Tk):#predefine the globals here
                     raise ValueError("Selected file is not an XML file")
                 with open(fileName, 'r') as xmlData:
                     print(xmlData.read())
+                    parseXML(xmlData.read())
             except Exception as e:
                 ErrorPopUp(e)
         else:
