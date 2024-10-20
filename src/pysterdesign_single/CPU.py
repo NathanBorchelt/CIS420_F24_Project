@@ -10,7 +10,7 @@ sizeDecimalShort = ["", "k", "M", "G", "T", "P", "E", "Z", "Y", "R", "Q"]
 
 class CompUnit(object):
 
-    def __init__(self, brand : str, subBrand : str, codeName : str, model : str, cpuConfigs : List[int], price : int, cores : int, cache : Dict[str, int], tdp : int, memorySpecs : List[dict], clockSpeed : Dict[str, float], featureSize : float, flopsPerCycle : int):
+    def __init__(self, brand : str, subBrand : str, codeName : str, model : str, cpuConfigs : List[int], price : int, cores : int, cache : float, tdp : int, memorySpecs : List[dict], clockSpeed : Dict[str, float], featureSize : float, flopsPerCycle : int):
 
         self.brand = brand
         self.subBrand = subBrand
