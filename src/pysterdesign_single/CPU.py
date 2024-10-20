@@ -57,5 +57,44 @@ class CompUnit(object):
             e_exit()
         #print(self.cache)
 
+    def getBrand(self) -> str:
+        return self.brand
+        
+    def getCodeName(self) -> str:
+        return self.codeName
+        
+    def getModel(self) -> str:
+        return self.model
+        
+    def getPrice(self) -> int:
+        return self.price
+        
+    def getCores(self) -> int:
+        return self.cores
+        
+    def getCache(self) -> Dict[str, str]:
+        return self.cache
+        
+    def getTdp(self) -> int:
+        return self.tdp
+        
+    def getClockSpeed(self) -> Dict[str, float]:
+        return self.clockSpeed
+        
+    def getFeatureSize(self) -> float:
+        return self.featureSize
+        
+    def getFlopsPerCycle(self) -> int:
+        return self.flopsPerCycle
+        
+    def getSubBrand(self) -> str:
+        return self.subBrand
+        
+    def getCpuConfigs(self) -> List[int]:
+        return self.cpuConfigs
+        
+    def getMemorySpecs(self) -> List[Type[Memory.RAM]]:
+        return self.memorySpecs
+
     def __str__(self) ->  str:
         return "{bnd} {sbnd} {cdnme} {mdl}".format(bnd = self.brand, sbnd = self.subBrand, cdnme = self.codeName, mdl = self.model)
