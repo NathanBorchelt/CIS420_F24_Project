@@ -9,6 +9,19 @@ class RackMount(object):
         self.height = height
         self.name = name
 
+    def getHeight(self):
+        return self.height
+
+    def setHeight(self, value):
+        self.height = value
+
+    def getName(self):
+        return self.name
+
+    def setName(self, value):
+        self.name = value
+
+
     @abstractmethod
     def calcPrice(self):
         pass
