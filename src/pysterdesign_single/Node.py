@@ -4,7 +4,7 @@ import RackMount, Blade
 
 class ComputeNode(RackMount.RackMount):
 
-    def __init__(self, name: str, height: float, acceptedBlades: list, bladeQuantity : int, blade: Blade.Blade=None):
+    def __init__(self, name: str, height: float, acceptedBlades: list, bladeQuantity: int = 4, blade: Blade.Blade=None):
         super().__init__(name, height)
         self.blade = blade
         self.bladeQuantity = bladeQuantity

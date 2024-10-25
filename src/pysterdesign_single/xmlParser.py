@@ -1,7 +1,10 @@
 import xml.etree.ElementTree as ET
 from CPU import CompUnit
+from Blade import Blade
+from Node import ComputeNode
+from typing import List, Type
 
-def parseXML(xmlFile):
+def parseXMLCPU(xmlFile):
     # tree = ET.parse(xmlFile)
     # root = tree.getroot()
     root = ET.fromstring(xmlFile)
@@ -43,3 +46,54 @@ def parseXML(xmlFile):
     for item in items:
         print(item)
     return items
+
+def parseNodeXML(xmlFile):
+    # tree = ET.parse(xmlFile)
+    # root = tree.getroot()
+    root = ET.fromstring(xmlFile)
+
+    acceptedBladesList = []
+    acceptedCPUList = []
+    nodes : List[Type[ComputeNode]] = []
+    for include in root.findall('include'):
+        if(include.text.startswith("HPE")):
+            acceptedBladesList.append(include.text[:-4])
+
+    for item in root.findall('item'):
+        itemInfo = {
+            'node_model': item.get('node_model'),
+            'node_vendor': item.get('node_vendor'),
+            'node_form_factor': item.get('node_form_factor'),
+            'node_cost': item.get('node_cost'),
+            'node_weight': item.get('node_weight'),
+            'node_equipment_size': item.get('node_equipment_size'),
+            'enclosure_size': item.get('enclosure_size'),
+            'node_free_dimm_count': item.get('node_free_dimm_count'),
+        }
+        # find edges with from property equal to node_model and get the to value from that and that is one of the accepted cpus
+        node = ComputeNode(
+            name = item.get('node_model'),
+            height = float(item.get('node_equipment_size')),
+            acceptedBlades = acceptedBladesList,
+        )
+        nodes.append(node)
+        
+        for edge in root.findall('edge'):
+            if(edge.get('from') == item.get('node_model')):
+                acceptedCPUList.append(item.get('to'))
+
+    for i in range(len(nodes)):
+        nodes[i].setBlade(
+        Blade(
+                bladeName = nodes[i].name, 
+                acceptedCPUs = acceptedCPUList[i], 
+                maxCpus = int, 
+                dimmsPerCPU = int, 
+                maxDimmCapacity = int, 
+                dimmGeneration = int, 
+                maxTransferRate = int
+            ))    
+    # for node in nodes:
+    #     node.setBlade(acceptedCPUList)
+    #     print(node)
+    return nodes
