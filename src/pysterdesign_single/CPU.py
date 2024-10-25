@@ -5,9 +5,9 @@ from sys import exit as e_exit
 
 import Memory
 
-sizeBinaryLong = ["", "Kibi", "Mebi", "Gibi", "Tebi", "Pebi", "Exbi", "Zebi", "Yobi"]
+sizeBinaryLong = ["", "Kibi", "Mebi", "Gibi", "Tebi", "Pebi", "Exbi", "Zebi", "Yobi"] #1024^x
 sizeBinaryShort = ["", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei", "Zi", "Yi"]
-sizeDecimalLong = ["", "Kilo", "Mega", "Giga", "Tera", "Peta", "Exa", "Zetta", "Yotta", "Ronna", "Quetta"]
+sizeDecimalLong = ["", "Kilo", "Mega", "Giga", "Tera", "Peta", "Exa", "Zetta", "Yotta", "Ronna", "Quetta"]#1000^x
 sizeDecimalShort = ["", "k", "M", "G", "T", "P", "E", "Z", "Y", "R", "Q"]
 
 DDR5_DEFAULT =  Memory.RAM('DDR5', 5, 38400, 32, 634)
@@ -18,6 +18,9 @@ class CompUnit(object):
                 cores : int, cache : Dict[str, str], tdp : int,
                 clockSpeed : Dict[str, float], featureSize : float, flopsPerCycle : int, 
                 subBrand : str = None, cpuConfigs : List[int] = None, memorySpecs : List[Type[Memory.RAM]] = None, isJSON : bool = True):
+        
+
+
 
         if cpuConfigs is None:
             cpuConfigs = [1,2]
