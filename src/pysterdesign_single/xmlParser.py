@@ -3,6 +3,8 @@ from CPU import CompUnit
 from Blade import Blade
 from Node import ComputeNode
 from typing import List, Type
+import re
+
 
 def parseXMLCPU(xmlFile):
     # tree = ET.parse(xmlFile)
@@ -54,6 +56,10 @@ def parseNodeXML(xmlFile):
 
     acceptedBladesList = []
     acceptedCPUList = []
+    cpuPartiton = []
+    dimmGenerationValue = 0
+    maxTransferRateValue = 0
+
     nodes : List[Type[ComputeNode]] = []
     for include in root.findall('include'):
         if(include.text.startswith("HPE")):
@@ -71,29 +77,47 @@ def parseNodeXML(xmlFile):
             'node_free_dimm_count': item.get('node_free_dimm_count'),
         }
         # find edges with from property equal to node_model and get the to value from that and that is one of the accepted cpus
-        node = ComputeNode(
-            name = item.get('node_model'),
-            height = float(item.get('node_equipment_size')),
-            acceptedBlades = acceptedBladesList,
-        )
-        nodes.append(node)
-        
+        try:
+            node = ComputeNode(
+                name = item.get('node_model'),
+                height = float(item.get('node_equipment_size')),
+                acceptedBlades = acceptedBladesList,
+            )
+            nodes.append(node)
+        except:
+            continue
         for edge in root.findall('edge'):
             if(edge.get('from') == item.get('node_model')):
-                acceptedCPUList.append(item.get('to'))
+                acceptedCPUList.append([item.get('to'), item.get('to-partition'), 1])
+        for edge in root.findall('edge'):
+            for cpu in acceptedCPUList:
+                if(edge.get('from') == cpu[0]):
+                    cpu[2] += 1
+        for edge in root.findall('edge'):
+            if('END_OF_CPU' in edge.get('from')):
+                generationString = edge.get('to')
+                generationStringCleaned = re.match(r'PC(\d+)-(\d+)', generationString)
+                if(generationStringCleaned):
+                    dimmGenerationValue = int(generationStringCleaned.group(1))
+                    maxTransferRateValue = int(generationStringCleaned.group(2))
+                    
+
+
 
     for i in range(len(nodes)):
-        nodes[i].setBlade(
-        Blade(
-                bladeName = nodes[i].name, 
-                acceptedCPUs = acceptedCPUList[i], 
-                maxCpus = int, 
-                dimmsPerCPU = int, 
-                maxDimmCapacity = int, 
-                dimmGeneration = int, 
-                maxTransferRate = int
-            ))    
-    # for node in nodes:
-    #     node.setBlade(acceptedCPUList)
-    #     print(node)
+        try:
+            nodes[i].setBlade(
+            Blade(
+                    bladeName = nodes[i].getName, 
+                    acceptedCPUs = acceptedCPUList[i][0], 
+                    maxCpus = acceptedCPUList[i][2], 
+                    dimmsPerCPU = itemInfo['node_free_dimm_count']/acceptedCPUList[i][2], 
+                    maxDimmCapacity = 4 * 1024**4 if acceptedCPUList[i][2] == 2 else 2 * 1024 **4, 
+                    dimmGeneration = dimmGenerationValue, 
+                    maxTransferRate = maxTransferRateValue
+                ))
+        except:
+            continue
+    for node in nodes:
+        print(node)
     return nodes

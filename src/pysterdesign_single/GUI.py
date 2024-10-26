@@ -25,7 +25,7 @@ from ScrollableFrame import ScrollableFrame
 from IndexCounterEntry import IndexCounterEntry
 import PluginAPI
 
-from xmlParser import parseXMLCPU
+import xmlParser
 
 
 '''
@@ -1020,7 +1020,7 @@ class ClusterDesign(Tk):#predefine the globals here
                     raise ValueError("Selected file is not an XML file")
                 with open(fileName, 'r') as xmlData:
                     #print(xmlData.read())
-                    parseXMLCPU(xmlData.read())
+                    xmlParser.parseNodeXML(xmlData.read())
             except Exception as e:
                 ErrorPopUp(e)
         else:
