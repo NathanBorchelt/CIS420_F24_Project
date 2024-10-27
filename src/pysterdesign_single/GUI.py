@@ -26,6 +26,8 @@ from IndexCounterEntry import IndexCounterEntry
 import PluginAPI
 
 import xmlParser
+import json
+import jsonparser
 
 
 '''
@@ -1004,9 +1006,10 @@ class ClusterDesign(Tk):#predefine the globals here
             try:
                 if fileName[-5::] != '.json':
                     raise ValueError("Selected file is not an json file")
-                with open(fileName, 'r') as xmlData:
-                    import json
-                    print(json.laods(xmlData.read()))
+                with open(fileName, 'r') as jsonFile:
+                    json_data = json.load(jsonFile)
+                    components= parse_json_file(json_data)
+                    
             except Exception as e:
                 ErrorPopUp(e)
         else:
