@@ -49,5 +49,12 @@ class Blade(object):
         self.price = self.cpu.price
         self.price += self.maxDimmCapacity * self.dimm.price
 
+    def getHeat(self):
+        return self.heat
+
+
+    def getPrice(self):
+        return self.price
+
     def __str__(self):
         return"{bldNme}\nCPU: {cpuCnt}x {cpuDesc}\nMemory: {dimmCnt} DIMMs filled with {mem} per CPU".format(bldNme=self.bladeName, cpuCnt=self.cpuQuantity, cpuDesc=self.cpu, dimmCnt=self.dimmsPerCPU, mem=self.dimm)

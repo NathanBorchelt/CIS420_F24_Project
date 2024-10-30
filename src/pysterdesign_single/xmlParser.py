@@ -54,7 +54,7 @@ def parseNodeXML(xmlFile):
     # root = tree.getroot()
     root = ET.fromstring(xmlFile)
 
-    acceptedBladesList = []
+    bladesList = []
     acceptedCPUList = []
     cpuPartiton = []
     dimmGenerationValue = 0
@@ -63,7 +63,7 @@ def parseNodeXML(xmlFile):
     nodes : List[Type[ComputeNode]] = []
     for include in root.findall('include'):
         if(include.text.startswith("HPE")):
-            acceptedBladesList.append(include.text[:-4])
+            bladesList.append(include.text[:-4])
 
     for item in root.findall('item'):
         itemInfo = {
@@ -81,7 +81,7 @@ def parseNodeXML(xmlFile):
             node = ComputeNode(
                 name = item.get('node_model'),
                 height = float(item.get('node_equipment_size')),
-                acceptedBlades = acceptedBladesList,
+                acceptedBlades = bladesList,
             )
             nodes.append(node)
         except:
@@ -105,19 +105,16 @@ def parseNodeXML(xmlFile):
 
 
     for i in range(len(nodes)):
-        try:
-            nodes[i].setBlade(
-            Blade(
-                    bladeName = nodes[i].getName, 
-                    acceptedCPUs = acceptedCPUList[i][0], 
-                    maxCpus = acceptedCPUList[i][2], 
-                    dimmsPerCPU = itemInfo['node_free_dimm_count']/acceptedCPUList[i][2], 
-                    maxDimmCapacity = 4 * 1024**4 if acceptedCPUList[i][2] == 2 else 2 * 1024 **4, 
-                    dimmGeneration = dimmGenerationValue, 
-                    maxTransferRate = maxTransferRateValue
-                ))
-        except:
-            continue
+        nodes[i].addBlade(
+        Blade(
+                bladeName = nodes[i].getName, 
+                acceptedCPUs = acceptedCPUList[i][0], 
+                maxCpus = acceptedCPUList[i][2], 
+                dimmsPerCPU = itemInfo['node_free_dimm_count']/acceptedCPUList[i][2], 
+                maxDimmCapacity = 4 * 1024**4 if acceptedCPUList[i][2] == 2 else 2 * 1024 **4, 
+                dimmGeneration = dimmGenerationValue, 
+                maxTransferRate = maxTransferRateValue
+            ))
     for node in nodes:
         print(node)
     return nodes
