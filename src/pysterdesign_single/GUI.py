@@ -47,7 +47,7 @@ def getDisplaySize():
             smallestMonitor = [monitor.width, monitor.height]
     return smallestMonitor
 
-SCREEN_RESOLUTION = getDisplaySize()
+SCREEN_RESOLUTION = (2560,1080) #getDisplaySize()
 TITLE = "Computer Cluster Design Tool"
 
 framesDictionary = dict()

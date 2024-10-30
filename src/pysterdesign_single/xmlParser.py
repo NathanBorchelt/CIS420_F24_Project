@@ -61,9 +61,9 @@ def parseNodeXML(xmlFile):
     maxTransferRateValue = 0
 
     nodes : List[Type[ComputeNode]] = []
-    for include in root.findall('include'):
-        if(include.text.startswith("HPE")):
-            bladesList.append(include.text[:-4])
+    for edge in root.findall('edge'):
+        if(edge.get("from").startswith("HPE")):
+            bladesList.append(edge.get("to"))
 
     for item in root.findall('item'):
         itemInfo = {

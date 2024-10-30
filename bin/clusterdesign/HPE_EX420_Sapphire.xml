@@ -111,3 +111,4 @@
 <connect from-partition="CPU1_XEON4_SERIES" to-partition="RAM_FOR_CPU1_XEON4_SERIES"></connect>
 <connect from-partition="RAM_FOR_CPU1_XEON4_SERIES" to="Built-In HPE Slingshot 200Gb 2 Ports"></connect>
 </itemslist>
+
