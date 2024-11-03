@@ -4,50 +4,54 @@ from Blade import Blade
 from Node import ComputeNode
 from typing import List, Type
 import re
+from Chassis import Chassis
+import GUI
+import RackMount
+from Memory import RAM
 
 
-def parseXMLCPU(xmlFile):
+def parseCPUXML(xmlFile):
     # tree = ET.parse(xmlFile)
     # root = tree.getroot()
     root = ET.fromstring(xmlFile)
 
-    items = []
+    CPUs = []
 
-    for item in root.findall('item'):
+    for CPU in root.findall('item'):
         itemInfo = {
-            'cpu_vendor': item.get('cpu_vendor'),
-            'cpu_codename': item.get('cpu_codename'),
-            'cpu_model': item.get('cpu_model'),
-            'cpu_cores': int(item.get('cpu_cores')),
-            'cpu_feature_size': float(item.get('cpu_feature_size')),
-            'cpu_frequency': float(item.get('cpu_frequency')),
-            'cpu_flops_per_cycle': int(item.get('cpu_flops_per_cycle')),
-            'cpu_l3_cache': item.get('cpu_l3_cache'),
-            'cpu_acp': int(item.get('cpu_acp')),
-            'cpu_tdp': int(item.get('cpu_tdp')),
-            'node_power': int(item.get('node_power').replace('+', '')),
-            'node_cpu_count': int(item.get('node_cpu_count').replace('+', '')),
-            'node_cost': int(item.get('node_cost').replace('+', '')),
-            'description': item.text.strip()
+            'cpu_vendor': CPU.get('cpu_vendor'),
+            'cpu_codename': CPU.get('cpu_codename'),
+            'cpu_model': CPU.get('cpu_model'),
+            'cpu_cores': int(CPU.get('cpu_cores')),
+            'cpu_feature_size': float(CPU.get('cpu_feature_size')),
+            'cpu_frequency': float(CPU.get('cpu_frequency')),
+            'cpu_flops_per_cycle': int(CPU.get('cpu_flops_per_cycle')),
+            'cpu_l3_cache': CPU.get('cpu_l3_cache'),
+            'cpu_acp': int(CPU.get('cpu_acp')),
+            'cpu_tdp': int(CPU.get('cpu_tdp')),
+            'node_power': int(CPU.get('node_power').replace('+', '')),
+            'node_cpu_count': int(CPU.get('node_cpu_count').replace('+', '')),
+            'node_cost': int(CPU.get('node_cost').replace('+', '')),
+            'description': CPU.text.strip()
         }
         
         comp_unit = CompUnit(
-            brand = item.get('cpu_vendor'),
-            codeName = item.get('cpu_codename'),
-            model = item.get('cpu_model'),
-            price = int(item.get('node_cost').replace('+', '')),
-            cores = int(item.get('cpu_cores')),
+            brand = CPU.get('cpu_vendor'),
+            codeName = CPU.get('cpu_codename'),
+            model = CPU.get('cpu_model'),
+            price = int(CPU.get('node_cost').replace('+', '')),
+            cores = int(CPU.get('cpu_cores')),
             cache = {"l3" : itemInfo['cpu_l3_cache']},
-            tdp = int(item.get('cpu_tdp')),
+            tdp = int(CPU.get('cpu_tdp')),
             clockSpeed = {"all_boost": itemInfo['cpu_frequency']},
-            featureSize = float(item.get('cpu_feature_size')),
-            flopsPerCycle = int(item.get('cpu_flops_per_cycle')),
+            featureSize = float(CPU.get('cpu_feature_size')),
+            flopsPerCycle = int(CPU.get('cpu_flops_per_cycle')),
             isJSON=False
         )
-        items.append(comp_unit)
-    for item in items:
-        print(item)
-    return items
+        CPUs.append(comp_unit)
+    for CPU in CPUs:
+        print(CPU)
+    return CPUs
 
 def parseNodeXML(xmlFile):
     # tree = ET.parse(xmlFile)
@@ -60,7 +64,7 @@ def parseNodeXML(xmlFile):
     dimmGenerationValue = 0
     maxTransferRateValue = 0
 
-    nodes : List[Type[ComputeNode]] = []
+    nodes : List[Type[RackMount.RackMount]] = []
     for edge in root.findall('edge'):
         if(edge.get("from").startswith("HPE")):
             bladesList.append(edge.get("to"))
@@ -118,3 +122,55 @@ def parseNodeXML(xmlFile):
     for node in nodes:
         print(node)
     return nodes
+
+def parseMemoryXML(xmlFile):
+    root = ET.fromstring(xmlFile)
+    memories = []
+
+    for item in root.findall('item'):
+        memory = RAM(
+            memSpecType=item.get('main_memory_type'),
+            generation=int(re.match(r'PC(\d+)').group(1)),
+            speed=item.get('main_memory_speed'),
+            capacity= int(item.get('node_main_memory_size')),
+            price= int(item.get('node_cost')),
+            dimms= int(item.get('node_free_dimm_count'))
+        )
+        memories.append(memory)
+
+    return memories
+
+def parseChassisXML(xmlFile, fileName):
+    root = ET.fromstring(xmlFile)
+
+    cpuFiles = []
+    nodeFiles = []
+    memoryFiles = []
+    chassisCPUs = []
+    chassisNodes = []
+    chassisMemory = []
+
+    for include in root.findall('include'):
+        if(include.text.startswith('amd') or include.text.startswith('intel')):
+            cpuFiles.append(include.text)
+        elif(include.text.startswith('HPE')):
+            nodeFiles.append(include.text)
+        elif('memory' in include.text):
+            memoryFiles.append(include.text)
+    
+    for cpuFile in cpuFiles:
+        with open(cpuFile, 'r') as xmlData:
+            chassisCPUs.append(parseCPUXML(xmlData.read()))
+    for nodeFile in nodeFiles:
+        with open(nodeFile, 'r') as xmlData:
+            chassisNodes.append(parseNodeXML(xmlData.read()))
+    for memoryFile in memoryFiles:
+        with open(memoryFile, 'r') as xmlData:
+            chassisMemory.append(parseMemoryXML(xmlData.read()))
+
+    chassis = Chassis(
+        name = fileName,
+        height = GUI.SettingFrame.rackHeightEntry.get()
+    )
+
+    return chassis
