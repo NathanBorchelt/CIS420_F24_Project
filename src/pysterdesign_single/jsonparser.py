@@ -5,6 +5,7 @@ from Chassis import Chassis
 from GPU import GraphicUnit
 from GpuBlade import GpuBlade
 from Memory import RAM
+from Node import ComputeNode
 
 
 def parse_cpu_json(json_data):
@@ -212,7 +213,8 @@ def parse_memory_json(json_data):
                     generation=generation,
                     speed=performance['speed'],
                     capacity=performance['capacity'],
-                    price=performance['price']
+                    price=performance['price'],
+                    dimms = generation
                 )
                 
                 if isinstance(ram, RAM):
@@ -233,6 +235,30 @@ def parse_memory_json(json_data):
     return ram_list
 
 
+def parse_node_json(json_data):
+    node_list= []
+
+    for node_name, node_data in json_data['node'].items():
+        node = ComputeNode(
+            name=node_name,
+            height = node_data['height'],
+            bladeQuantity = node_data['blades_per_node'],
+            bladesList = node_data['accepted_blades']
+
+        )
+        if isinstance(node, ComputeNode):
+            print("Node object created")
+            print("type of blade list", type(node.bladesList))
+        node_list.append(node)
+
+        print(f"\nNode Object Details for {node_name}:")
+        print(f"Node Name: {node.name}")
+        print(f"heihgt: {node.height}")
+        print(f"blade quantity: {node.bladeQuantity}")
+        print(f"bladelist : {node.bladesList}")
+        print("----------------------------")
+    return node_list
+
 def parse_json_file(json_data):
    if 'cpus' in json_data:
        return parse_cpu_json(json_data)
@@ -244,5 +270,7 @@ def parse_json_file(json_data):
        return parse_GPU_json(json_data)
    elif 'memory' in json_data:
          return parse_memory_json(json_data)
+   elif 'node' in json_data:
+    return parse_node_json(json_data)
    else:
        raise ValueError("Unknown JSON structure")

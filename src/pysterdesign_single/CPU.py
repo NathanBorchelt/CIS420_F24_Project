@@ -10,7 +10,7 @@ sizeBinaryShort = ["", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei", "Zi", "Yi"]
 sizeDecimalLong = ["", "Kilo", "Mega", "Giga", "Tera", "Peta", "Exa", "Zetta", "Yotta", "Ronna", "Quetta"]#1000^x
 sizeDecimalShort = ["", "k", "M", "G", "T", "P", "E", "Z", "Y", "R", "Q"]
 
-DDR5_DEFAULT =  Memory.RAM('DDR5', 5, 38400, 32, 634)
+DDR5_DEFAULT =  Memory.RAM('DDR5', 5, 38400, 32, 634,5)
 
 class CompUnit(object):
 
