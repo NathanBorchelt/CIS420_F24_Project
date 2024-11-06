@@ -4,7 +4,7 @@
 
 class Network(object):
 
-    def __init__(self, tech: str, portCount : int, speed: float):
+    def __init__(self, tech: str, portCount : int, speed: float = 0):
         self.tech = tech
         self.portCount = portCount
         self.speed = speed
