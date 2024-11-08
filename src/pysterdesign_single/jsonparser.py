@@ -5,7 +5,9 @@ from Chassis import Chassis
 from GPU import GraphicUnit
 from GpuBlade import GpuBlade
 from Memory import RAM
+import Memory
 from Node import ComputeNode
+from Network import Network
 
 
 def parse_cpu_json(json_data):
@@ -26,13 +28,8 @@ def parse_cpu_json(json_data):
            'cpu_clock_speed': cpu_data['clock_speed'],
            'cpu_feature_size': float(cpu_data['feature_size']),
            'cpu_flops_per_cycle': cpu_data['flops_per_cycle']
-          
        }
-          
-       
-
-
-      
+        
        cpu = CompUnit(
            brand=cpu_data['brand'],
            subBrand=cpu_data['subbrand'],
@@ -49,35 +46,10 @@ def parse_cpu_json(json_data):
            flopsPerCycle=cpu_data['flops_per_cycle'],
            isJSON=True
        )
-      
-       if isinstance(cpu, CompUnit):
-           print("CPU Object created successfully")
+
        cpu_list.append(cpu)
 
-
-       for i in range (0, len(cpu_list)):
-           print(f"\nCPU Object Details for {cpu_name}:")
-           print(f"Brand: {cpu.getBrand()}")
-           print(f"SubBrand: {cpu.getSubBrand()}")
-           print(f"CodeName: {cpu.getCodeName()}")
-           print(f"Model: {cpu.getModel()}")
-           print(f"CPU Configs: {cpu.getCpuConfigs()}")
-           print(f"Price: {cpu.getPrice()}")
-           print(f"Cores: {cpu.getCores()}")
-           print(f"Cache: {cpu.getCache()}")
-           print(f"TDP: {cpu.getTdp()}")
-           print(f"Clock Speed: {cpu.getClockSpeed()}")
-           print(f"Feature Size: {cpu.getFeatureSize()}")
-           print(f"FLOPS per Cycle: {cpu.getFlopsPerCycle()}")
-           print(f"Memory Specs: {cpu.getMemorySpecs()}")
-           print(f"String Representation: {str(cpu)}")
-           print("----------------------------")
-
-
    return cpu_list
-
-
-
 
 def parse_blade_json(json_data):
     blade_list = []
@@ -99,6 +71,7 @@ def parse_blade_json(json_data):
             if isinstance(blade, GpuBlade):
                 print("GPU blade object created")
         else:
+            default_ram = Memory.RAM("DDR", 0, 0, 0, 0, 0)
             blade = Blade(
                 bladeName=blade_name,
                 acceptedCPUs=blade_data['accepted_cpus'],
@@ -106,28 +79,14 @@ def parse_blade_json(json_data):
                 dimmsPerCPU=blade_data['dimms_per_cpu'],
                 maxDimmCapacity=blade_data['max_dimm_capacity'],
                 dimmGeneration=blade_data['memory_gen'],
-                maxTransferRate=blade_data['max_transfer_rate']
+                maxTransferRate=blade_data['max_transfer_rate'],
+               
             )
             if isinstance(blade, Blade):
                 print("blade object created")
 
         blade_list.append(blade)
 
-        print(f"\nBlade Object Details for {blade_name}:")
-        print(f"Blade Name: {blade.bladeName}")
-        print(f"Accepted CPUs: {blade.acceptedCPUs}")
-        print(f"Max CPUs: {blade.cpuQuantity}")
-        print(f"Dimms Per CPU: {blade.dimmsPerCPU}")
-        print(f"Max Dimm Capacity: {blade.maxDimmCapacity}")
-        print(f"Dimm Generation: {blade.dimmGeneration}")
-        print(f"Max Transfer Rate: {blade.maxTransferRate}")
-        
-        if isinstance(blade, GpuBlade):
-            print(f"Accepted GPUs: {blade.acceptedGPUs}")
-            print(f"Max GPUs: {blade.maxGPUs}")
-            
-        print("----------------------------")
-    
     return blade_list
 
 def parse_chassis_json(json_data):
@@ -138,27 +97,13 @@ def parse_chassis_json(json_data):
            height = chassis_data['height'],
        )
 
-
-       if isinstance(chassis, Chassis):
-           print("Chassis Object created successfully")
-
-
        chassis_list.append(chassis)
 
-
-       for chassis_ in chassis_list:
-           print(f"\nChassis Object Details for {chassis_.name}:")
-           print(f"Height: {chassis_.height}")
-
    return chassis_list
-
-
-
 
 def parse_GPU_json(json_data):
    GPU_list = []
    for gpu_name, gpu_data in json_data['gpus'].items():
-       
        gpu = GraphicUnit (
            name = gpu_name,
            clock = gpu_data['clock'],
@@ -170,38 +115,12 @@ def parse_GPU_json(json_data):
            maxGpus = gpu_data['max_gpus'],
        )
 
-
-       if isinstance(gpu, GraphicUnit):
-           print("GPU Object created successfully")
-
-
        GPU_list.append(gpu)
 
-
-       for i in range (0, len(GPU_list)):
-           print(f"\nGPU Object Details for {gpu_name}:")
-           print(f"Name: {gpu.name}")
-           print(f"Clock: {gpu.clock}")
-           print(f"FP64: {gpu.fp64}")
-           print(f"FP32: {gpu.fp32}")
-           print(f"FP16: {gpu.fp16}")
-           print(f"Memory: {gpu.memory}")
-           print(f"TDP: {gpu.tdp}")
-           print(f"Max GPUs: {gpu.maxGpus}")
-           print(f"String Representation: {str(gpu)}")
-           print("----------------------------")
-
-
-
-
-def parse_hpe_ex_json(json_data):
-   print('x')
+   return GPU_list  
 
 def parse_memory_json(json_data):
     ram_list = []
-    
-    print("\nParsing Memory from JSON file:")
-    print("----------------------------")
     
     for measure_style, generations in json_data['memory'].items():
         for gen_info in generations:
@@ -217,20 +136,7 @@ def parse_memory_json(json_data):
                     dimms = generation
                 )
                 
-                if isinstance(ram, RAM):
-                    print("RAM object created")
                 ram_list.append(ram)
-                
-                # Print RAM object details
-                print(f"\nRAM Object Details:")
-                print(f"Memory Type: {ram.memSpecType}")
-                print(f"Generation: {ram.generation}")
-                print(f"Speed: {ram.speed}")
-                print(f"Capacity: {ram.capacity}")
-                print(f"Price: {ram.price}")
-                print(f"Score: {ram.score}")
-                print(f"String Representation: {str(ram)}")
-                print("----------------------------")
     
     return ram_list
 
@@ -246,19 +152,34 @@ def parse_node_json(json_data):
             bladesList = node_data['accepted_blades']
 
         )
-        if isinstance(node, ComputeNode):
-            print("Node object created")
-            print("type of blade list", type(node.bladesList))
+
         node_list.append(node)
 
-        print(f"\nNode Object Details for {node_name}:")
-        print(f"Node Name: {node.name}")
-        print(f"heihgt: {node.height}")
-        print(f"blade quantity: {node.bladeQuantity}")
-        print(f"bladelist : {node.bladesList}")
-        print("----------------------------")
     return node_list
 
+def parse_network_json(json_data):
+    network_list =[]
+
+    for manufacturer, devices in json_data['networking'].items():
+        for device_name, device_data in devices.items():
+            network = Network(
+                tech=device_data['infiniband'][0],  # HDR or NDR
+                portCount=device_data['port_count'],
+                speed=float(device_data['port_speed'])
+            )
+            
+            if isinstance(network, Network):
+                print(f"Network object created for {device_name}")
+            network_list.append(network)
+            
+            # Print details for verification
+   
+            print("Additional JSON Data (not in Network object):")
+            print(f"Price: {device_data['price']}")
+            if 'switch_throughput' in device_data:
+                print(f"Switch Throughput: {device_data['switch_throughput']}")
+            print(f"Infiniband: {device_data['infiniband']}")
+            print("----------------------------")
 def parse_json_file(json_data):
    if 'cpus' in json_data:
        return parse_cpu_json(json_data)
@@ -272,5 +193,7 @@ def parse_json_file(json_data):
          return parse_memory_json(json_data)
    elif 'node' in json_data:
     return parse_node_json(json_data)
+   elif 'networking' in json_data:
+    return parse_network_json(json_data)
    else:
        raise ValueError("Unknown JSON structure")
