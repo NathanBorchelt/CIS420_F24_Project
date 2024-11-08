@@ -21,6 +21,9 @@ class ComputeNode(RackMount.RackMount):
     
     def getBlade(self, index: int) -> Blade.Blade:
         return self.bladesList[index]
+    
+    def getBlades(self) -> List[Type[Blade.Blade]]:
+        return self.bladesList
 
 
     def __str__(self):

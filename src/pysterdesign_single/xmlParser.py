@@ -1,13 +1,14 @@
 import xml.etree.ElementTree as ET
 from CPU import CompUnit
-from Blade import Blade
+import Blade
 from Node import ComputeNode
 from typing import List, Type
 import re
-from Chassis import Chassis
+import Chassis
 import GUI
 import RackMount
 from Memory import RAM
+from Network import Network
 
 
 def parseCPUXML(xmlFile):
@@ -110,7 +111,7 @@ def parseNodeXML(xmlFile):
 
     for i in range(len(nodes)):
         nodes[i].addBlade(
-        Blade(
+        Blade.Blade(
                 bladeName = nodes[i].getName, 
                 acceptedCPUs = acceptedCPUList[i][0], 
                 maxCpus = acceptedCPUList[i][2], 
@@ -149,6 +150,7 @@ def parseChassisXML(xmlFile, fileName):
     chassisCPUs = []
     chassisNodes = []
     chassisMemory = []
+    chassisNodeBlades = []
 
     for include in root.findall('include'):
         if(include.text.startswith('amd') or include.text.startswith('intel')):
@@ -168,9 +170,30 @@ def parseChassisXML(xmlFile, fileName):
         with open(memoryFile, 'r') as xmlData:
             chassisMemory.append(parseMemoryXML(xmlData.read()))
 
-    chassis = Chassis(
+    for chassisNode in chassisNodes:
+        for chassisNodeBlade in chassisNode.getBlades():
+            for chassisNodeBladeCpu in chassisCPUs:
+                chassisNodeBlade.setCPU(chassisNodeBladeCpu)
+
+
+    for chassisNode in chassisNodes:
+        chassis = Chassis.Chassis(
         name = fileName,
         height = GUI.SettingFrame.rackHeightEntry.get()
-    )
+        ).addItem(chassisNode)
+    
 
     return chassis
+
+def parseNetworkXML(xmlFile):
+    root = ET.fromstring(xmlFile)
+    networks = []
+
+    for item in root.findall('item'):
+        network = Network(
+            tech= item.get('network_tech'),
+            portCount= int(item.get('node_infiniband_port_count'))
+        )
+        networks.append(network)
+
+    return networks
