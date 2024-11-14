@@ -23,10 +23,13 @@ print("Using Python version " + current_version[0] + "." + current_version[1] + 
 
 # Check version.
 # Must be at least this one:
-m = ('3', '4', '2')
-if platform.python_version_tuple() < m:
-    print("Need python version to be at least " + m[0] + "." + m[1] + "." + m[2])
-    exit(1)
+m = (3, 4, 2)
+c = platform.python_version_tuple()
+
+for i in range(3):
+    if(int(c[i]) < m[i]):
+        print("Need python version to be at least " + m[0] + "." + m[1] + "." + m[2])
+        exit(1)
 
 # Get our own path
 my_base_path = os.path.dirname(sys.argv[0])
