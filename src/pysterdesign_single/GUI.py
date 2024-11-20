@@ -998,18 +998,20 @@ class ClusterDesign(Tk):#predefine the globals here
 
         return fileLoaded
 
-    def loadAbort():
+    @classmethod
+    def loadAbort(cls):
         GenericPopUp("No File Selected", "Loading of file was aborted")
 
     def loadJSONButtonAction(self) -> None: #potential accept file data type, nned to find out what the built-in fill opener does
         fileName = self.openFile([("JSON File", "*.json"), ('All Files', '*')])
         if fileName != "":
             try:
-                if fileName[-5::] != '.json':
+                if not fileName.endswith('json'):
                     raise ValueError("Selected file is not an json file")
                 with open(fileName, 'r') as jsonFile:
                     json_data = json.load(jsonFile)
                     components = parse_json_file(json_data)
+                    print("pause test")
                     
             except Exception as e:
                 ErrorPopUp(e)
@@ -1020,7 +1022,7 @@ class ClusterDesign(Tk):#predefine the globals here
         fileName = self.openFile([("XML File", "*.xml"), ('All Files', '*')])
         if fileName != "":
             try:
-                if fileName[-4::] != '.xml':
+                if not fileName.endswith('.xml'):
                     raise ValueError("Selected file is not an XML file")
                 with open(fileName, 'r') as xmlData:
                     #print(xmlData.read())
