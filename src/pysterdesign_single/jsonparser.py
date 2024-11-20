@@ -1,4 +1,6 @@
+from collections import defaultdict
 import json
+import os
 from CPU import CompUnit
 from Blade import Blade
 from Chassis import Chassis
@@ -86,7 +88,7 @@ def parse_blade_json(json_data):
                 print("blade object created")
 
         blade_list.append(blade)
-
+    # print(blade_list)
     return blade_list
 
 def parse_chassis_json(json_data):
@@ -180,7 +182,27 @@ def parse_network_json(json_data):
                 print(f"Switch Throughput: {device_data['switch_throughput']}")
             print(f"Infiniband: {device_data['infiniband']}")
             print("----------------------------")
-def parse_json_file(json_data):
+
+def parseJsonTree(jsonFileName) -> dict:
+
+    outputDict = defaultdict(list)
+    componentDict = dict()
+
+    headFile = open(jsonFileName)
+    headData = json.load(headFile)
+    if("components" in headData):
+        otherFilesPath = os.path.dirname(os.path.realpath(headFile.name))
+        for key, value in headData["components"].items():
+            with open(os.path.join(otherFilesPath, key+".json"), "r") as componentFiles:
+                componentDict = {value : parse_json_file(componentFiles)}
+
+            for compKey, compValue in componentDict.items():
+                outputDict[compKey].append(compValue)
+    # print(outputDict)
+    return outputDict
+
+def parse_json_file(jsonFile):
+   json_data = json.load(jsonFile)
    if 'cpus' in json_data:
        return parse_cpu_json(json_data)
    elif 'blade' in json_data:

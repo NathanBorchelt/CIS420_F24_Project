@@ -26,7 +26,7 @@ from IndexCounterEntry import IndexCounterEntry
 import PluginAPI
 
 import xmlParser
-from jsonparser import parse_json_file
+from jsonparser import parse_json_file, parseJsonTree
 import json
 
 
@@ -1008,10 +1008,8 @@ class ClusterDesign(Tk):#predefine the globals here
             try:
                 if not fileName.endswith('json'):
                     raise ValueError("Selected file is not an json file")
-                with open(fileName, 'r') as jsonFile:
-                    json_data = json.load(jsonFile)
-                    components = parse_json_file(json_data)
-                    print("pause test")
+                components = parseJsonTree(fileName)
+                print(components)
                     
             except Exception as e:
                 ErrorPopUp(e)

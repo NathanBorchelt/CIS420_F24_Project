@@ -12,7 +12,7 @@ class Blade(object):
         self.dimmGeneration = dimmGeneration
         self.maxTransferRate = maxTransferRate
         self.maxScore = maxDimmCapacity * maxTransferRate
-        self.dimm = Memory.RAM("DDR",0,0,0,0)
+        self.dimm = Memory.RAM("DDR",0,0,0,0, maxDimmCapacity)
         self.heat = 0
         self.price = 0
 
