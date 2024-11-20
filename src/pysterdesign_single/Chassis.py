@@ -66,15 +66,15 @@ class Chassis(object):
         self.yearlyKwh = self.heat * 8766 / 1000
         self.yearlyEfficency = self.yearlyFlops / (self.yearlyKwh * electricityPricePerKWh)
 
-    def addItem(self, item : RackMount.RackMount, fill : bool = False) -> None:
-        newItem = copy.deepcopy(item)
-        self.occupiedSpace.append(newItem)
-        self.freeSpace -= newItem.height
-        if fill:
-            while(self.freeSpace >= item.height):
-                repItem = copy.deepcopy(item)
-                self.occupiedSpace.append(repItem)
-                self.freeSpace -= repItem.height
+    def addItem(self, item : RackMount.RackMount) -> None:
+        itemHeight : int = item.getHeight()
+        while(self.freeSpace - itemHeight > itemHeight):
+            self.occupiedSpace.append(item)
+            self.freeSpace -= itemHeight
+
+        if(self.freeSpace - itemHeight > 0 ):
+            self.occupiedSpace.append(item)
+            self.freeSpace -= itemHeight
 
         self.calculateFlops()
         self.calculateEfficiency()
