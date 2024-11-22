@@ -9,14 +9,27 @@ class ComputeNode(RackMount.RackMount):
         super().__init__(name, height)
         self.bladesList = bladesList
         self.bladeQuantity = bladeQuantity
+        self.heat = 0
 
-    def addBlade(self, blade: Blade.Blade):
+    def addBlade(self, blade: Blade.Blade) -> None:
         self.bladesList.append(blade)
 
-    def getHeat(self, blade: Blade.Blade):
-        return blade.getHeat() * self.bladeQuantity
+    def fillBlades(self, blade: Blade.Blade) -> None:
+        for _ in range(self.bladeQuantity):
+            self.bladesList.append(blade)
 
-    def getPrice(self, blade: Blade.Blade):
+    def getHeat(self, blade: Blade.Blade = None) -> float:
+        if(blade is None):
+            return self.heat
+        self.heat = self.calculateHeat()       
+    
+    def calculateHeat(self):
+        self.heat = 0
+        for blade in self.bladesList:
+            self.heat += blade.getHeat()
+
+
+    def getPrice(self, blade: Blade.Blade) -> float:
         return blade.getPrice() * self.bladeQuantity
     
     def getBlade(self, index: int) -> Blade.Blade:

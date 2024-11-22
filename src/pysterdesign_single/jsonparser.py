@@ -199,7 +199,7 @@ def parseJsonTree(jsonFileName) -> dict:
             for compKey, compValue in componentDict.items():
                 outputDict[compKey].append(compValue)
     # print(outputDict)
-    return outputDict
+    return dict(outputDict)
 
 def parse_json_file(jsonFile):
    json_data = json.load(jsonFile)

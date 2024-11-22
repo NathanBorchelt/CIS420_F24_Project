@@ -13,6 +13,7 @@ try:
     hasResource = True
 except ImportError:
     pass
+from copy import deepcopy
 from sys import argv
 from tkinter import END, Toplevel, filedialog
 import traceback
@@ -1009,7 +1010,41 @@ class ClusterDesign(Tk):#predefine the globals here
                 if not fileName.endswith('json'):
                     raise ValueError("Selected file is not an json file")
                 components = parseJsonTree(fileName)
-                print(components)
+
+                configurations = list()
+
+                # for key, value in components.items():
+                #     print(key, value)
+
+                #cpus, memory, node, blade, chassis
+                for cpu in components["cpus"][0]:
+                    for chassis in components["chassis"][0]:
+                        for node in components["node"][0]:
+                            for blade in components["blade"][0]:
+                                configChassis = deepcopy(chassis)
+                                configNode = deepcopy(node)
+                                configBlade = deepcopy(blade)
+                                configBlade.setCPU(cpu)
+                                for memory in components["memory"][0]:
+                                    configBlade.fastestMemory(memory)
+
+                                configNode.fillBlades(configBlade)
+
+                                configNode.calculateHeat()
+
+                                configChassis.addItem(configNode)
+                                    
+                                configurations.append(configChassis)
+
+                                print(configChassis)
+
+                for config in configurations:
+                    print(config)
+                    
+                        
+                            
+                                    
+                
                     
             except Exception as e:
                 ErrorPopUp(e)
