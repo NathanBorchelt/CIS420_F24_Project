@@ -40,7 +40,10 @@ class Chassis(object):
                 self.heat += item.heat
             except:
                 pass
-        self.flopEnergyEfficency = self.flops/self.heat
+        if (self.heat != 0):
+            self.flopEnergyEfficency = self.flops/self.heat
+            return
+        self.heat = float('-inf')
 
     def yearlyCost(self, electricityPricePerKWh : float) -> None:
         self.yearlyElectical = round(((self.heat * 8766) / 1000) * electricityPricePerKWh,2)
@@ -68,17 +71,19 @@ class Chassis(object):
 
     def addItem(self, item : RackMount.RackMount) -> None:
         itemHeight : int = item.getHeight()
-        while(self.freeSpace - itemHeight > itemHeight):
+        while(self.freeSpace - itemHeight > 0):
             self.occupiedSpace.append(item)
             self.freeSpace -= itemHeight
 
-        if(self.freeSpace - itemHeight > 0 ):
-            self.occupiedSpace.append(item)
-            self.freeSpace -= itemHeight
+        # if(self.freeSpace - itemHeight >= 0 ):
+        #     self.occupiedSpace.append(item)
+        #     self.freeSpace -= itemHeight
 
         self.calculateFlops()
         self.calculateEfficiency()
 
+    def isFilled(self) -> bool:
+        return (len(self.occupiedSpace) != 0)
     def __str__(self):
         allItemPrint = ""
         for i in range(len(self.occupiedSpace)):

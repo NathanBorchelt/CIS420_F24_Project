@@ -151,7 +151,7 @@ def parse_node_json(json_data):
             name=node_name,
             height = node_data['height'],
             bladeQuantity = node_data['blades_per_node'],
-            bladesList = node_data['accepted_blades']
+            validBlades = node_data['accepted_blades']
 
         )
 

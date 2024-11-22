@@ -1025,18 +1025,24 @@ class ClusterDesign(Tk):#predefine the globals here
                                 configNode = deepcopy(node)
                                 configBlade = deepcopy(blade)
                                 configBlade.setCPU(cpu)
+
+                                
+
                                 for memory in components["memory"][0]:
                                     configBlade.fastestMemory(memory)
 
                                 configNode.fillBlades(configBlade)
 
+                                #print(configChassis, configNode, configBlade)
+
                                 configNode.calculateHeat()
 
                                 configChassis.addItem(configNode)
-                                    
-                                configurations.append(configChassis)
+                                
+                                if(configChassis.isFilled()):
+                                    configurations.append(configChassis)
 
-                                print(configChassis)
+                                    print(configChassis)
 
                 for config in configurations:
                     print(config)
@@ -1050,6 +1056,8 @@ class ClusterDesign(Tk):#predefine the globals here
                 ErrorPopUp(e)
         else:
             self.loadAbort()
+
+        print("end Pause")
 
     def loadXLMButtonAction(self) -> None: #potential accept file data type, nned to find out what the built-in fill opener does
         fileName = self.openFile([("XML File", "*.xml"), ('All Files', '*')])
