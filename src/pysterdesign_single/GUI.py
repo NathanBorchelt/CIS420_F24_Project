@@ -17,7 +17,7 @@ from copy import deepcopy
 from sys import argv
 from tkinter import END, Toplevel, filedialog
 import traceback
-from typing import List, Tuple, Union
+from typing import List, Tuple, Type, Union
 
 from ToggleFrame import ToggleFrame
 
@@ -26,8 +26,9 @@ from ScrollableFrame import ScrollableFrame
 from IndexCounterEntry import IndexCounterEntry
 import PluginAPI
 
+import Blade, Chassis, RackMount
 import xmlParser
-from jsonparser import parse_json_file, parseJsonTree
+from jsonparser import parseJsonTree
 import json
 
 
@@ -1010,9 +1011,7 @@ class ClusterDesign(Tk):#predefine the globals here
                 if not fileName.endswith('json'):
                     raise ValueError("Selected file is not an json file")
                 components = parseJsonTree(fileName)
-
-                configurations = list()
-
+                CONFIGURATIONS = list()
                 # for key, value in components.items():
                 #     print(key, value)
 
@@ -1021,9 +1020,9 @@ class ClusterDesign(Tk):#predefine the globals here
                     for chassis in components["chassis"][0]:
                         for node in components["node"][0]:
                             for blade in components["blade"][0]:
-                                configChassis = deepcopy(chassis)
-                                configNode = deepcopy(node)
-                                configBlade = deepcopy(blade)
+                                configChassis : Chassis.Chassis = deepcopy(chassis)
+                                configNode : RackMount.RackMount = deepcopy(node)
+                                configBlade : Blade.Blade = deepcopy(blade)
                                 configBlade.setCPU(cpu)
 
                                 
@@ -1038,13 +1037,16 @@ class ClusterDesign(Tk):#predefine the globals here
                                 configNode.calculateHeat()
 
                                 configChassis.addItem(configNode)
+
+                                if(not configNode.isFilled()):
+                                    break
                                 
                                 if(configChassis.isFilled()):
-                                    configurations.append(configChassis)
+                                    CONFIGURATIONS.append(configChassis)
 
-                                    print(configChassis)
+                                    # print(configChassis)
 
-                for config in configurations:
+                for config in CONFIGURATIONS:
                     print(config)
                     
                         
@@ -1206,6 +1208,7 @@ try:
     themeAPICall(argv[1])
 except:
     pass
+CONFIGURATIONS : List[Type[Chassis.Chassis]] = list()
 application = ClusterDesign()
 if(hasResource):
     print(str(round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1000,2))+"MB")

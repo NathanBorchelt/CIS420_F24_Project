@@ -71,7 +71,7 @@ class Chassis(object):
 
     def addItem(self, item : RackMount.RackMount) -> None:
         itemHeight : int = item.getHeight()
-        while(self.freeSpace - itemHeight > 0):
+        while(self.freeSpace - itemHeight >= 0):
             self.occupiedSpace.append(item)
             self.freeSpace -= itemHeight
 

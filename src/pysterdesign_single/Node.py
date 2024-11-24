@@ -39,6 +39,9 @@ class ComputeNode(RackMount.RackMount):
     
     def getBlades(self) -> List[Type[Blade.Blade]]:
         return self.validBlades
+    
+    def isFilled(self) -> bool:
+        return (len(self.containedBlades) == self.bladeQuantity)
 
 
     def __str__(self):

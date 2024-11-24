@@ -25,3 +25,7 @@ class RackMount(object):
     @abstractmethod
     def calcPrice(self):
         pass
+
+    @abstractmethod
+    def calculateHeat(self):
+        pass
