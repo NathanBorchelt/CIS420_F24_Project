@@ -52,7 +52,7 @@ def getDisplaySize():
 SCREEN_RESOLUTION = (2560,1080) #getDisplaySize()
 TITLE = "Computer Cluster Design Tool"
 
-framesDictionary = dict()
+
 
 def selectRadioButton_NetworkAlgorithms(selectedRB: Radiobutton, allRB: List[Radiobutton], extraInfo = None) -> None:
     selectedRB.config(fg=colorDict["network_btn_alt_fg"], bg=colorDict["network_btn_alt_bg"])
@@ -72,6 +72,7 @@ def selectRadioButton_UPSAlgorithms(selectedRB: Radiobutton, allRB: List[Radiobu
 
 class NodesFrame(ToggleFrame):
     pixel = None
+    nodeTextBoxOutput : Text = None
 
     def cleanupCPUs(frame, doIt: bool) -> None:
         #Frame issue again, passing the var passes two arguments, do not understand why
@@ -197,6 +198,10 @@ class NodesFrame(ToggleFrame):
         cleanupDeleteButton.pack(anchor="sw", side=BOTTOM)
         cleanupDeleteCheckbox.pack(anchor="sw", side=BOTTOM)
         self.update()
+
+    def updateOutput(self):
+        self.nodeTextBoxOutput.delete(1.0, "END")
+        self.nodeTextBoxOutput.insert("END", CONFIGURATIONS)
 
 class UPSFrame(ToggleFrame):
     def __init__(self, *args, **kwargs):
@@ -992,6 +997,7 @@ def GenericPopUp(title : str, text : str, moreInfo : str = "", sizeX : int = 250
 
 class ClusterDesign(Tk):#predefine the globals here
     pixel = None
+    framesDictionary = dict()
 
     def openFile(self, fileType: List[Tuple[str,str]]):
         fileOpenDialog = filedialog.Open(self, filetypes=fileType)
@@ -1059,6 +1065,8 @@ class ClusterDesign(Tk):#predefine the globals here
         else:
             self.loadAbort()
 
+        print(ClusterDesign.framesDictionary)
+        ClusterDesign.framesDictionary["nodes"]["frame"].updateOutput()
         print("end Pause")
 
     def loadXLMButtonAction(self) -> None: #potential accept file data type, nned to find out what the built-in fill opener does
@@ -1088,8 +1096,11 @@ class ClusterDesign(Tk):#predefine the globals here
 
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
+
+
         #all TypeVars
         NORMAL_FONT = font.Font(size=11)
+
 
         self.title(TITLE)
         #print(SCREEN_RESOLUTION)
