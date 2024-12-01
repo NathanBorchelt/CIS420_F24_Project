@@ -134,18 +134,18 @@ class NodesFrame(ToggleFrame):
         heuristicsFrame.pack(fill=BOTH, expand=True, side=LEFT)
         self.update()
 
-        nodeTextBoxOutput = Text(nodesTextOutputFrame, font=NORMAL_FONT, bg=ent_bg, fg=ent_fg, exportselection=0, state='disabled', wrap=NONE, insertbackground=ent_fg)
+        self.nodeTextBoxOutput = Text(nodesTextOutputFrame, font=NORMAL_FONT, bg=ent_bg, fg=ent_fg, exportselection=0, state='disabled', wrap=NONE, insertbackground=ent_fg)
 
         nodeTextOutputYScrollBar = Scrollbar(nodesTextOutputFrame, orient="vertical")
         nodeTextOutputXScrollBar = Scrollbar(nodesTextOutputFrame, orient="horizontal")
 
-        nodeTextBoxOutput.config(yscrollcommand=nodeTextOutputYScrollBar.set, xscrollcommand=nodeTextOutputXScrollBar.set)
+        self.nodeTextBoxOutput.config(yscrollcommand=nodeTextOutputYScrollBar.set, xscrollcommand=nodeTextOutputXScrollBar.set)
 
-        nodeTextOutputYScrollBar.config(command=nodeTextBoxOutput.yview)
-        nodeTextOutputXScrollBar.config(command=nodeTextBoxOutput.xview)
+        nodeTextOutputYScrollBar.config(command=self.nodeTextBoxOutput.yview)
+        nodeTextOutputXScrollBar.config(command=self.nodeTextBoxOutput.xview)
 
         nodeTextOutputYScrollBar.pack(side=RIGHT , fill=Y)
-        nodeTextBoxOutput.pack(fill=BOTH, expand=True)
+        self.nodeTextBoxOutput.pack(fill=BOTH, expand=True)
         nodeTextOutputXScrollBar.pack(side=BOTTOM , fill=X)
 
         self.update()
@@ -200,8 +200,8 @@ class NodesFrame(ToggleFrame):
         self.update()
 
     def updateOutput(self):
-        self.nodeTextBoxOutput.delete(1.0, "END")
-        self.nodeTextBoxOutput.insert("END", CONFIGURATIONS)
+        self.nodeTextBoxOutput.delete(1.0, "end")
+        self.nodeTextBoxOutput.insert("end", CONFIGURATIONS)
 
 class UPSFrame(ToggleFrame):
     def __init__(self, *args, **kwargs):
@@ -999,6 +999,9 @@ class ClusterDesign(Tk):#predefine the globals here
     pixel = None
     framesDictionary = dict()
 
+    def _init_ (self, *args, **kwargs):
+        Tk._init_(self, *args, **kwargs)
+
     def openFile(self, fileType: List[Tuple[str,str]]):
         fileOpenDialog = filedialog.Open(self, filetypes=fileType)
 
@@ -1053,7 +1056,8 @@ class ClusterDesign(Tk):#predefine the globals here
                                     # print(configChassis)
 
                 for config in CONFIGURATIONS:
-                    print(config)
+                    print("this is the config")
+                    print( config)
                     
                         
                             
@@ -1065,6 +1069,7 @@ class ClusterDesign(Tk):#predefine the globals here
         else:
             self.loadAbort()
 
+        
         print(ClusterDesign.framesDictionary)
         ClusterDesign.framesDictionary["nodes"]["frame"].updateOutput()
         print("end Pause")
@@ -1201,6 +1206,9 @@ class ClusterDesign(Tk):#predefine the globals here
                 "frame" : aboutFrame
             }
         }
+        
+        ClusterDesign.framesDictionary = framesDictionary
+
         actionRadioButtons = []
         actionFrameSelection = StringVar(master=actionButtonFrame,value="nodes")
         for dictionary in framesDictionary:

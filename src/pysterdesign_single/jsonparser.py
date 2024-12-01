@@ -184,22 +184,39 @@ def parse_network_json(json_data):
             print("----------------------------")
 
 def parseJsonTree(jsonFileName) -> dict:
-
+    print(f"Starting to parse: {jsonFileName}")  # Debug
     outputDict = defaultdict(list)
     componentDict = dict()
-
+    
     headFile = open(jsonFileName)
     headData = json.load(headFile)
-    if("components" in headData):
+    print(f"Head data loaded: {headData}")  # Debug
+    
+    if "components" in headData:
         otherFilesPath = os.path.dirname(os.path.realpath(headFile.name))
+        print(f"Looking for component files in: {otherFilesPath}")  # Debug
+        
         for key, value in headData["components"].items():
-            with open(os.path.join(otherFilesPath, key+".json"), "r") as componentFiles:
-                componentDict = {value : parse_json_file(componentFiles)}
-
-            for compKey, compValue in componentDict.items():
-                outputDict[compKey].append(compValue)
-    # print(outputDict)
-    return dict(outputDict)
+            print(f"Processing component - Key: {key}, Value: {value}")  # Debug
+            component_file_path = os.path.join(otherFilesPath, key+".json")
+            print(f"Trying to open: {component_file_path}")  # Debug
+            
+            try:
+                with open(component_file_path, "r") as componentFiles:
+                    componentDict = {value: parse_json_file(componentFiles)}
+                    print(f"Component dict for {key}: {componentDict}")  # Debug
+                
+                for compKey, compValue in componentDict.items():
+                    outputDict[compKey].append(compValue)
+                    print(f"Added to output dict - Key: {compKey}")  # Debug
+            except Exception as e:
+                print(f"Error processing {key}: {str(e)}")  # Debug
+    else:
+        print("No 'components' key found in head data")  # Debug
+    
+    final_dict = dict(outputDict)
+    print(f"Final dictionary: {final_dict}")  # Debug
+    return final_dict
 
 def parse_json_file(jsonFile):
    json_data = json.load(jsonFile)
