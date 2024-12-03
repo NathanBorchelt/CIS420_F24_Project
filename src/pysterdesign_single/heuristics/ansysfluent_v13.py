@@ -137,10 +137,10 @@ def efficiency(self, parameters: Dict) -> float:
 def performance(self, parameters: Dict) -> float:
     return float(parameters["cpuFrequency"]) * self.K_CPU * (int(parameters["Cores"]) / self.CORES_PER_MACHINE) * efficiency(self, parameters)    
 
-def execute(parameters: Dict) -> object:
+def execute(parameters: Dict) -> float:
 
         if __validation(parameters):
-            print("valid")
+            return performance(parameters)
         else:
             print("invalid")
         return None

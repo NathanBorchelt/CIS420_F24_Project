@@ -1,6 +1,7 @@
 #!/usr/local/bin/python3.8
+from ast import Module
 import copy
-import RackMount
+import RackMount, PluginAPI
 
 class Chassis(object):
 
@@ -18,6 +19,7 @@ class Chassis(object):
         self.price = 0
         self.totalCost = 0
         self.yearlyFlops = 0
+        self.heuristicValue = float('-inf')
 
 
 
@@ -90,3 +92,17 @@ class Chassis(object):
             allItemPrint += "    Item {num}: {item}\n".format(num=i, item=self.occupiedSpace[i])
 
         return "{chass}: Capacity: {cap}U\n  Free Space: {frSpc}U\n  Filled with:\n{items}".format(chass=self.name , cap=self.height , frSpc=self.freeSpace , items=allItemPrint)
+    
+    def getHeuristicValue(self) -> float:
+        return self.heuristicValue
+    
+    def runHeuristic(self, function: Module) -> None:
+
+        heuristicDictionary = {
+            "benchmark" : '"truck_111m"',
+            "networkTech" : '"InfiniBand"',
+            "cpuFrequency" : self.occupiedSpace.containedBlades[0].cpu.clickSpeed["all_boost"],
+            "Cores" : self.occupiedSpace.containedBlades[0].cpu.cores,
+        }
+
+        self.heuristicValue = function.execute(heuristicDictionary)

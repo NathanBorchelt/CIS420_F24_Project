@@ -45,4 +45,4 @@ class ComputeNode(RackMount.RackMount):
 
 
     def __str__(self):
-        return "{hgt}U \"{nme}\" chassis holding {bldqnt}x {bld}".format(hgt=self.height ,nme=self.name  ,bldqnt=self.bladeQuantity ,bld=self.containedBlades)
+        return "{hgt}U \"{nme}\" chassis holding {bldqnt}x {bld}".format(hgt=self.height ,nme=self.name  ,bldqnt=self.bladeQuantity ,bld=self.containedBlades[0])

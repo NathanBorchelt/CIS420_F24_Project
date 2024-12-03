@@ -57,4 +57,4 @@ class Blade(object):
         return self.price
 
     def __str__(self):
-        return"{bldNme}\nCPU: {cpuCnt}x {cpuDesc}\nMemory: {dimmCnt} DIMMs filled with {mem} per CPU".format(bldNme=self.bladeName, cpuCnt=self.cpuQuantity, cpuDesc=self.cpu, dimmCnt=self.dimmsPerCPU, mem=self.dimm)
+        return"{bldNme}\n\tCPU: {cpuCnt}x {cpuDesc}\n\tMemory: {dimmCnt} DIMMs filled with {mem} per CPU".format(bldNme=self.bladeName, cpuCnt=self.cpuQuantity, cpuDesc=self.cpu, dimmCnt=self.dimmsPerCPU, mem=self.dimm)

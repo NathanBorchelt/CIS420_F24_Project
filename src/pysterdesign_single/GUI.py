@@ -3,9 +3,9 @@
 
 
 try:
-    from tkinter import BOTH, BOTTOM, LEFT, NONE, RAISED, RIGHT, SUNKEN, TOP, X, Y, Button, Checkbutton, DoubleVar, Entry, Frame, IntVar, Label, OptionMenu, PhotoImage, Radiobutton, Scrollbar, StringVar, Text, Tk, font
+    from tkinter import BOTH, BOTTOM, LEFT, NONE, RAISED, RIGHT, SUNKEN, TOP, X, Y, END, Button, Checkbutton, DoubleVar, Entry, Frame, IntVar, Label, OptionMenu, PhotoImage, Radiobutton, Scrollbar, StringVar, Text, Tk, font
 except ImportError:
-   from Tkinter import BOTH, BOTTOM, LEFT, NONE, RAISED, RIGHT, SUNKEN, TOP, X, Y, Button, Checkbutton, DoubleVar, Entry, Frame, IntVar, Label, OptionMenu, PhotoImage, Radiobutton, Scrollbar, StringVar, Text, Tk, font
+   from Tkinter import BOTH, BOTTOM, LEFT, NONE, RAISED, RIGHT, SUNKEN, TOP, X, Y, END, Button, Checkbutton, DoubleVar, Entry, Frame, IntVar, Label, OptionMenu, PhotoImage, Radiobutton, Scrollbar, StringVar, Text, Tk, font
 
 hasResource : bool = False
 try:
@@ -788,7 +788,7 @@ class DesignFrame(ToggleFrame):
 
         initiationFrame = ToggleFrame(self, padx=padx, pady=pady, bg=bg)
 
-        startButton = Button(initiationFrame, bg=btn_bg, fg=btn_fg, activebackground=btn_alt_bg, activeforeground=btn_alt_fg, text="Start Design Process", padx=2, pady=2, font=NORMAL_FONT, command= lambda : print("start design process button pressed"))
+        startButton = Button(initiationFrame, bg=btn_bg, fg=btn_fg, activebackground=btn_alt_bg, activeforeground=btn_alt_fg, text="Start Design Process", padx=2, pady=2, font=NORMAL_FONT, command= runDesignProcess)
 
         progressFrame = ToggleFrame(initiationFrame, bg=bg, padx=2, pady=2)
 
@@ -819,16 +819,18 @@ class DesignFrame(ToggleFrame):
         constraintObjectiveFrame.pack(side=TOP, anchor='w')
 
         constraintObjectiveVar = StringVar()
-        constraintObjectiveNames = ["Test 1", "test 2"]
+        constraintObjectiveNames = list()
         constraintObjectiveLabel = Label(constraintObjectiveFrame, padx=2, pady=2, bg=txt_bg, fg=txt_fg, font=NORMAL_FONT, text="Objective Function")
         #TODO API call to get the difference performace algorithms and put them into a list
 
         #Taken form NodesFrame
-        """
+        
         heuristicFunctions = PluginAPI.getPlugins("heuristics")
         for heuristicFile in heuristicFunctions:
             constraintObjectiveNames.append(heuristicFunctions[heuristicFile]["import"].identity())
-        """
+            print(type(heuristicFunctions[heuristicFile]["import"]))
+
+        
         constraintObjectiveVar = StringVar(self,value=constraintObjectiveNames[0])
         designAlgorithmOptions = OptionMenu(constraintObjectiveFrame, constraintObjectiveVar, *constraintObjectiveNames)
 
@@ -879,6 +881,11 @@ class DesignFrame(ToggleFrame):
         configOutHumanDataTextYScroll.pack(side=RIGHT, anchor='e', fill=Y)
         configOutHumanDataText.pack(side=TOP, anchor='n', fill=BOTH)
         configOutHumanDataTextXScroll.pack(side=BOTTOM, anchor='s', fill=X)
+
+        def runDesignProcess(self):
+            print("run the heuristic and sort")
+            #for(Data)
+
 
 class AboutFrame(ToggleFrame):
     def __init__(self, *args, **kwargs):
@@ -1060,9 +1067,17 @@ class ClusterDesign(Tk):#predefine the globals here
                 # for config in configurations:
                 #     print("this is the config")
                 #     print( config)
-                    
-                DataMover.get("frames")["nodes"]["frame"].nodeTextBoxOutput.delete("1.0",'end')
-                DataMover.get("frames")["nodes"]["frame"].nodeTextBoxOutput.insert('end',str(configurations))
+
+                DataMover.add("configs", configurations)    
+                
+                DataMover.get("frames")["nodes"]["frame"].nodeTextBoxOutput.config(state="normal")
+                DataMover.get("frames")["nodes"]["frame"].nodeTextBoxOutput.delete("1.0",END)
+                for config in configurations:
+                    try:
+                        DataMover.get("frames")["nodes"]["frame"].nodeTextBoxOutput.insert(END,config)
+                    except:
+                        pass
+                DataMover.get("frames")["nodes"]["frame"].nodeTextBoxOutput.config(state="disabled")
                         
                             
                                     
