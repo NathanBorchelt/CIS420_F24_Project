@@ -48,9 +48,9 @@ class CompUnit(object):
             if isJSON:
                 for level, cacheSize in self.cache.items():
                     allData = self.model
-                    print(cacheSize)
+                    # print(cacheSize)
                     cacheData = cacheSize.split('b')
-                    print(cacheData)
+                    # print(cacheData)
                     cacheData[1] = sizeBinaryLong[int(cacheData[1])]
                     self.cache[level] = " ".join(cacheData)
         except Exception as e:

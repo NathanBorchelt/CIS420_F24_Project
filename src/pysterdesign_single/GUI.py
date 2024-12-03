@@ -31,6 +31,8 @@ import xmlParser
 from jsonparser import parseJsonTree
 import json
 
+import DataMover
+
 
 
 '''
@@ -201,7 +203,7 @@ class NodesFrame(ToggleFrame):
 
     def updateOutput(self):
         self.nodeTextBoxOutput.delete(1.0, "end")
-        self.nodeTextBoxOutput.insert("end", CONFIGURATIONS)
+        self.nodeTextBoxOutput.insert("end", DataMover.get("configurations"))
 
 class UPSFrame(ToggleFrame):
     def __init__(self, *args, **kwargs):
@@ -1020,7 +1022,7 @@ class ClusterDesign(Tk):#predefine the globals here
                 if not fileName.endswith('json'):
                     raise ValueError("Selected file is not an json file")
                 components = parseJsonTree(fileName)
-                CONFIGURATIONS = list()
+                configurations = list()
                 # for key, value in components.items():
                 #     print(key, value)
 
@@ -1051,14 +1053,16 @@ class ClusterDesign(Tk):#predefine the globals here
                                     break
                                 
                                 if(configChassis.isFilled()):
-                                    CONFIGURATIONS.append(configChassis)
+                                    configurations.append(configChassis)
 
                                     # print(configChassis)
 
-                for config in CONFIGURATIONS:
-                    print("this is the config")
-                    print( config)
+                # for config in configurations:
+                #     print("this is the config")
+                #     print( config)
                     
+                DataMover.get("frames")["nodes"]["frame"].nodeTextBoxOutput.delete("1.0",'end')
+                DataMover.get("frames")["nodes"]["frame"].nodeTextBoxOutput.insert('end',str(configurations))
                         
                             
                                     
@@ -1069,9 +1073,7 @@ class ClusterDesign(Tk):#predefine the globals here
         else:
             self.loadAbort()
 
-        
-        print(ClusterDesign.framesDictionary)
-        ClusterDesign.framesDictionary["nodes"]["frame"].updateOutput()
+        DataMover.add("configurations", configurations)
         print("end Pause")
 
     def loadXLMButtonAction(self) -> None: #potential accept file data type, nned to find out what the built-in fill opener does
@@ -1090,13 +1092,13 @@ class ClusterDesign(Tk):#predefine the globals here
 
 
 
-    def loadCSVButtonAction(self, fileType: List[Tuple[str,str]]) -> None: #potential accept file data type, nned to find out what the built-in fill opener does
+    def loadCSVButtonAction(self):#, fileType: List[Tuple[str,str]]) -> None: #potential accept file data type, nned to find out what the built-in fill opener does
         print("load csv")
 
-    def writeCSVButtonAction(self, fileType: List[Tuple[str,str]]) -> None: #potential accept file data type, nned to find out what the built-in fill opener does
+    def writeCSVButtonAction(self):#, fileType: List[Tuple[str,str]]) -> None: #potential accept file data type, nned to find out what the built-in fill opener does
         print("write csv")
 
-    def undoButtonAction() -> None:
+    def undoButtonAction(self) -> None:
         print("undo")
 
     def __init__(self, *args, **kwargs):
@@ -1126,9 +1128,9 @@ class ClusterDesign(Tk):#predefine the globals here
 
         importJSONdbButton = Button(fileOptionsFrame, text="    Load JSON DB    ", padx=colorDict["fileio_padx"], pady=colorDict["fileio_pady"], bg=colorDict["fileio_btn_bg"], fg=colorDict["fileio_btn_fg"], activebackground=colorDict["fileio_btn_alt_bg"], activeforeground=colorDict["fileio_btn_alt_fg"], command=self.loadJSONButtonAction)
         importXMLdbButton = Button(fileOptionsFrame, text="    Load XML DB (Legacy)    ", padx=colorDict["fileio_padx"], pady=colorDict["fileio_pady"], bg=colorDict["fileio_btn_bg"], fg=colorDict["fileio_btn_fg"], activebackground=colorDict["fileio_btn_alt_bg"], activeforeground=colorDict["fileio_btn_alt_fg"], command=self.loadXLMButtonAction)
-        importCSVdbButton = Button(fileOptionsFrame, text="    Load From CSV    ", padx=colorDict["fileio_padx"], pady=colorDict["fileio_pady"], bg=colorDict["fileio_btn_bg"], fg=colorDict["fileio_btn_fg"], activebackground=colorDict["fileio_btn_alt_bg"], activeforeground=colorDict["fileio_btn_alt_fg"])
-        exportCSVButton = Button(fileOptionsFrame, text="    Export to CSV    ", padx=colorDict["fileio_padx"], pady=colorDict["fileio_pady"], bg=colorDict["fileio_btn_bg"], fg=colorDict["fileio_btn_fg"], activebackground=colorDict["fileio_btn_alt_bg"], activeforeground=colorDict["fileio_btn_alt_fg"])
-        undoButton = Button(fileOptionsFrame, text="    Undo    ", padx=colorDict["fileio_padx"], pady=colorDict["fileio_pady"], bg=colorDict["fileio_btn_bg"], fg=colorDict["fileio_btn_fg"], activebackground=colorDict["fileio_btn_alt_bg"], activeforeground=colorDict["fileio_btn_alt_fg"])
+        importCSVdbButton = Button(fileOptionsFrame, text="    Load From CSV    ", padx=colorDict["fileio_padx"], pady=colorDict["fileio_pady"], bg=colorDict["fileio_btn_bg"], fg=colorDict["fileio_btn_fg"], activebackground=colorDict["fileio_btn_alt_bg"], activeforeground=colorDict["fileio_btn_alt_fg"], command=self.loadCSVButtonAction)
+        exportCSVButton = Button(fileOptionsFrame, text="    Export to CSV    ", padx=colorDict["fileio_padx"], pady=colorDict["fileio_pady"], bg=colorDict["fileio_btn_bg"], fg=colorDict["fileio_btn_fg"], activebackground=colorDict["fileio_btn_alt_bg"], activeforeground=colorDict["fileio_btn_alt_fg"], command=self.writeCSVButtonAction)
+        undoButton = Button(fileOptionsFrame, text="    Undo    ", padx=colorDict["fileio_padx"], pady=colorDict["fileio_pady"], bg=colorDict["fileio_btn_bg"], fg=colorDict["fileio_btn_fg"], activebackground=colorDict["fileio_btn_alt_bg"], activeforeground=colorDict["fileio_btn_alt_fg"], command=self.undoButtonAction)
 
 
 
@@ -1206,8 +1208,9 @@ class ClusterDesign(Tk):#predefine the globals here
                 "frame" : aboutFrame
             }
         }
+
+        DataMover.add("frames", framesDictionary)
         
-        ClusterDesign.framesDictionary = framesDictionary
 
         actionRadioButtons = []
         actionFrameSelection = StringVar(master=actionButtonFrame,value="nodes")
@@ -1227,7 +1230,6 @@ try:
     themeAPICall(argv[1])
 except:
     pass
-CONFIGURATIONS : List[Type[Chassis.Chassis]] = list()
 application = ClusterDesign()
 if(hasResource):
     print(str(round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1000,2))+"MB")
