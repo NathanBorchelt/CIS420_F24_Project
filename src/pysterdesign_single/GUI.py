@@ -766,6 +766,11 @@ class PerformanceFrame(ToggleFrame):
         self.update()
 
 class DesignFrame(ToggleFrame):
+
+    def runDesignProcess(self):
+            print("run the heuristic and sort")
+            #for(Data)
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -788,7 +793,7 @@ class DesignFrame(ToggleFrame):
 
         initiationFrame = ToggleFrame(self, padx=padx, pady=pady, bg=bg)
 
-        startButton = Button(initiationFrame, bg=btn_bg, fg=btn_fg, activebackground=btn_alt_bg, activeforeground=btn_alt_fg, text="Start Design Process", padx=2, pady=2, font=NORMAL_FONT, command= runDesignProcess)
+        startButton = Button(initiationFrame, bg=btn_bg, fg=btn_fg, activebackground=btn_alt_bg, activeforeground=btn_alt_fg, text="Start Design Process", padx=2, pady=2, font=NORMAL_FONT, command=self.runDesignProcess)
 
         progressFrame = ToggleFrame(initiationFrame, bg=bg, padx=2, pady=2)
 
@@ -882,9 +887,7 @@ class DesignFrame(ToggleFrame):
         configOutHumanDataText.pack(side=TOP, anchor='n', fill=BOTH)
         configOutHumanDataTextXScroll.pack(side=BOTTOM, anchor='s', fill=X)
 
-        def runDesignProcess(self):
-            print("run the heuristic and sort")
-            #for(Data)
+        
 
 
 class AboutFrame(ToggleFrame):
