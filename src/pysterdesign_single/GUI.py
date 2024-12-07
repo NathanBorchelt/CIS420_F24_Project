@@ -8,12 +8,18 @@ except ImportError:
    from Tkinter import BOTH, BOTTOM, LEFT, NONE, RAISED, RIGHT, SUNKEN, TOP, X, Y, END, Button, Checkbutton, DoubleVar, Entry, Frame, IntVar, Label, OptionMenu, PhotoImage, Radiobutton, Scrollbar, StringVar, Text, Tk, font
 
 hasResource : bool = False
+
+from os.path import dirname, basename, isfile, join
+from inspect import getmembers, isfunction
+
 try:
     import resource
     hasResource = True
 except ImportError:
     pass
+from ast import Module
 from copy import deepcopy
+import glob
 from sys import argv
 from tkinter import END, Toplevel, filedialog
 import traceback
@@ -767,9 +773,20 @@ class PerformanceFrame(ToggleFrame):
 
 class DesignFrame(ToggleFrame):
 
+    
+
     def runDesignProcess(self):
-            print("run the heuristic and sort")
-            #for(Data)
+        pluginOutput = {}
+        modules = glob.glob(join(dirname(__file__), "heuristics", "*.py"))
+        plugins = [ basename(f)[:-3] for f in modules if isfile(f) and not f.endswith('__init__.py')]
+        for plugin in plugins:
+            pluginOutput.update({plugin: {"import": __import__('{mod}.{pgn}'.format(mod="heuristics", pgn=plugin), globals(), locals(), ['*'], 0)}})
+
+        for module in pluginOutput:
+            for name, func in getmembers(pluginOutput[module]["import"], isfunction):
+                if name == "identity":
+                    print(func())
+            
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -833,10 +850,11 @@ class DesignFrame(ToggleFrame):
         heuristicFunctions = PluginAPI.getPlugins("heuristics")
         for heuristicFile in heuristicFunctions:
             constraintObjectiveNames.append(heuristicFunctions[heuristicFile]["import"].identity())
-            print(type(heuristicFunctions[heuristicFile]["import"]))
+            print(heuristicFile)
+            #print(type(heuristicFunctions[heuristicFile]["import"]))
 
         
-        constraintObjectiveVar = StringVar(self,value=constraintObjectiveNames[0])
+        self.constraintObjectiveVar = StringVar(self,value=constraintObjectiveNames[0])
         designAlgorithmOptions = OptionMenu(constraintObjectiveFrame, constraintObjectiveVar, *constraintObjectiveNames)
 
         designAlgorithmOptions.config(bg=btn_bg, fg=btn_fg, activebackground=btn_alt_bg, activeforeground=btn_alt_fg)
@@ -1227,7 +1245,7 @@ class ClusterDesign(Tk):#predefine the globals here
             }
         }
 
-        DataMover.add("frames", framesDictionary)
+        #DataMover.add("frames", framesDictionary)
         
 
         actionRadioButtons = []
