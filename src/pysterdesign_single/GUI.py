@@ -782,10 +782,13 @@ class DesignFrame(ToggleFrame):
         for plugin in plugins:
             pluginOutput.update({plugin: {"import": __import__('{mod}.{pgn}'.format(mod="heuristics", pgn=plugin), globals(), locals(), ['*'], 0)}})
 
+        allAlgorithms = dict()
         for module in pluginOutput:
-            for name, func in getmembers(pluginOutput[module]["import"], isfunction):
-                if name == "identity":
-                    print(func())
+            algorithm = dict(getmembers(pluginOutput[module]["import"], isfunction))
+            allAlgorithms[algorithm["identity"]()] = algorithm
+        
+        for config in DataMover.get("configurations"):
+            print(config)
             
 
     def __init__(self, *args, **kwargs):
@@ -840,7 +843,7 @@ class DesignFrame(ToggleFrame):
         constraintObjectiveFrame = ToggleFrame(constraintsFrame, bg=bg, width=int(constraintsFrame.winfo_width()*.5))
         constraintObjectiveFrame.pack(side=TOP, anchor='w')
 
-        constraintObjectiveVar = StringVar()
+        self.constraintObjectiveVar = StringVar()
         constraintObjectiveNames = list()
         constraintObjectiveLabel = Label(constraintObjectiveFrame, padx=2, pady=2, bg=txt_bg, fg=txt_fg, font=NORMAL_FONT, text="Objective Function")
         #TODO API call to get the difference performace algorithms and put them into a list
@@ -855,7 +858,7 @@ class DesignFrame(ToggleFrame):
 
         
         self.constraintObjectiveVar = StringVar(self,value=constraintObjectiveNames[0])
-        designAlgorithmOptions = OptionMenu(constraintObjectiveFrame, constraintObjectiveVar, *constraintObjectiveNames)
+        designAlgorithmOptions = OptionMenu(constraintObjectiveFrame, self.constraintObjectiveVar, *constraintObjectiveNames)
 
         designAlgorithmOptions.config(bg=btn_bg, fg=btn_fg, activebackground=btn_alt_bg, activeforeground=btn_alt_fg)
         designAlgorithmOptions["menu"].config(bg=btn_bg, fg=btn_fg)
@@ -1245,7 +1248,7 @@ class ClusterDesign(Tk):#predefine the globals here
             }
         }
 
-        #DataMover.add("frames", framesDictionary)
+        DataMover.add("frames", framesDictionary)
         
 
         actionRadioButtons = []
