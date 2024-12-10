@@ -31,39 +31,41 @@ This file is part of "FluentPerf", a simple performance model for ANSYS/Fluent s
 =============================
 """
 
+KNOWN_BENCHMARK_TYPES:list = ['truck_111m']
+KNOWN_NETWORK_TECH:list = ['InfiniBand', '10Gb Ethernet']
+ALLOW_THROUGHPUT_DEFAULT:bool = True
 
-def __init__(self):
-    self.KNOWN_BENCHMARK_TYPES:list = ['"truck_111m"']
-    self.KNOWN_NETWORK_TECH:list = ['"InfiniBand"', '"10Gb Ethernet"']
-    self.ALLOW_THROUGHPUT_DEFAULT:bool = True
+K_CPU:float = 3.75
+CORES_PER_MACHINE:int = 12
+MAX_CORES_INGINIBAND:int = 3072
+MAX_CORES_10GB_ETH:int = 384
 
-    self.K_CPU:float = 3.75
-    self.CORES_PER_MACHINE:int = 12
-    self.MAX_CORES_INGINIBAND:int = 3072
-    self.MAX_CORES_10GB_ETH:int = 384
-
-def __validation(self, parameters: Dict) -> bool:
-    self.CHOSEN_NETWORK = ""
+def __validation(self, params: Dict) -> bool:
+    CHOSEN_NETWORK = ""
     ## BEGIN MANDATORY PARAMETERS CHECK
-    if("benchmark" not in parameters):
+    if("benchmark" not in params):
         #need to use error pop up window for this, implement later
         #same goes for all the others
-        print("Benchmark must be specified: "+ ", ".join(self.KNOWN_BENCHMARK_TYPES))
-        return False
-    
-    if("networkTech" not in parameters):
-        print("Network technology must be specified: "+ ", ".join(self.KNOWN_NETWORK_TECH))
+        print("Benchmark must be specified: "+ ", ".join(KNOWN_BENCHMARK_TYPES))
         return False
     else:
-        if(parameters["networkTech"] not in self.NOWN_NETWORK_TECH):
-            print("Invalid Network, must be one of the following: "+ ", ".join(self.KNOWN_NETWORK_TECH))
+        if(params["benchmark"] not in KNOWN_BENCHMARK_TYPES):
+            print("Invalid benchmark, must be one of the following: "+ ", ".join(KNOWN_BENCHMARK_TYPES))
+            return False
+    
+    if("networkTech" not in params):
+        print("Network technology must be specified: "+ ", ".join(KNOWN_NETWORK_TECH))
+        return False
+    else:
+        if(params["networkTech"] not in KNOWN_NETWORK_TECH):
+            print("Invalid Network, must be one of the following: "+ ", ".join(KNOWN_NETWORK_TECH))
             return False
 
-    if("cpuFrequency" in parameters):
+    if("cpuFrequency" in params):
         try:
-            if float(parameters["cpuFrequency"]) <= 0.0:
+            if float(params["cpuFrequency"]) <= 0.0:
                 raise ValueError("Not a positive CPU Freq")
-            parameters["cpuFrequency"] = float(parameters["cpuFrequency"])
+            params["cpuFrequency"] = float(params["cpuFrequency"])
         except ValueError:
             print("CPU frequency must be a positive floating-point value")
             return False
@@ -72,14 +74,14 @@ def __validation(self, parameters: Dict) -> bool:
         print("CPU frequency must be specified")
         return False
     
-    if("AllowThroughput" not in parameters):
-        parameters["AllowThroughput"] = self.ALLOW_THROUGHPUT_DEFAULT
+    if("AllowThroughput" not in params):
+        params["AllowThroughput"] = ALLOW_THROUGHPUT_DEFAULT
     else:
-        allowThroughput: bool = parameters["AllowThroughput"]
+        allowThroughput: bool = params["AllowThroughput"]
         if(isinstance(allowThroughput, str)):
             allowThroughput = allowThroughput.lower()
             if((allowThroughput == "true") or (allowThroughput == "false")):
-                parameters["AllowThroughput"] = (allowThroughput == "true")
+                params["AllowThroughput"] = (allowThroughput == "true")
             else:
                 print('"AllowThroughput" must be a boolean value')
             return False
@@ -88,8 +90,8 @@ def __validation(self, parameters: Dict) -> bool:
 
     #Cores XOR Performance
 
-    coresParam: bool = ("Cores" in parameters)
-    performanceParam: bool = ("Performance" in parameters)
+    coresParam: bool = ("Cores" in params)
+    performanceParam: bool = ("Performance" in params)
 
     if(coresParam ^ performanceParam):
         print('"Cores" and "Performance" are contradictory, one (and only one) must be defined')
@@ -98,16 +100,16 @@ def __validation(self, parameters: Dict) -> bool:
     #may need to come back and do DirectModel, Ref lines 130 and 143 in ansysfluent_13.pas
     if(coresParam):
         try:
-            parameters["Cores"] = int(parameters["Cores"])
-            if parameters["Cores"] < 1:
+            params["Cores"] = int(params["Cores"])
+            if params["Cores"] < 1:
                 raise ValueError()
         except:
             print('"Cores" must be a positive integer')
             return False
     elif(performanceParam):
         try:
-            parameters["Performance"] = float(parameters["Performance"])
-            if parameters["Performance"] < 0.0:
+            params["Performance"] = float(params["Performance"])
+            if params["Performance"] < 0.0:
                 raise ValueError()
         except:
             print('"Performance" must be a positive floating-point value')
@@ -119,31 +121,31 @@ def __validation(self, parameters: Dict) -> bool:
 
     return True
 
-def efficiency(self, parameters: Dict) -> float:
+def efficiency(self, params: Dict) -> float:
     k:float = 0.0
     b:float = 0.0
 
-    if(parameters["networkTech"].lower() in '"InfiniBand"'.lower()):
+    if(params["networkTech"].lower() in '"InfiniBand"'.lower()):
         k = -0.00979
         b = 88.42231
-    elif(parameters["networkTech"].lower() in '"10Gb Ethernet"'.lower()):
+    elif(params["networkTech"].lower() in '"10Gb Ethernet"'.lower()):
         k = -0.08270
         b = 101.9848
     else:
         return None
     
-    return (k * int(parameters["Cores"]) * b) / 100
+    return (k * int(params["Cores"]) * b) / 100
 
-def performance(self, parameters: Dict) -> float:
-    return float(parameters["cpuFrequency"]) * self.K_CPU * (int(parameters["Cores"]) / self.CORES_PER_MACHINE) * efficiency(self, parameters)    
+def performance(self, params: Dict) -> float:
+    return float(params["cpuFrequency"]) * K_CPU * (int(params["Cores"]) / CORES_PER_MACHINE) * efficiency(self, params)    
 
 def execute(parameters: Dict) -> float:
-
-        if __validation(parameters):
-            return performance(parameters)
-        else:
-            print("invalid")
-        return None
+    print(parameters)
+    if __validation(params=parameters):
+        return performance(parameters)
+    else:
+        print("invalid")
+    return None
 
 
 

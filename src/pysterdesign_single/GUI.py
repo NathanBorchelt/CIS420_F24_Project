@@ -788,8 +788,13 @@ class DesignFrame(ToggleFrame):
             allAlgorithms[algorithm["identity"]()] = algorithm
         
         for config in DataMover.get("configurations"):
-            print(config)
+            configPasser = dict()
+            configPasser["benchmark"] = "truck_111m"
+            configPasser["networkTech"] = "InfiniBand"
+            configPasser["cpuFrequency"] = config.occupiedSpace[0].containedBlades[0].cpu.clockSpeed["all_boost"]
+            configPasser["Cores"] = config.occupiedSpace[0].containedBlades[0].cpu.cores
             
+            print(allAlgorithms[self.constraintObjectiveVar.get()]["execute"](configPasser))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
