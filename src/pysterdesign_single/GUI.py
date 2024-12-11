@@ -47,6 +47,13 @@ Universal methods that are designed to be usable anywhere, thus must come first,
 
 colorDict = Colors.ColorDictionary
 
+def importClass(name):
+    components = name.split('.')
+    mod = __import__(components[0])
+    for comp in components[1:]:
+        mod = getattr(mod, comp)
+    return mod   
+
 #https://lindevs.com/code-snippets/get-screen-size-of-each-monitor-using-python
 def getDisplaySize():
     from screeninfo import get_monitors
@@ -773,20 +780,19 @@ class PerformanceFrame(ToggleFrame):
 
 class DesignFrame(ToggleFrame):
 
-    
+    #https://stackoverflow.com/a/547867
+     
 
     def runDesignProcess(self):
         pluginOutput = {}
         modules = glob.glob(join(dirname(__file__), "heuristics", "*.py"))
         plugins = [ basename(f)[:-3] for f in modules if isfile(f) and not f.endswith('__init__.py')]
         for plugin in plugins:
-            pluginOutput.update({plugin: {"import": __import__('{mod}.{pgn}'.format(mod="heuristics", pgn=plugin), globals(), locals(), ['*'], 0)}})
-
-        allAlgorithms = dict()
-        for module in pluginOutput:
-            algorithm = dict(getmembers(pluginOutput[module]["import"], isfunction))
-            allAlgorithms[algorithm["identity"]()] = algorithm
+            module = importClass('{mod}.{pgn}'.format(mod="heuristics", pgn=plugin))
+            pluginOutput.update({module.identity(): importClass('{mod}.{pgn}.{pgn}'.format(mod="heuristics", pgn=plugin))})
         
+        print(pluginOutput)
+        algor = pluginOutput[self.constraintObjectiveVar.get()]()
         for config in DataMover.get("configurations"):
             configPasser = dict()
             configPasser["benchmark"] = "truck_111m"
@@ -794,7 +800,7 @@ class DesignFrame(ToggleFrame):
             configPasser["cpuFrequency"] = config.occupiedSpace[0].containedBlades[0].cpu.clockSpeed["all_boost"]
             configPasser["Cores"] = config.occupiedSpace[0].containedBlades[0].cpu.cores
             
-            print(allAlgorithms[self.constraintObjectiveVar.get()]["execute"](configPasser))
+            print(algor.execute(configPasser))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
