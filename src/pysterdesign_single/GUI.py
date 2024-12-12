@@ -47,6 +47,19 @@ Universal methods that are designed to be usable anywhere, thus must come first,
 
 colorDict = Colors.ColorDictionary
 
+
+def textboxCleaner(textBox: Text) -> None:
+    textBox.config(state="normal")
+    textBox.delete("1.0",END)
+    textBox.config(state="disabled")
+def textBoxWriter(textBox: Text, *inputStr: str) -> None:
+    textBox.config(state="normal")
+    for string in inputStr:
+        textBox.insert(END,string)
+    textBox.config(state="disabled")
+
+
+
 def importClass(name):
     components = name.split('.')
     mod = __import__(components[0])
@@ -791,16 +804,26 @@ class DesignFrame(ToggleFrame):
             module = importClass('{mod}.{pgn}'.format(mod="heuristics", pgn=plugin))
             pluginOutput.update({module.identity(): importClass('{mod}.{pgn}.{pgn}'.format(mod="heuristics", pgn=plugin))})
         
-        print(pluginOutput)
         algor = pluginOutput[self.constraintObjectiveVar.get()]()
+
+        configPerfOut = dict()
         for config in DataMover.get("configurations"):
-            configPasser = dict()
-            configPasser["benchmark"] = "truck_111m"
-            configPasser["networkTech"] = "InfiniBand"
-            configPasser["cpuFrequency"] = config.occupiedSpace[0].containedBlades[0].cpu.clockSpeed["all_boost"]
-            configPasser["Cores"] = config.occupiedSpace[0].containedBlades[0].cpu.cores
-            
-            print(algor.execute(configPasser))
+            try:
+                configPasser = dict()
+                configPasser["benchmark"] = "truck_111m"
+                configPasser["networkTech"] = "InfiniBand"
+                configPasser["cpuFrequency"] = config.occupiedSpace[0].containedBlades[0].cpu.clockSpeed["all_boost"]
+                configPasser["Cores"] = config.occupiedSpace[0].containedBlades[0].cpu.cores
+                algorValue = algor.execute(configPasser)
+                if (algorValue not in configPerfOut):
+                    configPerfOut[algorValue] = list()
+                configPerfOut[algorValue].append(config)
+            except AttributeError:
+                continue
+
+        sortedConfigs = dict(reversed(sorted(configPerfOut.items())))
+        print(sortedConfigs)
+        
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -1105,14 +1128,12 @@ class ClusterDesign(Tk):#predefine the globals here
 
                 DataMover.add("configs", configurations)    
                 
-                DataMover.get("frames")["nodes"]["frame"].nodeTextBoxOutput.config(state="normal")
-                DataMover.get("frames")["nodes"]["frame"].nodeTextBoxOutput.delete("1.0",END)
+                textboxCleaner(DataMover.get("frames")["nodes"]["frame"].nodeTextBoxOutput)
                 for config in configurations:
                     try:
-                        DataMover.get("frames")["nodes"]["frame"].nodeTextBoxOutput.insert(END,config)
+                        textBoxWriter(DataMover.get("frames")["nodes"]["frame"].nodeTextBoxOutput, str(config))
                     except:
                         pass
-                DataMover.get("frames")["nodes"]["frame"].nodeTextBoxOutput.config(state="disabled")
                         
                             
                                     

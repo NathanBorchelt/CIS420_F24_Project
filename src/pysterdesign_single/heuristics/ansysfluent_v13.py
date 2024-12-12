@@ -95,7 +95,7 @@ class ansysfluent_v13(object):
         coresParam: bool = ("Cores" in params)
         performanceParam: bool = ("Performance" in params)
 
-        if(coresParam ^ performanceParam):
+        if(not (coresParam ^ performanceParam)):
             print('"Cores" and "Performance" are contradictory, one (and only one) must be defined')
             return False
         
@@ -139,7 +139,7 @@ class ansysfluent_v13(object):
         return (k * int(params["Cores"]) * b) / 100
 
     def performance(self, params: Dict) -> float:
-        return float(params["cpuFrequency"]) * self.K_CPU * (int(params["Cores"]) / self.CORES_PER_MACHINE) * efficiency(self, params)    
+        return float(params["cpuFrequency"]) * self.K_CPU * (int(params["Cores"]) / self.CORES_PER_MACHINE) * self.efficiency( params)    
 
     def execute(self,parameters: Dict) -> float:
         if self.__validation(parameters): # type: ignore
