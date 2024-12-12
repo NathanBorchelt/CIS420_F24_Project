@@ -37,6 +37,8 @@ import xmlParser
 from jsonparser import parseJsonTree
 import json
 
+
+
 import DataMover
 
 
@@ -59,8 +61,8 @@ def textBoxWriter(textBox: Text, *inputStr: str) -> None:
     textBox.config(state="disabled")
 
 
-
-def importClass(name):
+#https://stackoverflow.com/a/547867 
+def importClass(name : str) -> Module:
     components = name.split('.')
     mod = __import__(components[0])
     for comp in components[1:]:
@@ -792,11 +794,9 @@ class PerformanceFrame(ToggleFrame):
         self.update()
 
 class DesignFrame(ToggleFrame):
-
-    #https://stackoverflow.com/a/547867
-     
-
+    
     def runDesignProcess(self):
+        self.heurOutput = list()
         pluginOutput = {}
         modules = glob.glob(join(dirname(__file__), "heuristics", "*.py"))
         plugins = [ basename(f)[:-3] for f in modules if isfile(f) and not f.endswith('__init__.py')]
@@ -809,21 +809,41 @@ class DesignFrame(ToggleFrame):
         configPerfOut = dict()
         for config in DataMover.get("configurations"):
             try:
-                configPasser = dict()
-                configPasser["benchmark"] = "truck_111m"
-                configPasser["networkTech"] = "InfiniBand"
-                configPasser["cpuFrequency"] = config.occupiedSpace[0].containedBlades[0].cpu.clockSpeed["all_boost"]
-                configPasser["Cores"] = config.occupiedSpace[0].containedBlades[0].cpu.cores
-                algorValue = algor.execute(configPasser)
-                if (algorValue not in configPerfOut):
-                    configPerfOut[algorValue] = list()
-                configPerfOut[algorValue].append(config)
+                config.runHeuristic(algor)
+                huerValue = config.getHeuristicValue()
+                if (huerValue not in configPerfOut):
+                    configPerfOut[huerValue] = list()
+                configPerfOut[huerValue].append(config)
             except AttributeError:
                 continue
 
-        sortedConfigs = dict(reversed(sorted(configPerfOut.items())))
-        print(sortedConfigs)
+        sortedConfigs = dict(sorted(configPerfOut.items(), reverse=True))
+
+        for configList in sortedConfigs.values():
+            for config in configList:
+                self.heurOutput.append(config)
+
+    class HeuristicCounter(IndexCounterEntry):
+
+        def __init__(self, minValue = 0, maxValue = 10, step = 1, fontSize = 16, defaultValue = False, tbg = "#1E1E1E", tfg = "#EBEBEB", bbg = "#1E1E1E", bfg = "#EBEBEB", abbg = "#EBEBEB", abfg = "#1E1E1E", *args, **kwargs):
+            super().__init__(minValue, maxValue, step, fontSize, defaultValue, tbg, tfg, bbg, bfg, abbg, abfg, *args, **kwargs)
+            
+            #super().indexUpButton.configure(command= lambda : self.indexChange(self.indexVar, step, maxValue))
+            
         
+        def addConfigOutHumanDataText(self, textBox : Text) -> None:
+            self.configOutHumanDataText = textBox
+
+        def addHeurOutput(self, heurList : list) -> None:
+            self.heurOutput = heurList
+
+        def OnAction(self) -> None:
+            textboxCleaner(self.configOutHumanDataText)
+            try:
+                textBoxWriter(self.configOutHumanDataText, self.heurOutput[self.get()])
+            except IndexError:
+                pass
+
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -844,6 +864,8 @@ class DesignFrame(ToggleFrame):
         btn_fg = colorDict["design_btn_fg"]
         btn_alt_bg = colorDict["design_btn_alt_bg"]
         btn_alt_fg = colorDict["design_btn_alt_fg"]
+
+        self.heurOutput = list()
 
         initiationFrame = ToggleFrame(self, padx=padx, pady=pady, bg=bg)
 
@@ -913,7 +935,7 @@ class DesignFrame(ToggleFrame):
         currentConfigLabel = Label(configOutputFrame, bg=txt_bg, fg=txt_fg, text="Current configuration:", font=NORMAL_FONT)
         currentConfigLabel.pack(side=TOP, anchor='nw')
 
-        configIndexBox = IndexCounterEntry(1, 10, 1, 16, 1, ent_bg, ent_fg, btn_bg, btn_fg, btn_alt_bg, btn_alt_fg, bg=configOutputFrame['bg'], padx=3, pady=3, master=configOutputFrame)
+        configIndexBox = self.HeuristicCounter(1, 10, 1, 16, 1, ent_bg, ent_fg, btn_bg, btn_fg, btn_alt_bg, btn_alt_fg, bg=configOutputFrame['bg'], padx=3, pady=3, master=configOutputFrame)
         configIndexBox.pack(side=TOP, anchor='nw')
         self.update()
 
@@ -926,10 +948,10 @@ class DesignFrame(ToggleFrame):
         configOutRawDataText.config(xscrollcommand=configOutRawDataTextXScroll.set, yscrollcommand=configOutRawDataTextYScroll.set)
 
         configOutHumanDataFrame = ToggleFrame(configOutputFrame, padx=3)
-        configOutHumanDataText = Text(configOutHumanDataFrame, bg=ent_bg, fg=ent_fg, insertbackground=ent_fg, font=NORMAL_FONT, width=configOutHumanDataFrame.master.winfo_width()//11, wrap=NONE)
-        configOutHumanDataTextXScroll = Scrollbar(configOutHumanDataText.master, orient="horizontal", command=configOutHumanDataText.xview)
-        configOutHumanDataTextYScroll = Scrollbar(configOutHumanDataText.master, orient="vertical", command=configOutHumanDataText.yview)
-        configOutHumanDataText.config(xscrollcommand=configOutHumanDataTextXScroll.set, yscrollcommand=configOutHumanDataTextYScroll.set)
+        self.configOutHumanDataText = Text(configOutHumanDataFrame, bg=ent_bg, fg=ent_fg, insertbackground=ent_fg, font=NORMAL_FONT, width=configOutHumanDataFrame.master.winfo_width()//11, wrap=NONE)
+        self.configOutHumanDataTextXScroll = Scrollbar(self.configOutHumanDataText.master, orient="horizontal", command=self.configOutHumanDataText.xview)
+        self.configOutHumanDataTextYScroll = Scrollbar(self.configOutHumanDataText.master, orient="vertical", command=self.configOutHumanDataText.yview)
+        self.configOutHumanDataText.config(xscrollcommand=self.configOutHumanDataTextXScroll.set, yscrollcommand=self.configOutHumanDataTextYScroll.set)
 
 
         configOutRawDataFrame.pack(side=LEFT, anchor='w', fill=BOTH, expand=True)
@@ -938,9 +960,13 @@ class DesignFrame(ToggleFrame):
         configOutRawDataTextXScroll.pack(side=BOTTOM, anchor='s', fill=X)
 
         configOutHumanDataFrame.pack(side=RIGHT, anchor='e', fill=BOTH, expand=True)
-        configOutHumanDataTextYScroll.pack(side=RIGHT, anchor='e', fill=Y)
-        configOutHumanDataText.pack(side=TOP, anchor='n', fill=BOTH)
-        configOutHumanDataTextXScroll.pack(side=BOTTOM, anchor='s', fill=X)
+        self.configOutHumanDataTextYScroll.pack(side=RIGHT, anchor='e', fill=Y)
+        self.configOutHumanDataText.pack(side=TOP, anchor='n', fill=BOTH)
+        self.configOutHumanDataTextXScroll.pack(side=BOTTOM, anchor='s', fill=X)
+
+        configIndexBox.addConfigOutHumanDataText(self.configOutHumanDataText)
+        configIndexBox.addHeurOutput(self.heurOutput)
+        print("pause")
 
         
 

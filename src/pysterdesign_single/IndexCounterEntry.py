@@ -4,41 +4,10 @@ from typing import Union
 
 from ToggleFrame import ToggleFrame
 import Colors
-
-def limitCheck(inputVal : Union[int, list] = 0):
-    if type(inputVal) == list:
-        return len(inputVal)
-    return inputVal
-def indexChange(currentIndex: IntVar, delta: int, limitIn: Union[int, list] = 0) -> None:
-    limit = limitCheck(limitIn)
-
-    indexValue = currentIndex.get()
-
-    if delta > 0:
-        if (value := indexValue+delta) > limit:
-            currentIndex.set(limit)
-        else:
-            currentIndex.set(value)
-
-    elif delta < 0:
-        if (value := indexValue+delta) < limit:
-            currentIndex.set(limit)
-        else:
-            currentIndex.set(value)
-
-def __indexChange(currentIndex: IntVar, maxValue: Union[int, list], minValue: int = 0) -> None:
-
-    maxValue = limitCheck(maxValue)
-
-    indexValue = currentIndex.get()
-    print(indexValue)
-
-    if indexValue > maxValue:
-        currentIndex.set(maxValue)
-    elif indexValue < minValue:
-        currentIndex.set(minValue)
+from abc import ABCMeta, abstractmethod
 
 class IndexCounterEntry(ToggleFrame):
+    __metaclass__ = ABCMeta
     indexVar = None
 
 
@@ -61,11 +30,11 @@ class IndexCounterEntry(ToggleFrame):
 
         self.indexVar = IntVar(master=self.master, value=(defaultValue if bool(defaultValue) else minValue))
         indexEntry = Entry(self, bg=tbg, fg=tfg, insertbackground=tfg, textvariable=self.indexVar, width=4, justify=RIGHT, font=font.Font(size=fontSize))
-        indexEntry.bind("<Key>", lambda : __indexChange(self.indexVar, maxValue, minValue))
+        indexEntry.bind("<Key>", lambda : self.__indexChange(self.indexVar, maxValue, minValue))
         indexButtonFrame = ToggleFrame(indexEntry.master, bg=self.master['bg'])
 
-        indexUpButton = Button(indexButtonFrame, bg=bbg, fg=bfg, text='▲', font=font.Font(size=(fontSize//4), weight='bold'), command= lambda : indexChange(self.indexVar, step, maxValue), width=1, height=1, activebackground=abbg, activeforeground=abfg)
-        indexDownButton = Button(indexButtonFrame, bg=bbg, fg=bfg, text='▼', font=font.Font(size=(fontSize//4), weight='bold'), command= lambda : indexChange(self.indexVar, -step, minValue), width=1, height=1, activebackground=abbg, activeforeground=abfg)
+        indexUpButton = Button(indexButtonFrame, bg=bbg, fg=bfg, text='▲', font=font.Font(size=(fontSize//4), weight='bold'), command= lambda : (self.indexChange(self.indexVar, step, maxValue), self.OnAction()), width=1, height=1, activebackground=abbg, activeforeground=abfg)
+        indexDownButton = Button(indexButtonFrame, bg=bbg, fg=bfg, text='▼', font=font.Font(size=(fontSize//4), weight='bold'), command= lambda : (self.indexChange(self.indexVar, -step, minValue), self.OnAction()), width=1, height=1, activebackground=abbg, activeforeground=abfg)
 
         indexButtonFrame.pack(side=RIGHT, anchor='e')
 
@@ -79,4 +48,43 @@ class IndexCounterEntry(ToggleFrame):
 
     def set(self, i: int) -> None:
         self.indexVar.set(i)
+
+    @abstractmethod
+    def OnAction(self) -> None:
+        pass
+    
+    def limitCheck(self, inputVal : Union[int, list] = 0):
+        if type(inputVal) == list:
+            return len(inputVal)
+        return inputVal
+    
+    def indexChange(self, currentIndex: IntVar, delta: int, limitIn: Union[int, list] = 0) -> None:
+        limit = self.limitCheck(limitIn)
+
+        indexValue = currentIndex.get()
+
+        if delta > 0:
+            if (value := indexValue+delta) > limit:
+                currentIndex.set(limit)
+            else:
+                currentIndex.set(value)
+
+        elif delta < 0:
+            if (value := indexValue+delta) < limit:
+                currentIndex.set(limit)
+            else:
+                currentIndex.set(value)
+        self.OnAction()
+
+    def __indexChange(self, currentIndex: IntVar, maxValue: Union[int, list], minValue: int = 0) -> None:
+
+        maxValue = self.limitCheck(maxValue)
+
+        indexValue = currentIndex.get()
+        print(indexValue)
+
+        if indexValue > maxValue:
+            currentIndex.set(maxValue)
+        elif indexValue < minValue:
+            currentIndex.set(minValue)
 
