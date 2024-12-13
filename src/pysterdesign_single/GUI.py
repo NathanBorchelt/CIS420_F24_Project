@@ -828,8 +828,8 @@ class DesignFrame(ToggleFrame):
         def __init__(self, minValue = 0, maxValue = 10, step = 1, fontSize = 16, defaultValue = False, tbg = "#1E1E1E", tfg = "#EBEBEB", bbg = "#1E1E1E", bfg = "#EBEBEB", abbg = "#EBEBEB", abfg = "#1E1E1E", *args, **kwargs):
             super().__init__(minValue, maxValue, step, fontSize, defaultValue, tbg, tfg, bbg, bfg, abbg, abfg, *args, **kwargs)
             
-            self.OnActionHelper(self.indexUpButton)
-            self.OnActionHelper(self.indexDownButton)
+            # self.OnActionHelper(self.indexUpButton)
+            # self.OnActionHelper(self.indexDownButton)
             
         
         def addConfigOutHumanDataText(self, textBox : Text) -> None:
@@ -838,15 +838,16 @@ class DesignFrame(ToggleFrame):
         def addHeurOutput(self, heurList : list) -> None:
             self.heurOutput = heurList
 
-        def OnActionHelper(self, button : Button):
-            if(button is self.indexUpButton):
-                button.config(command= lambda : (self.indexChange(self.indexVar, self.step, self.maxValue), self.OnAction()))
-            elif(button is self.indexDownButton):
-                button.config(command= lambda : (self.indexChange(self.indexVar, -self.step, self.minValue), self.OnAction()))
+        # def OnActionHelper(self, button : Button):
+        #     if(button is self.indexUpButton):
+        #         button.config(command= lambda : self.indexChange(self.indexVar, self.step, self.maxValue) or self.OnAction())
+        #     elif(button is self.indexDownButton):
+        #         button.config(command= lambda : self.indexChange(self.indexVar, -self.step, self.minValue) or self.OnAction())
         def OnAction(self) -> None:
+            print("button works")
             textboxCleaner(self.configOutHumanDataText)
             try:
-                textBoxWriter(self.configOutHumanDataText, self.heurOutput[self.get()])
+                textBoxWriter(self.configOutHumanDataText, str(self.heurOutput[self.get()]))
             except IndexError:
                 pass
 
