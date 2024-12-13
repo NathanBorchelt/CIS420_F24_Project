@@ -23,23 +23,23 @@ class IndexCounterEntry(ToggleFrame):
         self.pack()
         self.update()
 
-        minValue = minValue
-        maxValue = maxValue
-        step = step
+        self.minValue = minValue
+        self.maxValue = maxValue
+        self.step = step
         fontSize = fontSize
 
-        self.indexVar = IntVar(master=self.master, value=(defaultValue if bool(defaultValue) else minValue))
+        self.indexVar = IntVar(master=self.master, value=(defaultValue if bool(defaultValue) else self.minValue))
         indexEntry = Entry(self, bg=tbg, fg=tfg, insertbackground=tfg, textvariable=self.indexVar, width=4, justify=RIGHT, font=font.Font(size=fontSize))
-        indexEntry.bind("<Key>", lambda : self.__indexChange(self.indexVar, maxValue, minValue))
+        indexEntry.bind("<Key>", lambda : self.__indexChange(self.indexVar, self.maxValue, self.minValue))
         indexButtonFrame = ToggleFrame(indexEntry.master, bg=self.master['bg'])
 
-        indexUpButton = Button(indexButtonFrame, bg=bbg, fg=bfg, text='▲', font=font.Font(size=(fontSize//4), weight='bold'), command= lambda : (self.indexChange(self.indexVar, step, maxValue), self.OnAction()), width=1, height=1, activebackground=abbg, activeforeground=abfg)
-        indexDownButton = Button(indexButtonFrame, bg=bbg, fg=bfg, text='▼', font=font.Font(size=(fontSize//4), weight='bold'), command= lambda : (self.indexChange(self.indexVar, -step, minValue), self.OnAction()), width=1, height=1, activebackground=abbg, activeforeground=abfg)
+        self.indexUpButton = Button(indexButtonFrame, bg=bbg, fg=bfg, text='▲', font=font.Font(size=(fontSize//4), weight='bold'), command= lambda : (self.indexChange(self.indexVar, self.step, self.maxValue), self.OnAction()), width=1, height=1, activebackground=abbg, activeforeground=abfg)
+        self.indexDownButton = Button(indexButtonFrame, bg=bbg, fg=bfg, text='▼', font=font.Font(size=(fontSize//4), weight='bold'), command= lambda : (self.indexChange(self.indexVar, -self.step, self.minValue), self.OnAction()), width=1, height=1, activebackground=abbg, activeforeground=abfg)
 
         indexButtonFrame.pack(side=RIGHT, anchor='e')
 
-        indexUpButton.pack(side=TOP, anchor='n')
-        indexDownButton.pack(side=BOTTOM, anchor='s')
+        self.indexUpButton.pack(side=TOP, anchor='n')
+        self.indexDownButton.pack(side=BOTTOM, anchor='s')
         indexEntry.pack(side=LEFT, anchor='w')
         self.update()
 
