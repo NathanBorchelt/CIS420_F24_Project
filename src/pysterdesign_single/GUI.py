@@ -822,6 +822,8 @@ class DesignFrame(ToggleFrame):
         for configList in sortedConfigs.values():
             for config in configList:
                 self.heurOutput.append(config)
+        
+        DataMover.set("heurOutput", self.heurOutput)
 
     class HeuristicCounter(IndexCounterEntry):
 
@@ -831,12 +833,6 @@ class DesignFrame(ToggleFrame):
             # self.OnActionHelper(self.indexUpButton)
             # self.OnActionHelper(self.indexDownButton)
             
-        
-        def addConfigOutHumanDataText(self, textBox : Text) -> None:
-            self.configOutHumanDataText = textBox
-
-        def addHeurOutput(self, heurList : list) -> None:
-            self.heurOutput = heurList
 
         # def OnActionHelper(self, button : Button):
         #     if(button is self.indexUpButton):
@@ -845,9 +841,9 @@ class DesignFrame(ToggleFrame):
         #         button.config(command= lambda : self.indexChange(self.indexVar, -self.step, self.minValue) or self.OnAction())
         def OnAction(self) -> None:
             print("button works")
-            textboxCleaner(self.configOutHumanDataText)
+            textboxCleaner(DataMover.get("frames")["design"]["frame"].configOutHumanDataText)
             try:
-                textBoxWriter(self.configOutHumanDataText, str(self.heurOutput[self.get()]))
+                textBoxWriter(DataMover.get("frames")["design"]["frame"].configOutHumanDataText, str(DataMover.get("heurOutput")[self.get()]))
             except IndexError:
                 pass
 
@@ -970,9 +966,6 @@ class DesignFrame(ToggleFrame):
         self.configOutHumanDataTextYScroll.pack(side=RIGHT, anchor='e', fill=Y)
         self.configOutHumanDataText.pack(side=TOP, anchor='n', fill=BOTH)
         self.configOutHumanDataTextXScroll.pack(side=BOTTOM, anchor='s', fill=X)
-
-        configIndexBox.addConfigOutHumanDataText(self.configOutHumanDataText)
-        configIndexBox.addHeurOutput(self.heurOutput)
         print("pause")
 
         
